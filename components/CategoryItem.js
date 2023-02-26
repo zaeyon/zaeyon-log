@@ -17,7 +17,11 @@ const CategoryText = styled.div`
 const CategoryItem = ({ category, onClickCategory }) => {
   return (
     <Container>
-      <CategoryText onClick={() => onClickCategory(category)}>
+      <CategoryText
+        onClick={() => {
+          console.log("onClick CategoryItem");
+        }}
+      >
         {category.text}
       </CategoryText>
     </Container>

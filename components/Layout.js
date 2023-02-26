@@ -11,6 +11,13 @@ const Container = styled.div`
   justify-content: center;
 `;
 
+const ExceptMenuContainer = styled.div`
+  width: 100%;
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+`;
+
 const Layout = ({ children }) => {
   const [visibleMenu, setVisibleMenu] = useState(false);
   const [scrolling, setScrolling] = useState("false");
@@ -21,7 +28,6 @@ const Layout = ({ children }) => {
     if (visibleMenu) {
       setVisibleMenu(false);
     } else {
-      setPreventAni(true);
       setVisibleMenu(true);
     }
   };
@@ -35,9 +41,7 @@ const Layout = ({ children }) => {
   const createScrollStopListener = (element, callback, timeout) => {
     var handle = null;
     const onScrollEvent = () => {
-      if (visibleMenu) {
-        setPreventAni(false);
-      }
+      console.log("visibleMenu", visibleMenu);
       if (handle) {
         if (window.scrollY > 200) {
           setHeaderEvent("shrink");
@@ -60,15 +64,19 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     createScrollStopListener(window, () => {});
-  }, [headerEvent]);
+  });
 
   return (
-    <Container onClick={onClickExceptMenu}>
-      {visibleMenu && (
-        <Menu headerEvent={headerEvent} preventAni={preventAni} />
-      )}
-      <Header headerEvent={headerEvent} onClickMenu={onClickMenu} />
-      <main>{children}</main>
+    <Container>
+      <Menu
+        headerEvent={headerEvent}
+        preventAni={preventAni}
+        visibleMenu={visibleMenu}
+      />
+      <ExceptMenuContainer onClick={onClickExceptMenu}>
+        <Header headerEvent={headerEvent} onClickMenu={onClickMenu} />
+        <main>{children}</main>
+      </ExceptMenuContainer>
     </Container>
   );
 };

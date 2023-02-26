@@ -38,7 +38,7 @@ const Header = ({ onClickMenu, headerEvent }) => {
     config: {
       mass: 1.2,
       friction: 30,
-      tension: 300,
+      tension: 320,
     },
   }));
 
@@ -76,6 +76,7 @@ const Header = ({ onClickMenu, headerEvent }) => {
     <animated.div
       className={headerStyles.container}
       style={{
+        opacity: "0.96",
         height: headerHeight,
         position: "fixed",
         background: "black",

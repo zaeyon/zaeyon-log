@@ -15,37 +15,37 @@ const Container = styled.div`
   box-shadow: 3px 0px 25px -10px #27272750;
 `;
 
-const Menu = ({ headerEvent, preventAni }) => {
+const Menu = ({ headerEvent, preventAni, visibleMenu }) => {
   const [topDistance, setTopDistance] = useState("6.5rem");
-  const [springs, api] = useSpring(() => ({
+  const [menuSprings, menuApi] = useSpring(() => ({
     config: {
       mass: 1.2,
       friction: 30,
-      tension: 300,
+      tension: 320,
     },
   }));
 
   useEffect(() => {
-    if (headerEvent === "shrink" && !preventAni) {
-      api.start({
+    if (headerEvent === "shrink") {
+      menuApi.start({
         from: {
-          top: "6.5rem",
+          paddingTop: "6.5rem",
         },
         to: {
-          top: "3.8rem",
+          paddingTop: "3.8rem",
         },
       });
-    } else if (headerEvent === "expand" && !preventAni) {
-      api.start({
+    } else if (headerEvent === "expand") {
+      menuApi.start({
         from: {
-          top: "3.8rem",
+          paddingTop: "3.8rem",
         },
         to: {
-          top: "6.5rem",
+          paddingTop: "6.5rem",
         },
       });
     }
-  }, [headerEvent, preventAni]);
+  }, [headerEvent]);
 
   useLayoutEffect(() => {
     if (localStorage.getItem("headerEvent") === "shrink") {
@@ -58,19 +58,28 @@ const Menu = ({ headerEvent, preventAni }) => {
   return (
     <animated.div
       style={{
+        opacity: visibleMenu ? 1 : 0,
         background: "#ffffff",
         position: "fixed",
         display: "flex",
         left: 0,
-        top: topDistance,
-        padding: "20px 30px",
-        height: "200rem",
+        paddingLeft: "30px",
+        paddingRight: "30px",
+        paddingBottom: "20px",
+        paddingTop: topDistance,
+        height: "100vh",
         width: "13rem",
         boxShadow: "3px 0px 25px -10px #27272750",
-        ...springs,
+        ...menuSprings,
       }}
     >
-      <CategoryList onClickCategory={""} />
+      {visibleMenu && (
+        <CategoryList
+          onClickCategory={() => {
+            console.log("onClickCategory");
+          }}
+        />
+      )}
     </animated.div>
   );
 };
