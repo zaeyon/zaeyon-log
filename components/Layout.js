@@ -13,11 +13,7 @@ const Container = styled.div`
 
 const Layout = ({ children }) => {
   const [visibleMenu, setVisibleMenu] = useState(false);
-  const [scrollUp, setScrollUp] = useState(false);
-  const [scrollDown, setScrollDown] = useState(false);
-  const [headerAni, setHeaderAni] = useState("default");
-  const [scrollEvent, setScrollEvent] = useState(false);
-  //const [headerEvent, setHeaderEvent] = useState("expand");
+  const [headerEvent, setHeaderEvent] = useState("expand");
 
   const onClickMenu = () => {
     setVisibleMenu(!visibleMenu);
@@ -26,21 +22,11 @@ const Layout = ({ children }) => {
   const createScrollStopListener = (element, callback, timeout) => {
     var handle = null;
     const onScrollEvent = () => {
-      console.log("onScrollEvent visivleMenu", visibleMenu);
-      console.log("scrollEvent", scrollEvent);
-      console.log("scrollUp", scrollUp);
-      console.log("scrollDown", scrollDown);
-
       if (handle) {
         if (window.scrollY > 200) {
-          //setScrollEvent(true);
-          //setScrollDown(true);
-          //setScrollUp(false);
           setHeaderEvent("shrink");
           localStorage.setItem("headerEvent", "shrink");
         } else {
-          //setScrollUp(true);
-          //setScrollDown(false);
           setHeaderEvent("expand");
           localStorage.setItem("headerEvent", "expand");
         }
@@ -57,13 +43,13 @@ const Layout = ({ children }) => {
   };
 
   useEffect(() => {
-    //createScrollStopListener(window, () => {});
+    createScrollStopListener(window, () => {});
   });
 
   return (
     <Container>
-      {visibleMenu && <Menu />}
-      <Header headerEvent={""} onClickMenu={onClickMenu} />
+      {visibleMenu && <Menu headerEvent={headerEvent} />}
+      <Header headerEvent={headerEvent} onClickMenu={onClickMenu} />
       <main>{children}</main>
     </Container>
   );
