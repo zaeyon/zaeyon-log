@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 const Container = styled.div`
   padding: 18px 10px 18px 10px;
@@ -16,15 +17,22 @@ const CategoryText = styled.div`
 
 const CategoryItem = ({ category, onClickCategory }) => {
   return (
-    <Container>
-      <CategoryText
-        onClick={() => {
-          console.log("onClick CategoryItem");
-        }}
-      >
-        {category.text}
-      </CategoryText>
-    </Container>
+    <Link
+      style={{
+        textDecoration: "none",
+      }}
+      href={`/${category.key}`}
+    >
+      <Container>
+        <CategoryText
+          onClick={() => {
+            console.log("onClick CategoryItem");
+          }}
+        >
+          {category.text}
+        </CategoryText>
+      </Container>
+    </Link>
   );
 };
 

@@ -1,11 +1,11 @@
 import { useEffect, useLayoutEffect, useState } from "react";
+import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
 import { animated, useSpring } from "@react-spring/web";
 import headerStyles from "../styles/header.module.css";
 
-import backgroundPNG from "../public/images/header_background.png";
-import MenuIconPNG from "../public/images/icons/hamburger.png";
+import MenuIconPNG from "../../public/images/icons/hamburger.png";
 
 const MenuIconContainer = styled.div`
   padding: 10px;
@@ -38,7 +38,7 @@ const Header = ({ onClickMenu, headerEvent }) => {
     config: {
       mass: 1.2,
       friction: 30,
-      tension: 320,
+      tension: 330,
     },
   }));
 
@@ -92,7 +92,9 @@ const Header = ({ onClickMenu, headerEvent }) => {
       <MenuIconContainer onClick={onClickMenu}>
         <MenuIconImg priority={true} alt={"menuicon"} src={MenuIconPNG} />
       </MenuIconContainer>
-      <LogoContainer>ZAEYON LOG</LogoContainer>
+      <Link style={{ textDecoration: "none" }} href={"/"}>
+        <LogoContainer>ZAEYON LOG</LogoContainer>
+      </Link>
       <EmptyContainer />
     </animated.div>
   );

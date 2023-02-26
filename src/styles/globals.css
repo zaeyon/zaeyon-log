@@ -5,14 +5,17 @@
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
-  background-color:  #fcfcfc;
-  display: flex;
-  justify-content: center;
+  background:  #f2f2f2;
 }
+
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+.Link {
+  text-decoration: none;
 }
 

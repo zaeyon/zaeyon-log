@@ -1,14 +1,14 @@
 import { useState, useEffect, useLayoutEffect } from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
 
 import Header from "./Header";
 import Menu from "./Menu";
+import { setVisibleMenu } from "../features/visibleMenuSlice";
 
 const Container = styled.div`
   width: 100%;
   background: #f2f2f2;
-  display: flex;
-  justify-content: center;
 `;
 
 const ExceptMenuContainer = styled.div`
@@ -18,23 +18,35 @@ const ExceptMenuContainer = styled.div`
   justify-content: center;
 `;
 
+const ContentContainer = styled.div`
+  padding-top: 9rem;
+  padding-bottom: 4rem;
+`;
+
 const Layout = ({ children }) => {
-  const [visibleMenu, setVisibleMenu] = useState(false);
-  const [scrolling, setScrolling] = useState("false");
+  //const [visibleMenu, setVisibleMenu] = useState(false);
   const [headerEvent, setHeaderEvent] = useState("default");
   const [preventAni, setPreventAni] = useState(false);
 
+  const dispatch = useDispatch();
+  const visibleMenu = useSelector((state) => state.visibleMenu.value);
+
   const onClickMenu = () => {
     if (visibleMenu) {
-      setVisibleMenu(false);
+      //setVisibleMenu(false);
+      dispatch(setVisibleMenu(false));
     } else {
-      setVisibleMenu(true);
+      //setVisibleMenu(true);
+
+      dispatch(setVisibleMenu(true));
     }
   };
 
   const onClickExceptMenu = () => {
     if (visibleMenu) {
-      setVisibleMenu(false);
+      //setVisibleMenu(false);
+
+      dispatch(setVisibleMenu(false));
     }
   };
 
@@ -75,7 +87,7 @@ const Layout = ({ children }) => {
       />
       <ExceptMenuContainer onClick={onClickExceptMenu}>
         <Header headerEvent={headerEvent} onClickMenu={onClickMenu} />
-        <main>{children}</main>
+        <ContentContainer>{children}</ContentContainer>
       </ExceptMenuContainer>
     </Container>
   );

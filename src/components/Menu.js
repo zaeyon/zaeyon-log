@@ -15,13 +15,13 @@ const Container = styled.div`
   box-shadow: 3px 0px 25px -10px #27272750;
 `;
 
-const Menu = ({ headerEvent, preventAni, visibleMenu }) => {
+const Menu = ({ headerEvent, visibleMenu }) => {
   const [topDistance, setTopDistance] = useState("6.5rem");
   const [menuSprings, menuApi] = useSpring(() => ({
     config: {
       mass: 1.2,
       friction: 30,
-      tension: 320,
+      tension: 330,
     },
   }));
 
