@@ -13,15 +13,31 @@ const Container = styled.div`
 
 const Layout = ({ children }) => {
   const [visibleMenu, setVisibleMenu] = useState(false);
+  const [scrolling, setScrolling] = useState("false");
   const [headerEvent, setHeaderEvent] = useState("default");
+  const [preventAni, setPreventAni] = useState(false);
 
   const onClickMenu = () => {
-    setVisibleMenu(!visibleMenu);
+    if (visibleMenu) {
+      setVisibleMenu(false);
+    } else {
+      setPreventAni(true);
+      setVisibleMenu(true);
+    }
+  };
+
+  const onClickExceptMenu = () => {
+    if (visibleMenu) {
+      setVisibleMenu(false);
+    }
   };
 
   const createScrollStopListener = (element, callback, timeout) => {
     var handle = null;
     const onScrollEvent = () => {
+      if (visibleMenu) {
+        setPreventAni(false);
+      }
       if (handle) {
         if (window.scrollY > 200) {
           setHeaderEvent("shrink");
@@ -47,8 +63,10 @@ const Layout = ({ children }) => {
   }, [headerEvent]);
 
   return (
-    <Container>
-      {visibleMenu && <Menu headerEvent={headerEvent} />}
+    <Container onClick={onClickExceptMenu}>
+      {visibleMenu && (
+        <Menu headerEvent={headerEvent} preventAni={preventAni} />
+      )}
       <Header headerEvent={headerEvent} onClickMenu={onClickMenu} />
       <main>{children}</main>
     </Container>

@@ -15,7 +15,7 @@ const Container = styled.div`
   box-shadow: 3px 0px 25px -10px #27272750;
 `;
 
-const Menu = ({ headerEvent }) => {
+const Menu = ({ headerEvent, preventAni }) => {
   const [topDistance, setTopDistance] = useState("6.5rem");
   const [springs, api] = useSpring(() => ({
     config: {
@@ -26,7 +26,7 @@ const Menu = ({ headerEvent }) => {
   }));
 
   useEffect(() => {
-    if (headerEvent === "shrink") {
+    if (headerEvent === "shrink" && !preventAni) {
       api.start({
         from: {
           top: "6.5rem",
@@ -35,7 +35,7 @@ const Menu = ({ headerEvent }) => {
           top: "3.8rem",
         },
       });
-    } else if (headerEvent === "expand") {
+    } else if (headerEvent === "expand" && !preventAni) {
       api.start({
         from: {
           top: "3.8rem",
@@ -45,7 +45,7 @@ const Menu = ({ headerEvent }) => {
         },
       });
     }
-  }, [headerEvent]);
+  }, [headerEvent, preventAni]);
 
   useLayoutEffect(() => {
     if (localStorage.getItem("headerEvent") === "shrink") {
