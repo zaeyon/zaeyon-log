@@ -13,7 +13,7 @@ const Container = styled.div`
 
 const Layout = ({ children }) => {
   const [visibleMenu, setVisibleMenu] = useState(false);
-  const [headerEvent, setHeaderEvent] = useState("expand");
+  const [headerEvent, setHeaderEvent] = useState("default");
 
   const onClickMenu = () => {
     setVisibleMenu(!visibleMenu);
@@ -44,7 +44,7 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     createScrollStopListener(window, () => {});
-  });
+  }, [headerEvent]);
 
   return (
     <Container>

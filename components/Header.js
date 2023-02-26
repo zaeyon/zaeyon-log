@@ -70,7 +70,7 @@ const Header = ({ onClickMenu, headerEvent }) => {
     } else if (localStorage.getItem("headerEvent") === "expand") {
       setHeaderHeight("6.5rem");
     }
-  }, [headerHeight]);
+  }, [headerHeight, headerEvent]);
 
   return (
     <animated.div
