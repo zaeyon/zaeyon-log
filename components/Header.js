@@ -151,18 +151,20 @@ const LogoContainer = styled.div`
   font-family: "Jost-Medium";
 `;
 
-const Header = ({ onClickMenu, scrollDown, scrollUp }) => {
+const Header = ({ onClickMenu, headerEvent }) => {
   const [headerHeight, setHeaderHeight] = useState("6.5rem");
+
   const [springs, api] = useSpring(() => ({
     config: {
       mass: 1.2,
-      friction: 18,
-      tension: 190,
+      friction: 30,
+      tension: 300,
     },
   }));
 
+  /*
   useEffect(() => {
-    if (scrollDown) {
+    if (headerEvent === "shrink") {
       api.start({
         from: {
           height: "6.5rem",
@@ -171,7 +173,7 @@ const Header = ({ onClickMenu, scrollDown, scrollUp }) => {
           height: "3.8rem",
         },
       });
-    } else if (scrollUp) {
+    } else if (headerEvent === "expand") {
       api.start({
         from: {
           height: "3.8rem",
@@ -181,21 +183,25 @@ const Header = ({ onClickMenu, scrollDown, scrollUp }) => {
         },
       });
     }
-  }, [scrollDown, scrollUp]);
+  }, [headerEvent]);
+  */
 
+  /*
   useLayoutEffect(() => {
     if (localStorage.getItem("headerEvent") === "shrink") {
       setHeaderHeight("3.8rem");
     } else if (localStorage.getItem("headerEvent") === "expand") {
       setHeaderHeight("6.5rem");
     }
+
   }, [headerHeight]);
+  */
 
   return (
     <animated.div
       className={headerStyles.container}
       style={{
-        height: headerHeight,
+        height: "6.5rem",
         position: "fixed",
         background: "black",
         display: "flex",

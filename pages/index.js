@@ -3,14 +3,34 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 51rem;
-  height: 150rem;
   background: #eeeeee;
+  font-size: 50px;
+  white-space: pre-line;
 `;
 
 export default function Home() {
   return (
-    <Layout>
-      <Container></Container>
-    </Layout>
+    <div style={{ fontSize: 50 }}>
+      hello hello hello hello hello hello hello hello hello hello hello hello
+      hello hello hello hello hello hello hello hello hello hello hello hello
+      hello hello hello hello hello hello hello hello hello hello hello hello
+      hello hello hello hello hello hello hello hello hello hello hello hello
+      hello hello hello hello hello hello hello hello hello hello hello hello
+      hello hello hello hello hello hello hello hello hello hello hello hello
+      hello hello hello hello hello hello hello hello hello hello hello hello
+      hello hello hello hello hello hello hello hello hello hello hello hello
+      hello hello hello hello hello hello hello hello hello hello hello hello
+      hello hello hello hello hello hello hello hello hello hello hello hello
+      hello hello hello hello hello hello hello hello hello hello hello hello
+      hello hello hello hello hello hello hello hello hello hello hello hello
+      hello hello hello hello hello hello ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON
+      ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON
+      ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON
+      ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON
+      ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON
+      ZAEYON ZAEYON ZAEYON ZAEYONZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON
+      ZAEYONZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYON ZAEYONZAEYON ZAEYON ZAEYON
+      ZAEYON ZAEYON ZAEYON ZAEYON
+    </div>
   );
 }

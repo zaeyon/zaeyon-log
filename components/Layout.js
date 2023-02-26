@@ -1,6 +1,5 @@
 import { useState, useEffect, useLayoutEffect } from "react";
 import styled from "styled-components";
-import LocalStorage from "@/lib/localStorage";
 
 import Header from "./Header";
 import Menu from "./Menu";
@@ -18,6 +17,7 @@ const Layout = ({ children }) => {
   const [scrollDown, setScrollDown] = useState(false);
   const [headerAni, setHeaderAni] = useState("default");
   const [scrollEvent, setScrollEvent] = useState(false);
+  //const [headerEvent, setHeaderEvent] = useState("expand");
 
   const onClickMenu = () => {
     setVisibleMenu(!visibleMenu);
@@ -30,19 +30,18 @@ const Layout = ({ children }) => {
       console.log("scrollEvent", scrollEvent);
       console.log("scrollUp", scrollUp);
       console.log("scrollDown", scrollDown);
-      if (visibleMenu) {
-        setScrolling("true");
-      }
 
       if (handle) {
         if (window.scrollY > 200) {
-          setScrollEvent(true);
-          setScrollDown(true);
-          setScrollUp(false);
+          //setScrollEvent(true);
+          //setScrollDown(true);
+          //setScrollUp(false);
+          setHeaderEvent("shrink");
           localStorage.setItem("headerEvent", "shrink");
         } else {
-          setScrollUp(true);
-          setScrollDown(false);
+          //setScrollUp(true);
+          //setScrollDown(false);
+          setHeaderEvent("expand");
           localStorage.setItem("headerEvent", "expand");
         }
         // 스크롤 계속 발생
@@ -58,18 +57,13 @@ const Layout = ({ children }) => {
   };
 
   useEffect(() => {
-    createScrollStopListener(window, () => {});
+    //createScrollStopListener(window, () => {});
   });
 
   return (
     <Container>
       {visibleMenu && <Menu />}
-      <Header
-        scrollEvent={scrollEvent}
-        scrollDown={scrollDown}
-        scrollUp={scrollUp}
-        onClickMenu={onClickMenu}
-      />
+      <Header headerEvent={""} onClickMenu={onClickMenu} />
       <main>{children}</main>
     </Container>
   );
