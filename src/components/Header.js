@@ -38,7 +38,7 @@ const Header = ({ onClickMenu, headerEvent }) => {
     config: {
       mass: 1.2,
       friction: 30,
-      tension: 345,
+      tension: 355,
     },
   }));
 

@@ -3,25 +3,13 @@ import { animated, useSpring } from "@react-spring/web";
 import styled from "styled-components";
 import CategoryList from "./CategoryList";
 
-const Container = styled.div`
-  background: #ffffff;
-  position: fixed;
-  display: flex;
-  left: 0;
-  top: 6.5rem;
-  padding: 20px 30px;
-  height: 200%;
-  width: 13rem;
-  box-shadow: 3px 0px 25px -10px #27272750;
-`;
-
 const Menu = ({ headerEvent, visibleMenu }) => {
-  const [topDistance, setTopDistance] = useState("6.5rem");
+  const [topDistance, setTopDistance] = useState("7.5rem");
   const [menuSprings, menuApi] = useSpring(() => ({
     config: {
       mass: 1.2,
       friction: 30,
-      tension: 345,
+      tension: 355,
     },
   }));
 
@@ -29,19 +17,19 @@ const Menu = ({ headerEvent, visibleMenu }) => {
     if (headerEvent === "shrink") {
       menuApi.start({
         from: {
-          paddingTop: "6.5rem",
+          paddingTop: "7.5rem",
         },
         to: {
-          paddingTop: "3.8rem",
+          paddingTop: "4.8rem",
         },
       });
     } else if (headerEvent === "expand") {
       menuApi.start({
         from: {
-          paddingTop: "3.8rem",
+          paddingTop: "4.8rem",
         },
         to: {
-          paddingTop: "6.5rem",
+          paddingTop: "7.5rem",
         },
       });
     }
@@ -49,9 +37,9 @@ const Menu = ({ headerEvent, visibleMenu }) => {
 
   useLayoutEffect(() => {
     if (localStorage.getItem("headerEvent") === "shrink") {
-      setTopDistance("3.8rem");
+      setTopDistance("4.8rem");
     } else if (localStorage.getItem("headerEvent") === "expand") {
-      setTopDistance("6.5rem");
+      setTopDistance("7.5rem");
     }
   }, [topDistance]);
 
