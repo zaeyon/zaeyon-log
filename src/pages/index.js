@@ -2,10 +2,28 @@ import Layout from "../components/Layout";
 import styled from "styled-components";
 import { getSortedPostsData } from "../lib/posts";
 
+import PostList from "../components/PostList";
+
 const Container = styled.div`
   width: 46rem;
-  height: 100rem;
-  background-color: #ffffff;
+  padding: 15px;
+  @media (max-width: 50rem) {
+    width: 90%;
+  }
+`;
+
+const Emoji = styled.span`
+  font-size: 40px;
+  margin-right: 15px;
+`;
+
+const TitleText = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 35px;
+  font-weight: 600;
+  padding-left: 20px;
+  font-family: "Jost-Medium";
 `;
 
 export async function getStaticProps() {
@@ -21,7 +39,13 @@ export async function getStaticProps() {
 export default function Home({ allPostsData }) {
   return (
     <Layout>
-      <Container />
+      <Container>
+        <TitleText>
+          <Emoji>🏠</Emoji>
+          Home
+        </TitleText>
+        <PostList postsData={allPostsData} />
+      </Container>
     </Layout>
   );
 }

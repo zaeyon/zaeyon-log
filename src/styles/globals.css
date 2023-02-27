@@ -15,7 +15,8 @@
   margin: 0;
 }
 
-.Link {
-  text-decoration: none;
+@font-face {
+  font-family: "Jost-Medium";
+  src: url("../fonts/Jost-Medium.woff") format('woff')
 }
 
