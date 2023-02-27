@@ -1,13 +1,13 @@
-import Layout from "../components/Layout";
-import { getCategoryParams } from "../lib/categorys";
-import { getCategoryPostsData } from "../lib/posts";
+import Layout from "../../components/Layout";
+import { getCategoryParams } from "../../lib/categorys";
+import { getCategoryPostsData } from "../../lib/posts";
 import styled from "styled-components";
 import Image from "next/image";
 
-import PostList from "../components/PostList";
+import PostList from "../../components/PostList";
 
-import reactLogo from "../../public/images/react_logo.png";
-import javascriptLogo from "../../public/images/javascript_logo.png";
+import reactLogo from "../../../public/images/react_logo.png";
+import javascriptLogo from "../../../public/images/javascript_logo.png";
 
 const Container = styled.div`
   padding: 15px;
