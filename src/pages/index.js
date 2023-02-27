@@ -28,7 +28,6 @@ const TitleText = styled.div`
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
-  console.log("getStaticProps allPostsData", allPostsData);
   return {
     props: {
       allPostsData,

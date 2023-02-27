@@ -8,10 +8,6 @@ const Container = styled.div`
 const CategoryList = ({}) => {
   const Categories = [
     {
-      key: "about",
-      text: "About",
-    },
-    {
       key: "react",
       text: "React",
     },
@@ -27,6 +23,8 @@ const CategoryList = ({}) => {
 
   return (
     <Container>
+      <CategoryItem category={{ key: "about", text: "About" }} />
+
       {Categories.map((category, index) => (
         <CategoryItem key={index} category={category} onClickCategory={""} />
       ))}
