@@ -37,7 +37,6 @@ const PostDetail = ({ postData }) => {
   return (
     <Container>
       <ReactMarkdown
-        children={postData.content}
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
         components={{
@@ -123,12 +122,13 @@ const PostDetail = ({ postData }) => {
             const match = /language-(\w+)/.exec(className || "");
             return !inline && match ? (
               <SyntaxHighlighter
-                children={String(children).replace(/\n$/, "")}
                 style={codeBlock}
                 language={match[1]}
                 PreTag="div"
                 customStyle={customStyle}
-              />
+              >
+                {children}
+              </SyntaxHighlighter>
             ) : (
               <code className={className} {...props}>
                 {children}
@@ -136,7 +136,9 @@ const PostDetail = ({ postData }) => {
             );
           },
         }}
-      ></ReactMarkdown>
+      >
+        {postData.content}
+      </ReactMarkdown>
       <DateContainer>{postData?.date}</DateContainer>
     </Container>
   );
