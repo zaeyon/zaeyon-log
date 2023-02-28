@@ -37,6 +37,7 @@ const PostDetail = ({ postData }) => {
   return (
     <Container>
       <ReactMarkdown
+        children={postData.content}
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
         components={{
@@ -135,9 +136,7 @@ const PostDetail = ({ postData }) => {
             );
           },
         }}
-      >
-        {postData.content}
-      </ReactMarkdown>
+      ></ReactMarkdown>
       <DateContainer>{postData?.date}</DateContainer>
     </Container>
   );
