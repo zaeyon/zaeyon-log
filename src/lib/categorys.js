@@ -1,9 +1,5 @@
 const categoryArray = [
   {
-    key: "about",
-    text: "About",
-  },
-  {
     key: "react",
     text: "React",
   },
