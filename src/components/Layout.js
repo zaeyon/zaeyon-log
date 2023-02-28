@@ -7,13 +7,6 @@ import Menu from "./Menu";
 import { setVisibleMenu } from "../features/visibleMenuSlice";
 
 const Container = styled.div`
-  width: 100%;
-  background: #f2f2f2;
-`;
-
-const ExceptMenuContainer = styled.div`
-  width: 100%;
-  background: #f2f2f2;
   display: flex;
   justify-content: center;
 `;
@@ -85,10 +78,8 @@ const Layout = ({ children }) => {
         preventAni={preventAni}
         visibleMenu={visibleMenu}
       />
-      <ExceptMenuContainer onClick={onClickExceptMenu}>
-        <Header headerEvent={headerEvent} onClickMenu={onClickMenu} />
-        <ContentContainer>{children}</ContentContainer>
-      </ExceptMenuContainer>
+      <Header headerEvent={headerEvent} onClickMenu={onClickMenu} />
+      <ContentContainer>{children}</ContentContainer>
     </Container>
   );
 };

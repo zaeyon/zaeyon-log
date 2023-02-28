@@ -5,9 +5,11 @@ import Layout from "../components/Layout";
 const FullContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 46rem;
+  width: 45rem;
   @media (max-width: 50rem) {
     width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 `;
 

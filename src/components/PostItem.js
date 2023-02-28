@@ -6,7 +6,7 @@ const Container = styled.div`
   flex-direction: column;
   width: 13.5rem;
   height: 16rem;
-  margin-bottom: 20px;
+  margin-bottom: 1.4rem;
   border-radius: 5px;
   background: #ffffff;
   box-shadow: 0px 0px 30px 5px #27272710;
@@ -60,7 +60,12 @@ const DateContainer = styled.div`
 const PostItem = ({ post }) => {
   console.log("PostListItem post", post);
   return (
-    <Link style={{ textDecoration: "none" }} href={`posts/${post.id}`}>
+    <Link
+      style={{ textDecoration: "none" }}
+      href={{
+        pathname: `/${post.category}/${post.title}`,
+      }}
+    >
       <Container>
         <TitleContainer>{post.title}</TitleContainer>
         <ContentContainer>

@@ -1,6 +1,8 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { remark } from "remark";
+import html from "remark-html";
 
 const categoryArray = ["javascript", "react", "react-native"];
 
@@ -25,6 +27,7 @@ export function getSortedPostsData() {
 
       return {
         id,
+        category: categoryArray[i],
         ...matterResult.data,
       };
     });
@@ -63,4 +66,51 @@ export function getCategoryPostsData(category) {
       return -1;
     }
   });
+}
+
+export function getAllPostIds() {
+  let allFileNames = [];
+  let postsDirectory = "";
+
+  for (let i = 0; i < categoryArray.length; i++) {
+    postsDirectory = path.join(process.cwd(), `posts/${categoryArray[i]}`);
+    const fileNames = fs.readdirSync(postsDirectory);
+
+    allFileNames = allFileNames.concat(fileNames);
+  }
+
+  return allFileNames.map((fileName) => {
+    return {
+      params: {
+        id: fileName.replace(/\.md$/, ""),
+      },
+    };
+  });
+}
+
+export function getCategoryPostIds(category) {
+  const postsDirectory = path.join(process.cwd(), `posts/${category}`);
+  const fileNames = fs.readdirSync(postsDirectory);
+
+  return fileNames.map((fileName) => {
+    return {
+      params: {
+        id: fileName.replace(/\.md$/, ""),
+      },
+    };
+  });
+}
+
+export function getPostData(id, category) {
+  const postsDirectory = path.join(process.cwd(), `posts/${category}`);
+  const fullPath = path.join(postsDirectory, `${id}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+
+  const matterResult = matter(fileContents);
+
+  return {
+    id,
+    ...matterResult.data,
+    content: matterResult.content,
+  };
 }

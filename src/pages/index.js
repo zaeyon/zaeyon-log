@@ -5,10 +5,12 @@ import { getSortedPostsData } from "../lib/posts";
 import PostList from "../components/PostList";
 
 const Container = styled.div`
-  width: 46rem;
-  padding: 15px;
+  width: 45rem;
+  padding-top: 5px;
   @media (max-width: 50rem) {
     width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 `;
 

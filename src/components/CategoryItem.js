@@ -21,7 +21,7 @@ const CategoryItem = ({ category, onClickCategory }) => {
       style={{
         textDecoration: "none",
       }}
-      href={`/posts/${category.key}`}
+      href={`/${category.key}`}
     >
       <Container>
         <CategoryText
