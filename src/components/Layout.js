@@ -11,6 +11,15 @@ const Container = styled.div`
   justify-content: center;
 `;
 
+const ExceptMenuContainer = styled.div`
+  flex: 1;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 22vh;
+`;
+
 const ContentContainer = styled.div`
   padding-top: 9rem;
   padding-bottom: 4rem;
@@ -48,7 +57,7 @@ const Layout = ({ children }) => {
     const onScrollEvent = () => {
       console.log("visibleMenu", visibleMenu);
       if (handle) {
-        if (window.scrollY > 200) {
+        if (window.scrollY > 0.12 * window.innerHeight) {
           setHeaderEvent("shrink");
           localStorage.setItem("headerEvent", "shrink");
         } else {
@@ -78,8 +87,10 @@ const Layout = ({ children }) => {
         preventAni={preventAni}
         visibleMenu={visibleMenu}
       />
-      <Header headerEvent={headerEvent} onClickMenu={onClickMenu} />
-      <ContentContainer>{children}</ContentContainer>
+      <ExceptMenuContainer onClick={onClickExceptMenu}>
+        <Header headerEvent={headerEvent} onClickMenu={onClickMenu} />
+        <ContentContainer>{children}</ContentContainer>
+      </ExceptMenuContainer>
     </Container>
   );
 };

@@ -5,28 +5,32 @@ import Layout from "../components/Layout";
 const FullContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 45rem;
-  @media (max-width: 50rem) {
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-  }
+  justify-content: center;
+  align-items: center;
 `;
 
 const Container = styled.div`
-  margin-top: 15px;
-  padding: 15px;
+  margin-top: 10px;
+  padding: 12px;
   height: 1000px;
+  width: 45rem;
   background: #ffffff;
   border-radius: 7px;
   box-shadow: 0px 0px 20px 8px #27272710;
+  @media (max-width: 45rem) {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+  }
 `;
 
 const AboutContainer = styled.div`
   display: flex;
   align-items: center;
-  padding-top: 10px;
-  padding-left: 10px;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  width: 46rem;
 `;
 
 const AboutEmoji = styled.div`
@@ -95,9 +99,10 @@ const TitleText = styled.div`
 `;
 
 const PeriodText = styled.span`
-  font-size: 18px;
-  font-weight: 300;
-  color: #5f5f5f;
+  width: 12rem;
+  font-size: 19px;
+  font-weight: 500;
+  color: #00000097;
 `;
 
 const CareerTextContainer = styled.span`
@@ -105,8 +110,21 @@ const CareerTextContainer = styled.span`
 `;
 
 const CareerText = styled.div`
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 500;
+  padding-bottom: 4px;
+`;
+
+const TechStackText = styled.span`
+  font-size: 17px;
+  color: #25252570;
+`;
+
+const DescriptionText = styled.div`
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 300;
+  color: #000000;
 `;
 
 const About = () => {
@@ -134,11 +152,16 @@ const About = () => {
               <PeriodText>20.03 - 21.04</PeriodText>
               <CareerTextContainer>
                 <CareerText>
-                  소비 데이터 분석, 컨텐츠 추천 어플 프론트엔드 개발
+                  소비 항목 리뷰 및 데이터 분석 모바일 어플 프론트엔드 개발
                 </CareerText>
                 <CareerText>
-                  사용자 맞춤 치아 관리, 치과 리뷰 어플 프론트엔드 개발
+                  사용자 맞춤 치아 관리 및 치과 리뷰 모바일 어플 프론트엔드 개발
                 </CareerText>
+                <DescriptionText>
+                  초기 스타트업에 프론트엔드 개발자로 합류하여 React Native를
+                  사용하여 두 개의 모바일 하이브리드(Ios&Android) 어플을
+                  개발하였습니다.
+                </DescriptionText>
               </CareerTextContainer>
             </CareerItemContainer>
           </IntroduceContainer>

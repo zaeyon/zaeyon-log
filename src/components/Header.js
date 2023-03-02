@@ -36,9 +36,9 @@ const Header = ({ onClickMenu, headerEvent }) => {
 
   const [springs, api] = useSpring(() => ({
     config: {
-      mass: 1.2,
+      mass: 1.6,
       friction: 30,
-      tension: 355,
+      tension: 380,
     },
   }));
 

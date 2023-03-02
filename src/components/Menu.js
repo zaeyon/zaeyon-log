@@ -7,9 +7,9 @@ const Menu = ({ headerEvent, visibleMenu }) => {
   const [topDistance, setTopDistance] = useState("7.5rem");
   const [menuSprings, menuApi] = useSpring(() => ({
     config: {
-      mass: 1.2,
+      mass: 1.6,
       friction: 30,
-      tension: 355,
+      tension: 380,
     },
   }));
 
@@ -56,7 +56,7 @@ const Menu = ({ headerEvent, visibleMenu }) => {
         paddingBottom: "20px",
         paddingTop: topDistance,
         height: "100vh",
-        width: "13rem",
+        width: "9rem",
         boxShadow: "3px 0px 25px -10px #27272750",
         ...menuSprings,
       }}

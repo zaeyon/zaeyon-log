@@ -27,10 +27,6 @@ const CategoryList = ({}) => {
       text: "React",
     },
     {
-      key: "react-native",
-      text: "React Native",
-    },
-    {
       key: "javascript",
       text: "Jacscript",
     },

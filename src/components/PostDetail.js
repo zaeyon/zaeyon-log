@@ -7,14 +7,18 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 
 import Layout from "./Layout";
+
 const Container = styled.div`
-  padding: 60px 20px 20px 20px;
+  padding: 33px 20px 20px 20px;
   background: white;
   font-size: 20px;
   color: black;
   border-radius: 7px;
   box-shadow: 0px 0px 30px 15px #25252508;
-  margin-bottom: 5rem;
+`;
+
+const Footercontainer = styled.div`
+  margin-top: 110px;
 `;
 
 const DateContainer = styled.div`
@@ -23,14 +27,30 @@ const DateContainer = styled.div`
   justify-content: flex-end;
   font-size: 15px;
   color: #bbbbbb;
-  padding-top: 100px;
+  padding-top: 15px;
+  font-weight: 700;
+`;
+
+const ReferenceContainer = styled.div`
   font-weight: 600;
+  font-size: 16px;
+  color: #25252595;
+`;
+
+const ReferenceItemContainer = styled.div``;
+
+const ReferenceItem = styled.a`
+  color: #25252580;
+  font-weight: 500;
+  font-style: italic;
+  text-decoration: none;
 `;
 
 const PostDetail = ({ postData }) => {
   console.log("PostDetail postData", postData);
 
   const customStyle = {
+    marginTop: "15px",
     fontSize: "13.7px",
   };
 
@@ -43,6 +63,7 @@ const PostDetail = ({ postData }) => {
           h1: ({ node, ...props }) => (
             <i
               style={{
+                paddingLeft: 17,
                 fontStyle: "normal",
                 fontSize: 43,
                 fontWeight: 700,
@@ -53,13 +74,25 @@ const PostDetail = ({ postData }) => {
             />
           ),
           h3: ({ node, ...props }) => (
-            <i
+            <hi
               style={{
                 lineHeight: 2.7,
                 fontStyle: "normal",
                 fontSize: 22,
                 fontWeight: 700,
                 color: "#000748",
+              }}
+              {...props}
+            />
+          ),
+          h4: ({ node, ...props }) => (
+            <i
+              style={{
+                lineHeight: 1.5,
+                fontStyle: "normal",
+                fontSize: 17.3,
+                fontWeight: 600,
+                color: "#000000",
               }}
               {...props}
             />
@@ -83,6 +116,7 @@ const PostDetail = ({ postData }) => {
           p: ({ node, ...props }) => (
             <p
               style={{
+                fontSize: 16.5,
                 backgroundColor: "#f5f5f5",
                 padding: 20,
                 borderLeft: "7px solid #3C4276",
@@ -90,10 +124,20 @@ const PostDetail = ({ postData }) => {
               {...props}
             />
           ),
+          blockquote: ({ node, ...props }) => (
+            <blockquote
+              style={{
+                backgroundColor: "#f5f5f5",
+                padding: 20,
+                fontStyle: "italic",
+              }}
+              {...props}
+            />
+          ),
           a: ({ node, ...props }) => (
             <a
               style={{
-                lineHeight: 3,
+                lineHeight: 1,
                 fontSize: 17,
                 textDecoration: "none",
                 color: "#0066FE",
@@ -114,6 +158,15 @@ const PostDetail = ({ postData }) => {
             <img
               style={{
                 borderRadius: 9,
+              }}
+              {...props}
+            />
+          ),
+          cite: ({ node, ...props }) => (
+            <cite
+              style={{
+                fontSize: 15,
+                textDecoration: "none",
               }}
               {...props}
             />
@@ -139,7 +192,23 @@ const PostDetail = ({ postData }) => {
       >
         {postData.content}
       </ReactMarkdown>
-      <DateContainer>{postData?.date}</DateContainer>
+      <Footercontainer>
+        {postData.reference ? (
+          <ReferenceContainer>
+            참고자료
+            <ReferenceItemContainer>
+              {postData.reference.map((item, index) => (
+                <ReferenceItem key={index} href={item.url} target="_blank">
+                  {item.title}
+                </ReferenceItem>
+              ))}
+            </ReferenceItemContainer>
+          </ReferenceContainer>
+        ) : (
+          ""
+        )}
+        <DateContainer>{postData?.date}</DateContainer>
+      </Footercontainer>
     </Container>
   );
 };

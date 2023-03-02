@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 
-const categoryArray = ["javascript", "react", "react-native"];
+const categoryArray = ["javascript", "react"];
 
 const reactPostsDirectory = path.join(process.cwd(), "posts/react");
 const reactNativePostsDirectory = path.join(
@@ -55,6 +55,7 @@ export function getCategoryPostsData(category) {
 
     return {
       id,
+      category: category,
       ...matterResult.data,
     };
   });

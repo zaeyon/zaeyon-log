@@ -13,7 +13,7 @@ const EmptyPostItemContainer = styled.div`
   width: 13rem;
   height: 11rem;
   margin-bottom: 20px;
-  border: 0.5px solid white;
+  border: 0.5px solid #f2f2f2;
   border-radius: 15px;
 `;
 

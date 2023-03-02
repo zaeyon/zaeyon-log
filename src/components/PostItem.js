@@ -36,7 +36,6 @@ const ContentContainer = styled.div`
 
 const PreviewContainer = styled.div`
   padding: 5px 13px 10px 13px;
-  height: 5.5rem;
   background-color: white;
   color: #2f2f2f;
   overflow: hidden;
@@ -55,6 +54,7 @@ const DateContainer = styled.div`
   align-items: flex-end;
   color: #bbbbbb;
   font-size: 14px;
+  font-weight: 700;
 `;
 
 const PostItem = ({ post }) => {

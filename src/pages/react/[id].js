@@ -8,7 +8,7 @@ import PostDetail from "../../components/PostDetail";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50rem;
+  width: 51rem;
   justify-content: center;
   @media (max-width: 45rem) {
     width: 95%;
