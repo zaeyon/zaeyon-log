@@ -37,13 +37,14 @@ const ReferenceContainer = styled.div`
   color: #25252595;
 `;
 
-const ReferenceItemContainer = styled.div``;
+const ReferenceItemContainer = styled.div`
+  margin-top: 5px;
+`;
 
 const ReferenceItem = styled.a`
   color: #25252580;
   font-weight: 500;
   font-style: italic;
-  text-decoration: none;
 `;
 
 const PostDetail = ({ postData }) => {

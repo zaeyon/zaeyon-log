@@ -10,7 +10,7 @@ const Container = styled.div`
   flex-direction: column;
   width: 51rem;
   justify-content: center;
-  @media (max-width: 45rem) {
+  @media (max-width: 53rem) {
     width: 95%;
     margin-left: 2.5%;
     margin-right: 2.5%;
