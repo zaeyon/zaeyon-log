@@ -34,17 +34,17 @@ const LogoContainer = styled.div`
 const Header = ({ onClickMenu, headerEvent }) => {
   const [headerHeight, setHeaderHeight] = useState("6.5rem");
 
-  const [springs, api] = useSpring(() => ({
+  const [springs, headerApi] = useSpring(() => ({
     config: {
       mass: 1.6,
       friction: 30,
-      tension: 1200,
+      tension: 600,
     },
   }));
 
   useEffect(() => {
     if (headerEvent === "shrink") {
-      api.start({
+      headerApi.start({
         from: {
           height: "6.5rem",
         },
@@ -53,7 +53,7 @@ const Header = ({ onClickMenu, headerEvent }) => {
         },
       });
     } else if (headerEvent === "expand") {
-      api.start({
+      headerApi.start({
         from: {
           height: "3.8rem",
         },
