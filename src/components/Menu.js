@@ -8,8 +8,8 @@ const Menu = ({ headerEvent, visibleMenu }) => {
   const [menuSprings, menuApi] = useSpring(() => ({
     config: {
       mass: 1.6,
-      friction: 30,
-      tension: 420,
+      friction: 36,
+      tension: 600,
     },
   }));
 
