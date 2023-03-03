@@ -9,7 +9,7 @@ const Menu = ({ headerEvent, visibleMenu }) => {
     config: {
       mass: 1.6,
       friction: 36,
-      tension: 600,
+      tension: 1200,
     },
   }));
 
