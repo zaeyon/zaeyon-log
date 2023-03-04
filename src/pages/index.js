@@ -55,6 +55,10 @@ export default function Home({ allPostsData }) {
     <Layout>
       <Head>
         <title>ZAEYON LOG</title>
+        <meta
+          name="google-site-verification"
+          content="b_KRmmtmVWZrBzyGVuuTudU1A7831kRb8c26TbIJnTw"
+        />
       </Head>
       <Container>
         <TitleText>
