@@ -30,6 +30,8 @@ const Layout = ({ children }) => {
   const [headerEvent, setHeaderEvent] = useState("default");
   const [preventAni, setPreventAni] = useState(false);
 
+  const postsNumber = useSelector((state) => state.postsNumber?.value);
+
   const dispatch = useDispatch();
   const visibleMenu = useSelector((state) => state.visibleMenu.value);
 
@@ -83,6 +85,7 @@ const Layout = ({ children }) => {
   return (
     <Container>
       <Menu
+        postsNumber={postsNumber}
         headerEvent={headerEvent}
         preventAni={preventAni}
         visibleMenu={visibleMenu}

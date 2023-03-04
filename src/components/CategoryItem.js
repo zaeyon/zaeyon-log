@@ -13,9 +13,18 @@ const CategoryText = styled.div`
   font-size: 19px;
   color: #595959;
   font-family: "Jost-Medium";
+  display: flex;
+  align-items: center;
 `;
 
-const CategoryItem = ({ category, onClickCategory }) => {
+const PostsNumberText = styled.span`
+  margin-left: 5px;
+  font-size: 16.5px;
+  color: #595959;
+  font-family: "Jost-Medium";
+`;
+
+const CategoryItem = ({ category, onClickCategory, postsNumber }) => {
   return (
     <Link
       style={{
@@ -30,6 +39,7 @@ const CategoryItem = ({ category, onClickCategory }) => {
           }}
         >
           {category.text}
+          <PostsNumberText> ({postsNumber})</PostsNumberText>
         </CategoryText>
       </Container>
     </Link>

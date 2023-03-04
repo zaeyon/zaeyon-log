@@ -1,6 +1,11 @@
+import Head from "next/head";
+
 import Layout from "../components/Layout";
 import styled from "styled-components";
-import { getSortedPostsData } from "../lib/posts";
+import { getSortedPostsData, getPostsNumber } from "../lib/posts";
+import { useDispatch, useSelector } from "react-redux";
+import { wrapper } from "../app/store";
+import { setPostsNumber } from "../features/postsNumberSlice";
 
 import PostList from "../components/PostList";
 
@@ -26,10 +31,18 @@ const TitleText = styled.div`
   font-weight: 600;
   padding-left: 20px;
   font-family: "Jost-Medium";
+  color: #000748;
 `;
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
+  const postsNumber = getPostsNumber();
+
+  wrapper.getServerSideProps((store) => async () => {
+    store.dispatch(setPostsNumber(postsNumber));
+  });
+
+  console.log("getStaticProps postsNumber", postsNumber);
   return {
     props: {
       allPostsData,
@@ -40,6 +53,9 @@ export async function getStaticProps() {
 export default function Home({ allPostsData }) {
   return (
     <Layout>
+      <Head>
+        <title>ZAEYON LOG</title>
+      </Head>
       <Container>
         <TitleText>
           <Emoji>🏠</Emoji>

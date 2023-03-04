@@ -29,6 +29,7 @@ const TitleText = styled.div`
   font-weight: 500;
   font-family: "Jost-Medium";
   padding-left: 20px;
+  color: #000748;
 `;
 
 const JavascriptLogo = styled(Image)`

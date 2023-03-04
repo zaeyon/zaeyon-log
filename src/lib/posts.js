@@ -115,3 +115,16 @@ export function getPostData(id, category) {
     content: matterResult.content,
   };
 }
+
+export function getPostsNumber() {
+  let postsDirectory = "";
+  let postsNumber = {};
+
+  for (let i = 0; i < categoryArray.length; i++) {
+    postsDirectory = path.join(process.cwd(), `posts/${categoryArray[i]}`);
+    const fileNames = fs.readdirSync(postsDirectory);
+    postsNumber[categoryArray[i]] = fileNames.length;
+  }
+
+  return postsNumber;
+}

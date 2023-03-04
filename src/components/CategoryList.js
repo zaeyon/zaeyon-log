@@ -20,15 +20,17 @@ const AboutText = styled.div`
   font-family: "Jost-Medium";
 `;
 
-const CategoryList = ({}) => {
+const CategoryList = ({ postsNumber }) => {
   const Categories = [
     {
       key: "react",
       text: "React",
+      number: 1,
     },
     {
       key: "javascript",
       text: "Jacscript",
+      number: 1,
     },
   ];
 
@@ -40,7 +42,12 @@ const CategoryList = ({}) => {
         </AboutContainer>
       </Link>
       {Categories.map((category, index) => (
-        <CategoryItem key={index} category={category} onClickCategory={""} />
+        <CategoryItem
+          key={index}
+          category={category}
+          onClickCategory={""}
+          postsNumber={category.number}
+        />
       ))}
     </Container>
   );

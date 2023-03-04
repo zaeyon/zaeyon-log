@@ -3,7 +3,7 @@ import { animated, useSpring } from "@react-spring/web";
 import styled from "styled-components";
 import CategoryList from "./CategoryList";
 
-const Menu = ({ headerEvent, visibleMenu }) => {
+const Menu = ({ headerEvent, visibleMenu, postsNumber }) => {
   const [topDistance, setTopDistance] = useState("7.5rem");
   const [menuSprings, menuApi] = useSpring(() => ({
     config: {
@@ -63,6 +63,7 @@ const Menu = ({ headerEvent, visibleMenu }) => {
     >
       {visibleMenu && (
         <CategoryList
+          postsNumber={postsNumber}
           onClickCategory={() => {
             console.log("onClickCategory");
           }}
