@@ -1,3 +1,9 @@
-# Allow all crawlers
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: https://zaeyon.com
+
+# Sitemaps
+Sitemap: https://zaeyon.com/sitemap.xml
