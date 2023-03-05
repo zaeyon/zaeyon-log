@@ -31,7 +31,7 @@ const LogoContainer = styled.div`
   font-family: "Jost-Medium";
 `;
 
-const Header = ({ onClickMenu, headerEvent }) => {
+const Header = ({ onClickMenu, headerEvent, onClickHeaderLogo }) => {
   const [headerHeight, setHeaderHeight] = useState("6.5rem");
 
   const [springs, headerApi] = useSpring(() => ({
@@ -92,9 +92,7 @@ const Header = ({ onClickMenu, headerEvent }) => {
       <MenuIconContainer onClick={onClickMenu}>
         <MenuIconImg priority={true} alt={"menuicon"} src={MenuIconPNG} />
       </MenuIconContainer>
-      <Link style={{ textDecoration: "none" }} href={"/"}>
-        <LogoContainer>ZAEYON LOG</LogoContainer>
-      </Link>
+      <LogoContainer onClick={onClickHeaderLogo}>ZAEYON LOG</LogoContainer>
       <EmptyContainer />
     </animated.div>
   );

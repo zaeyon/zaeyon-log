@@ -18,3 +18,8 @@
   src: url("../fonts/Jost-Medium.woff") format('woff')
 }
 
+@font-face {
+  font-family: "Menlo-Regular";
+  src: url("../fonts/Menlo-Regular.ttf") format('ttf')
+}
+

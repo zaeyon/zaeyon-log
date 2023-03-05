@@ -1,7 +1,7 @@
 import { useState, useEffect, useLayoutEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-
+import { useRouter } from "next/router";
 import Header from "./Header";
 import Menu from "./Menu";
 import { setVisibleMenu } from "../features/visibleMenuSlice";
@@ -32,6 +32,8 @@ const Layout = ({ children }) => {
 
   const postsNumber = useSelector((state) => state.postsNumber?.value);
 
+  const router = useRouter();
+
   const dispatch = useDispatch();
   const visibleMenu = useSelector((state) => state.visibleMenu.value);
 
@@ -52,6 +54,12 @@ const Layout = ({ children }) => {
 
       dispatch(setVisibleMenu(false));
     }
+  };
+
+  const onClickHeaderLogo = () => {
+    router.push("/");
+    setHeaderEvent("expand");
+    localStorage.setItem("headerEvent", "expand");
   };
 
   const createScrollStopListener = (element, callback, timeout) => {
@@ -91,7 +99,11 @@ const Layout = ({ children }) => {
         visibleMenu={visibleMenu}
       />
       <ExceptMenuContainer onClick={onClickExceptMenu}>
-        <Header headerEvent={headerEvent} onClickMenu={onClickMenu} />
+        <Header
+          onClickHeaderLogo={onClickHeaderLogo}
+          headerEvent={headerEvent}
+          onClickMenu={onClickMenu}
+        />
         <ContentContainer>{children}</ContentContainer>
       </ExceptMenuContainer>
     </Container>

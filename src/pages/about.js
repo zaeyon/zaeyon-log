@@ -1,27 +1,29 @@
 import styled from "styled-components";
-
+import Image from "next/image";
+import Link from "next/link";
 import Layout from "../components/Layout";
+import GithubIconPNG from "../../public/images/icons/github.png";
+import ProfileImagePNG from "../../public/images/profile.png";
 
 const FullContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  width: 45rem;
+  @media (max-width: 45rem) {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+  }
 `;
 
 const Container = styled.div`
   margin-top: 10px;
   padding: 12px;
   height: 1000px;
-  width: 45rem;
   background: #ffffff;
   border-radius: 7px;
   box-shadow: 0px 0px 20px 8px #27272710;
-  @media (max-width: 45rem) {
-    width: 95%;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-  }
 `;
 
 const AboutContainer = styled.div`
@@ -30,7 +32,6 @@ const AboutContainer = styled.div`
   padding-top: 5px;
   padding-left: 5px;
   padding-bottom: 5px;
-  width: 46rem;
 `;
 
 const AboutEmoji = styled.div`
@@ -52,6 +53,7 @@ const ProfileContainer = styled.div`
   display: flex;
   flex-direction: row;
   padding: 30px 20px 30px 20px;
+  background: white;
 `;
 
 const ProfileContentContainer = styled.div`
@@ -67,16 +69,16 @@ const NameText = styled.div`
 `;
 
 const SpecialtyText = styled.div`
-  margin-top: 6px;
-  font-size: 25px;
-  font-weight: 300;
+  margin-top: 10px;
+  font-size: 18px;
+  font-family: "Menlo-Regular";
 `;
 
-const ProfileImg = styled.img`
+const ProfileImg = styled(Image)`
   width: 8rem;
   height: 8rem;
   border-radius: 100px;
-  background-color: gray;
+  object-fit: cover;
 `;
 
 const DividerLine = styled.div`
@@ -128,6 +130,19 @@ const DescriptionText = styled.div`
   color: #000000;
 `;
 
+const SocialContainer = styled.div`
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+`;
+
+const GithubIcon = styled(Image)`
+  width: 1.7rem;
+  height: 1.7rem;
+`;
+
 const About = () => {
   return (
     <Layout>
@@ -140,11 +155,16 @@ const About = () => {
         </AboutContainer>
         <Container>
           <ProfileContainer>
-            <ProfileImg />
+            <ProfileImg src={ProfileImagePNG} />
             <ProfileContentContainer>
               <NameText>이재연</NameText>
               <SpecialtyText>Front-end Developer</SpecialtyText>
             </ProfileContentContainer>
+            <SocialContainer>
+              <a href={"https://github.com/zaeyon"} target="_blank">
+                <GithubIcon src={GithubIconPNG} />
+              </a>
+            </SocialContainer>
           </ProfileContainer>
           <DividerLine />
           <IntroduceContainer>
