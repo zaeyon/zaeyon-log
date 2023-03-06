@@ -15,6 +15,9 @@ const Container = styled.div`
     margin-left: 2.5%;
     margin-right: 2.5%;
   }
+  background: white;
+  border-radius: 7px;
+  box-shadow: 0px 0px 30px 15px #25252508;
 `;
 
 export async function getStaticPaths() {

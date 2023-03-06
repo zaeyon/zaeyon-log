@@ -61,6 +61,7 @@ const PostItem = ({ post }) => {
   console.log("PostListItem post", post);
   return (
     <Link
+      onClick={(e) => e.stopPropagation()}
       style={{ textDecoration: "none" }}
       href={{
         pathname: `/${post.category}/${post.title}`,

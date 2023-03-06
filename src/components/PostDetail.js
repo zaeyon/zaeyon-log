@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Image from "next/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import codeBlock from "../styles/codeBlock";
 
@@ -7,28 +8,17 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 
 import Layout from "./Layout";
+import ProfileImagePNG from "../../public/images/profile.png";
 
 const Container = styled.div`
-  padding: 33px 20px 20px 20px;
-  background: white;
   font-size: 20px;
   color: black;
-  border-radius: 7px;
-  box-shadow: 0px 0px 30px 15px #25252508;
+  padding: 33px 20px 20px 20px;
 `;
 
 const Footercontainer = styled.div`
-  margin-top: 110px;
-`;
-
-const DateContainer = styled.div`
-  background: white;
-  display: flex;
-  justify-content: flex-end;
-  font-size: 15px;
-  color: #bbbbbb;
-  padding-top: 15px;
-  font-weight: 700;
+  margin-top: 50px;
+  padding-bottom: 100px;
 `;
 
 const ReferenceContainer = styled.div`
@@ -47,6 +37,45 @@ const ReferenceItem = styled.a`
   font-style: italic;
 `;
 
+const HeaderContainer = styled.div`
+  padding: 0px 17px 30px 17px;
+`;
+
+const TitleText = styled.div`
+  font-style: "normal";
+  font-size: 43px;
+  font-weight: 700;
+  color: #000748;
+  font-family: "Jost-Medium";
+`;
+
+const MetaDataContainer = styled.div`
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const WriterProfileImage = styled(Image)`
+  border-radius: 100px;
+  width: 1.7rem;
+  height: 1.7rem;
+`;
+
+const WriterNameText = styled.span`
+  margin-left: 9px;
+  font-size: 15px;
+  color: #464646;
+  font-weight: 500;
+`;
+
+const DateContainer = styled.span`
+  margin-left: 5px;
+  font-size: 15px;
+  color: #464646;
+  font-weight: 500;
+`;
+
 const PostDetail = ({ postData }) => {
   console.log("PostDetail postData", postData);
 
@@ -55,8 +84,27 @@ const PostDetail = ({ postData }) => {
     fontSize: "13.7px",
   };
 
+  const getFormattedDate = (date) => {
+    const dateArray = date.split(".");
+    const year = dateArray[0];
+    const month = dateArray[1] < 10 ? parseInt(dateArray[1]) : dateArray[1];
+    const day = dateArray[2] < 10 ? parseInt(dateArray[2]) : dateArray[2];
+
+    return year + "년 " + month + "월 " + day + "일";
+  };
+
   return (
     <Container>
+      <HeaderContainer>
+        <TitleText>{postData.title}</TitleText>
+        <MetaDataContainer>
+          <WriterProfileImage src={ProfileImagePNG} />
+          <WriterNameText>ZAEYON</WriterNameText>
+          <DateContainer>
+            • {getFormattedDate(postData?.date)} 작성
+          </DateContainer>
+        </MetaDataContainer>
+      </HeaderContainer>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
@@ -208,7 +256,6 @@ const PostDetail = ({ postData }) => {
         ) : (
           ""
         )}
-        <DateContainer>{postData?.date}</DateContainer>
       </Footercontainer>
     </Container>
   );

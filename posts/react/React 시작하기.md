@@ -6,11 +6,6 @@ preview: "리액트에 대해 알아보고 리액트 앱을 만들어 보겠습�
 thumbnail: "/images/posts/react_logo.png"
 ---
 
-# React 시작하기
-
-<br/>
-<br/>
-<br/>
 <img src="/images/posts/react_logo.png" width="100%">
 <br/>
 <br/>

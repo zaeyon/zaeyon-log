@@ -69,7 +69,7 @@ const NameText = styled.div`
 `;
 
 const SpecialtyText = styled.div`
-  margin-top: 10px;
+  margin-top: 5px;
   font-size: 18px;
   font-family: "Menlo-Regular";
 `;

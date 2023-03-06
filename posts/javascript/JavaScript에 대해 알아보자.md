@@ -13,11 +13,6 @@ reference:
   ]
 ---
 
-# JavaScript에 대해 알아보자
-
-<br/>
-<br/>
-<br/>
 <img src="/images/posts/javascript_logo.png" width="100%">
 <br/>
 <br/>

@@ -33,11 +33,7 @@ const CategoryItem = ({ category, onClickCategory, postsNumber }) => {
       href={`/${category.key}`}
     >
       <Container>
-        <CategoryText
-          onClick={() => {
-            console.log("onClick CategoryItem");
-          }}
-        >
+        <CategoryText>
           {category.text}
           <PostsNumberText> ({postsNumber})</PostsNumberText>
         </CategoryText>
