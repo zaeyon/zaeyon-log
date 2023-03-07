@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 
 import styled from "styled-components";
 
-const Container = styled.form`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -65,31 +65,42 @@ const CommentInput = ({ postComment }) => {
   const [password, setPassword] = useState();
   const [comment, setComment] = useState();
 
-  const onChangeNameInput = (e) => {
+  const nameInputRef = useRef();
+
+  const onChangeNameInput = useCallback((e) => {
     setName(e.target.value);
-  };
+  }, []);
 
-  const onChangePasswordInput = (e) => {
+  const onChangePasswordInput = useCallback((e) => {
     setPassword(e.target.value);
-  };
+  }, []);
 
-  const onChangeCommentInput = (e) => {
+  const onChangeCommentInput = useCallback((e) => {
     setComment(e.target.value);
-  };
+  }, []);
 
   const onClickPostButton = () => {
     postComment(name, password, comment);
+    setName("");
+    setPassword("");
+    setComment("");
   };
 
   return (
     <Container>
       <WriterInfoContainer>
         <div>
-          <NameInput placeholder="이름" onChange={onChangeNameInput} />
+          <NameInput
+            ref={nameInputRef}
+            placeholder="이름"
+            onChange={onChangeNameInput}
+            value={name}
+          />
           <PasswordInput
             placeholder="비밀번호"
             type="password"
             onChange={onChangePasswordInput}
+            value={password}
           />
         </div>
         <PostButton onClick={onClickPostButton}>댓글 작성</PostButton>
@@ -98,6 +109,7 @@ const CommentInput = ({ postComment }) => {
         placeholder="내용"
         rows={5}
         onChange={onChangeCommentInput}
+        value={comment}
       />
     </Container>
   );
