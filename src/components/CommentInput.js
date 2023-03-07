@@ -60,7 +60,7 @@ const PostButton = styled.div`
   }
 `;
 
-const CommentInput = ({ postComment }) => {
+const CommentInput = ({ writeComment }) => {
   const [name, setName] = useState();
   const [password, setPassword] = useState();
   const [comment, setComment] = useState();
@@ -80,10 +80,14 @@ const CommentInput = ({ postComment }) => {
   }, []);
 
   const onClickPostButton = () => {
-    postComment(name, password, comment);
+    writeComment(name, password, comment);
     setName("");
     setPassword("");
     setComment("");
+  };
+
+  const onClickNameInput = () => {
+    nameInputRef.current.focus();
   };
 
   return (
@@ -102,6 +106,7 @@ const CommentInput = ({ postComment }) => {
             onChange={onChangePasswordInput}
             value={password}
           />
+          <span onClick={onClickNameInput}>{"댓글테스트"}</span>
         </div>
         <PostButton onClick={onClickPostButton}>댓글 작성</PostButton>
       </WriterInfoContainer>{" "}

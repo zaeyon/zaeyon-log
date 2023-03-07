@@ -55,7 +55,7 @@ const CommentList = ({}) => {
     <Container>
       {COMMENTS_DATA.map((comment, index) => (
         <>
-          <CommentItem key={comment} comment={comment} />
+          <CommentItem key={index} comment={comment} />
         </>
       ))}
     </Container>

@@ -1,14 +1,18 @@
-import { useRouter } from "next/router";
-import styled from "styled-components";
+import { useState, useEffect } from "react";
 import { getPostData, getCategoryPostIds } from "../../lib/posts";
 
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set } from "firebase/database";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  updateDoc,
+  arrayUnion,
+  getDoc,
+} from "firebase/firestore";
 
 import Layout from "../../components/Layout";
 import PostDetail from "../../components/PostDetail";
-import CommentList from "../../components/CommentList";
-import CommentInput from "../../components/CommentInput.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyApcPm79FZTru071CEdbNs4vJwR6uFHTyw",
@@ -22,42 +26,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 51rem;
-  justify-content: center;
-  @media (max-width: 53rem) {
-    width: 95%;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-  }
-  background: white;
-  border-radius: 7px;
-  box-shadow: 0px 0px 30px 15px #25252508;
-`;
-
-const CommentsContainer = styled.div``;
-
-const CommentHeaderContainer = styled.div`
-  font-size: 19px;
-  font-weight: 600;
-  padding-bottom: 10px;
-  color: #000748;
-`;
-
-const FooterContainer = styled.div`
-  margin-top: 15px;
-  padding: 20px 20px 30px 20px;
-  background-color: white;
-  border-radius: 7px;
-  box-shadow: 0px 0px 30px 15px #25252508;
-`;
-
-const CommentInputContainer = styled.div`
-  margin-top: 50px;
-`;
+const db = getFirestore(app);
 
 export async function getStaticPaths() {
   const paths = getCategoryPostIds("javascript");
@@ -77,29 +46,49 @@ export async function getStaticProps({ params }) {
 }
 
 const Post = ({ postData }) => {
-  const postComment = (name, password, comment) => {
-    const db = getDatabase();
-    set(ref(db, "comments/"), {
-      comment: comment,
-      name: name,
-      password: password,
-    });
+  const [commentArray, setCommentArray] = useState([]);
+  const postRef = doc(db, "posts/", postData.title);
+
+  useEffect(() => {
+    let postDocSnap;
+    const getPostDoc = async () => {
+      postDocSnap = await getDoc(postRef);
+      if (postDocSnap.exists()) {
+        console.log("postDocSnap.exist", postDocSnap.data());
+      } else {
+        console.log("no document");
+      }
+    };
+
+    getPostDoc();
+  }, [commentArray]);
+
+  const writeComment = (name, password, comment) => {
+    const commentItem = {
+      name,
+      password,
+      comment,
+    };
+    if (commentArray.length === 0) {
+      setDoc(postRef, {
+        comments: [commentItem],
+      });
+      setCommentArray([commentItem]);
+    } else if (commentArray.length > 0) {
+      updateDoc(postRef, {
+        comments: arrayUnion({
+          comment: comment,
+          name: name,
+          password: password,
+        }),
+      });
+      setCommentArray([...commentArray, commentItem]);
+    }
   };
 
   return (
     <Layout>
-      <Container>
-        <PostDetail postData={postData} />
-      </Container>
-      <FooterContainer>
-        <CommentsContainer>
-          <CommentHeaderContainer>댓글</CommentHeaderContainer>
-          <CommentList />
-        </CommentsContainer>
-        <CommentInputContainer>
-          <CommentInput postComment={postComment} />
-        </CommentInputContainer>
-      </FooterContainer>
+      <PostDetail postData={postData} writeComment={writeComment} />
     </Layout>
   );
 };

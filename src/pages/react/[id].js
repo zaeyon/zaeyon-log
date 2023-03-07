@@ -1,24 +1,30 @@
-import { useRouter } from "next/router";
-import styled from "styled-components";
 import { getPostData, getCategoryPostIds } from "../../lib/posts";
+
+import { initializeApp } from "firebase/app";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  updateDoc,
+  arrayUnion,
+} from "firebase/firestore";
 
 import Layout from "../../components/Layout";
 import PostDetail from "../../components/PostDetail";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 51rem;
-  justify-content: center;
-  @media (max-width: 53rem) {
-    width: 95%;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-  }
-  background: white;
-  border-radius: 7px;
-  box-shadow: 0px 0px 30px 15px #25252508;
-`;
+const firebaseConfig = {
+  apiKey: "AIzaSyApcPm79FZTru071CEdbNs4vJwR6uFHTyw",
+  authDomain: "zaeyon-log.firebaseapp.com",
+  projectId: "zaeyon-log",
+  storageBucket: "zaeyon-log.appspot.com",
+  messagingSenderId: "514547022134",
+  appId: "1:514547022134:web:a94007fb4e9b7f4ab65b97",
+  measurementId: "G-6BE6MDX1HB",
+  databaseURL: "https://zaeyon-log-default-rtdb.firebaseio.com/",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 export async function getStaticPaths() {
   const paths = getCategoryPostIds("react");
@@ -38,11 +44,20 @@ export async function getStaticProps({ params }) {
 }
 
 const Post = ({ postData }) => {
+  const writeComment = (name, password, comment) => {
+    const postRef = doc(db, "posts/", postData.title);
+    updateDoc(postRef, {
+      comments: arrayUnion({
+        comment: comment,
+        name: name,
+        password: password,
+      }),
+    });
+  };
+
   return (
     <Layout>
-      <Container>
-        <PostDetail postData={postData} />
-      </Container>
+      <PostDetail postData={postData} />
     </Layout>
   );
 };
