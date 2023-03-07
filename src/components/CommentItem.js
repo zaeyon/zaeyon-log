@@ -19,7 +19,7 @@ const NameContainer = styled.div`
   padding-top: 15px;
   width: 4rem;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14.5px;
 `;
 
 const DividerContainer = styled.div`
@@ -29,7 +29,7 @@ const DividerContainer = styled.div`
 
 const CommentContainer = styled.div`
   padding-top: 15px;
-  font-size: 16px;
+  font-size: 14.5px;
   margin-left: 0px;
   flex: 1;
 `;

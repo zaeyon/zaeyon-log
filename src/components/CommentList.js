@@ -42,9 +42,7 @@ const COMMENTS_DATA = [
 ];
 
 const Container = styled.div`
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top: 6px solid #000748;
+  border-top: 4px solid #000748;
 `;
 
 const DividerContainer = styled.div`

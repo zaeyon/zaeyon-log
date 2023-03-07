@@ -8,6 +8,7 @@ import { getDatabase } from "firebase/database";
 import Layout from "../../components/Layout";
 import PostDetail from "../../components/PostDetail";
 import CommentList from "../../components/CommentList";
+import CommentInput from "../../components/CommentInput";
 
 const firebaseConfig = {
   apiKey: "AIzaSyApcPm79FZTru071CEdbNs4vJwR6uFHTyw",
@@ -38,15 +39,25 @@ const Container = styled.div`
   box-shadow: 0px 0px 30px 15px #25252508;
 `;
 
-const CommentsContainer = styled.div`
-  padding: 30px 20px 50px 20px;
-`;
+const CommentsContainer = styled.div``;
 
 const CommentHeaderContainer = styled.div`
   font-size: 19px;
   font-weight: 600;
   padding-bottom: 10px;
   color: #000748;
+`;
+
+const FooterContainer = styled.div`
+  margin-top: 15px;
+  padding: 20px 20px 30px 20px;
+  background-color: white;
+  border-radius: 7px;
+  box-shadow: 0px 0px 30px 15px #25252508;
+`;
+
+const CommentInputContainer = styled.div`
+  margin-top: 50px;
 `;
 
 export async function getStaticPaths() {
@@ -71,11 +82,16 @@ const Post = ({ postData }) => {
     <Layout>
       <Container>
         <PostDetail postData={postData} />
+      </Container>
+      <FooterContainer>
         <CommentsContainer>
           <CommentHeaderContainer>댓글</CommentHeaderContainer>
           <CommentList />
         </CommentsContainer>
-      </Container>
+        <CommentInputContainer>
+          <CommentInput />
+        </CommentInputContainer>
+      </FooterContainer>
     </Layout>
   );
 };

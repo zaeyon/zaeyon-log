@@ -17,8 +17,8 @@ const Container = styled.div`
 `;
 
 const Footercontainer = styled.div`
-  margin-top: 50px;
-  padding-bottom: 100px;
+  margin-top: 110px;
+  padding-bottom: 10px;
 `;
 
 const ReferenceContainer = styled.div`
