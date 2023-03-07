@@ -59,7 +59,7 @@ const CommentItem = ({ comment, index }) => {
       <ContentContainer>
         <NameContainer>{comment.name}</NameContainer>
         <CommentContainer>{comment.comment}</CommentContainer>
-        <RemovewIcon src={RemoveIconPNG} />
+        <RemovewIcon src={RemoveIconPNG} alt={""} />
       </ContentContainer>
       <DateContainer>
         {comment.date.replace("-", ".").replace("-", ".")}

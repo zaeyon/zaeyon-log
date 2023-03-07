@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { getPostData, getCategoryPostIds } from "../../lib/posts";
 
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
+import { getDatabase, ref, set } from "firebase/database";
 
 import Layout from "../../components/Layout";
 import PostDetail from "../../components/PostDetail";
 import CommentList from "../../components/CommentList";
-import CommentInput from "../../components/CommentInput";
+import CommentInput from "../../components/CommentInput.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyApcPm79FZTru071CEdbNs4vJwR6uFHTyw",
@@ -22,7 +22,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const database = getDatabase();
 
 const Container = styled.div`
   display: flex;
@@ -78,6 +77,15 @@ export async function getStaticProps({ params }) {
 }
 
 const Post = ({ postData }) => {
+  const postComment = (name, password, comment) => {
+    const db = getDatabase();
+    set(ref(db, "comments/"), {
+      comment: comment,
+      name: name,
+      password: password,
+    });
+  };
+
   return (
     <Layout>
       <Container>
@@ -89,7 +97,7 @@ const Post = ({ postData }) => {
           <CommentList />
         </CommentsContainer>
         <CommentInputContainer>
-          <CommentInput />
+          <CommentInput postComment={postComment} />
         </CommentInputContainer>
       </FooterContainer>
     </Layout>

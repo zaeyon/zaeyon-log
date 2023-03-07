@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import styled from "styled-components";
 
 const Container = styled.form`
@@ -41,31 +43,62 @@ const ContentInput = styled.textarea`
   border-radius: 5px;
 `;
 
-const PostButton = styled.button`
+const PostButton = styled.div`
+  display: flex;
+  align-items: center;
   opacity: 0.9;
-  padding: 5px 12px;
+  padding: 5px 12px 5px 12px;
   border-radius: 5px;
   background-color: #282d61;
   color: white;
   border: none;
   font-size: 14.5px;
+  user-select: none;
 
   :hover {
     opacity: 0.6;
   }
 `;
 
-const CommentInput = () => {
+const CommentInput = ({ postComment }) => {
+  const [name, setName] = useState();
+  const [password, setPassword] = useState();
+  const [comment, setComment] = useState();
+
+  const onChangeNameInput = (e) => {
+    setName(e.target.value);
+  };
+
+  const onChangePasswordInput = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const onChangeCommentInput = (e) => {
+    setComment(e.target.value);
+  };
+
+  const onClickPostButton = () => {
+    postComment(name, password, comment);
+  };
+
   return (
     <Container>
       <WriterInfoContainer>
         <div>
-          <NameInput placeholder="이름" />
-          <PasswordInput placeholder="비밀번호" type="password" />
+          <NameInput placeholder="이름" onChange={onChangeNameInput} />
+          <PasswordInput
+            placeholder="비밀번호"
+            type="password"
+            onChange={onChangePasswordInput}
+          />
         </div>
-        <PostButton>댓글 작성</PostButton>
+        <PostButton onClick={onClickPostButton}>댓글 작성</PostButton>
       </WriterInfoContainer>{" "}
-      <ContentInput placeholder="내용" rows={5} />
+      <ContentInput
+        placeholder="내용"
+        rows={5}
+        onChange={onChangeCommentInput}
+      />
     </Container>
   );
 };

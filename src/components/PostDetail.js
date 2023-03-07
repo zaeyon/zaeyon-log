@@ -98,7 +98,7 @@ const PostDetail = ({ postData }) => {
       <HeaderContainer>
         <TitleText>{postData.title}</TitleText>
         <MetaDataContainer>
-          <WriterProfileImage src={ProfileImagePNG} />
+          <WriterProfileImage src={ProfileImagePNG} alt={""} />
           <WriterNameText>ZAEYON</WriterNameText>
           <DateContainer>
             • {getFormattedDate(postData?.date)} 작성
@@ -123,7 +123,7 @@ const PostDetail = ({ postData }) => {
             />
           ),
           h3: ({ node, ...props }) => (
-            <hi
+            <i
               style={{
                 lineHeight: 2.7,
                 fontStyle: "normal",
