@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -261,4 +262,4 @@ const PostMarkdown = ({ postData }) => {
   );
 };
 
-export default PostMarkdown;
+export default React.memo(PostMarkdown);

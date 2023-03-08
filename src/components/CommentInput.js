@@ -1,7 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 
 import styled from "styled-components";
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,16 +13,22 @@ const NameInput = styled.input`
   border: 0.5px solid #25252530;
   background: #f2f2f250;
   border-radius: 5px;
+  :focus {
+    outline: 2px solid navy;
+  }
 `;
 
 const PasswordInput = styled.input`
-  margin-left: 10px;
   width: 5rem;
+  margin-left: 10px;
   padding: 7px;
   font-size: 14.5px;
   border: 0.5px solid #25252530;
   background: #f2f2f250;
   border-radius: 5px;
+  :focus {
+    outline: 2px solid navy;
+  }
 `;
 
 const WriterInfoContainer = styled.div`
@@ -41,6 +46,16 @@ const ContentInput = styled.textarea`
   border: 0.5px solid #25252530;
   background: #f2f2f250;
   border-radius: 5px;
+  :focus {
+    outline: 2px solid navy;
+  }
+`;
+
+const RequestSpan = styled.span`
+  margin-left: 12px;
+  font-size: 14.5px;
+  color: #e30000;
+  font-weight: 600;
 `;
 
 const PostButton = styled.div`
@@ -60,30 +75,84 @@ const PostButton = styled.div`
   }
 `;
 
-const CommentInput = ({ writeComment }) => {
-  const [name, setName] = useState();
-  const [password, setPassword] = useState();
-  const [comment, setComment] = useState();
+const CommentInput = ({
+  writeComment,
+  type,
+  writeReply,
+  commentId,
+  selectedIndex,
+  hideReplyWrite,
+}) => {
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [comment, setComment] = useState("");
+
+  const [requestName, setRequestName] = useState(false);
+  const [requestPassword, setRequestPassword] = useState(false);
+  const [requestComment, setRequestComment] = useState(false);
 
   const nameInputRef = useRef();
 
-  const onChangeNameInput = useCallback((e) => {
-    setName(e.target.value);
-  }, []);
+  const onChangeNameInput = useCallback(
+    (e) => {
+      setName(e.target.value);
 
-  const onChangePasswordInput = useCallback((e) => {
-    setPassword(e.target.value);
-  }, []);
+      if (name.length > 0) {
+        setRequestName(false);
+      }
+    },
+    [name]
+  );
 
-  const onChangeCommentInput = useCallback((e) => {
-    setComment(e.target.value);
-  }, []);
+  const onChangePasswordInput = useCallback(
+    (e) => {
+      setPassword(e.target.value);
+
+      if (password.length > 0) {
+        setRequestPassword(false);
+      }
+    },
+    [password]
+  );
+
+  const onChangeContentInput = useCallback(
+    (e) => {
+      setComment(e.target.value);
+
+      if (comment.length > 0) {
+        setRequestComment(false);
+      }
+    },
+    [comment]
+  );
 
   const onClickPostButton = () => {
-    writeComment(name, password, comment);
-    setName("");
-    setPassword("");
-    setComment("");
+    if (name.length === 0) {
+      setRequestName(true);
+      setRequestPassword(false);
+      setRequestComment(false);
+    } else if (password.length === 0) {
+      setRequestPassword(true);
+      setRequestName(false);
+      setRequestComment(false);
+    } else if (comment.length === 0) {
+      setRequestComment(true);
+      setRequestPassword(false);
+      setRequestName(false);
+    } else {
+      setName("");
+      setPassword("");
+      setComment("");
+      setRequestName(false);
+      setRequestPassword(false);
+      setRequestComment(false);
+      if (type === "comment") {
+        writeComment(name, password, comment);
+      } else if (type === "reply") {
+        writeReply(name, password, comment, commentId, selectedIndex);
+        hideReplyWrite();
+      }
+    }
   };
 
   const onClickNameInput = () => {
@@ -93,10 +162,10 @@ const CommentInput = ({ writeComment }) => {
   return (
     <Container>
       <WriterInfoContainer>
-        <div>
+        <span>
           <NameInput
             ref={nameInputRef}
-            placeholder="이름"
+            placeholder="닉네임"
             onChange={onChangeNameInput}
             value={name}
           />
@@ -106,14 +175,22 @@ const CommentInput = ({ writeComment }) => {
             onChange={onChangePasswordInput}
             value={password}
           />
-          <span onClick={onClickNameInput}>{"댓글테스트"}</span>
-        </div>
-        <PostButton onClick={onClickPostButton}>댓글 작성</PostButton>
+          {requestName && <RequestSpan>닉네임을 입력하세요!</RequestSpan>}
+          {requestPassword && <RequestSpan>비밀번호를 입력하세요!</RequestSpan>}
+          {requestComment && <RequestSpan>내용을 입력하세요!</RequestSpan>}
+        </span>
+        <PostButton onClick={() => onClickPostButton()}>
+          {type === "comment"
+            ? "댓글 작성"
+            : type === "reply"
+            ? "답글 작성"
+            : "댓글 작성"}
+        </PostButton>
       </WriterInfoContainer>{" "}
       <ContentInput
         placeholder="내용"
         rows={5}
-        onChange={onChangeCommentInput}
+        onChange={onChangeContentInput}
         value={comment}
       />
     </Container>

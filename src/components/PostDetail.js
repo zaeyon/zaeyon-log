@@ -69,10 +69,16 @@ const FooterContainer = styled.div`
 `;
 
 const CommentInputContainer = styled.div`
-  margin-top: 50px;
+  margin-top: 20px;
 `;
 
-const PostDetail = ({ postData, writeComment }) => {
+const PostDetail = ({
+  postData,
+  writeComment,
+  commentArray,
+  removeComment,
+  writeReply,
+}) => {
   return (
     <FullContainer>
       <Container>
@@ -80,11 +86,17 @@ const PostDetail = ({ postData, writeComment }) => {
       </Container>
       <FooterContainer>
         <CommentsContainer>
-          <CommentHeaderContainer>댓글</CommentHeaderContainer>
-          <CommentList />
+          <CommentHeaderContainer>
+            댓글({commentArray?.length})
+          </CommentHeaderContainer>
+          <CommentList
+            commentArray={commentArray}
+            removeComment={removeComment}
+            writeReply={writeReply}
+          />
         </CommentsContainer>
         <CommentInputContainer>
-          <CommentInput writeComment={writeComment} />
+          <CommentInput writeComment={writeComment} type={"comment"} />
         </CommentInputContainer>
       </FooterContainer>
     </FullContainer>
