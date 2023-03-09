@@ -27,7 +27,7 @@ const ContentContainer = styled.div`
 
 const Layout = ({ children }) => {
   //const [visibleMenu, setVisibleMenu] = useState(false);
-  const [headerEvent, setHeaderEvent] = useState("expand");
+  const [headerEvent, setHeaderEvent] = useState("");
   const [preventAni, setPreventAni] = useState(false);
 
   const postsNumber = useSelector((state) => state.postsNumber?.value);
