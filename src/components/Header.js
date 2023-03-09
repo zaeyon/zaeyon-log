@@ -61,6 +61,15 @@ const Header = ({ onClickMenu, headerEvent, onClickHeaderLogo }) => {
           height: "6.5rem",
         },
       });
+    } else if (headerEvent === "default") {
+      headerApi.start({
+        from: {
+          height: "6.5rem",
+        },
+        to: {
+          height: "6.5rem",
+        },
+      });
     }
   }, [headerEvent]);
 

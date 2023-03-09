@@ -27,7 +27,7 @@ const ContentContainer = styled.div`
 
 const Layout = ({ children }) => {
   //const [visibleMenu, setVisibleMenu] = useState(false);
-  const [headerEvent, setHeaderEvent] = useState("");
+  const [headerEvent, setHeaderEvent] = useState("default");
   const [preventAni, setPreventAni] = useState(false);
 
   const postsNumber = useSelector((state) => state.postsNumber?.value);
@@ -58,8 +58,10 @@ const Layout = ({ children }) => {
 
   const onClickHeaderLogo = () => {
     router.push("/");
-    setHeaderEvent("expand");
-    localStorage.setItem("headerEvent", "expand");
+    if (headerEvent === "shrink") {
+      setHeaderEvent("expand");
+      localStorage.setItem("headerEvent", "expand");
+    }
   };
 
   const createScrollStopListener = (element, callback, timeout) => {
