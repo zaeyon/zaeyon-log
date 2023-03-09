@@ -50,7 +50,12 @@ const DividerContainer = styled.div`
   background-color: #00000010;
 `;
 
-const CommentList = ({ commentArray, removeComment, writeReply }) => {
+const CommentList = ({
+  commentArray,
+  removeComment,
+  writeReply,
+  removeReply,
+}) => {
   return (
     <Container>
       {commentArray.map((comment, index) => (
@@ -60,6 +65,7 @@ const CommentList = ({ commentArray, removeComment, writeReply }) => {
           comment={comment}
           removeComment={removeComment}
           writeReply={writeReply}
+          removeReply={removeReply}
         />
       ))}
     </Container>

@@ -78,6 +78,7 @@ const PostDetail = ({
   commentArray,
   removeComment,
   writeReply,
+  removeReply,
 }) => {
   return (
     <FullContainer>
@@ -93,6 +94,7 @@ const PostDetail = ({
             commentArray={commentArray}
             removeComment={removeComment}
             writeReply={writeReply}
+            removeReply={removeReply}
           />
         </CommentsContainer>
         <CommentInputContainer>

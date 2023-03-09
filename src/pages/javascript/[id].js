@@ -137,6 +137,24 @@ const Post = ({ postData }) => {
     });
   };
 
+  const removeReply = (commentIndex, replyIndex) => {
+    const removedReplyArray = commentArray[commentIndex].replys.filter(
+      (item, index) => {
+        return index !== replyIndex;
+      }
+    );
+
+    console.log("removeReply removedReplyArray", removedReplyArray);
+
+    const tmpCommentArray = [...commentArray];
+    tmpCommentArray[commentIndex].replys = removedReplyArray;
+
+    setCommentArray(tmpCommentArray);
+    updateDoc(postRef, {
+      comments: tmpCommentArray,
+    });
+  };
+
   return (
     <Layout>
       <PostDetail
@@ -145,6 +163,7 @@ const Post = ({ postData }) => {
         commentArray={commentArray}
         removeComment={removeComment}
         writeReply={writeReply}
+        removeReply={removeReply}
       />
     </Layout>
   );

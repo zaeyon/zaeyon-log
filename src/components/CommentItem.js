@@ -107,14 +107,35 @@ const ReplyInputContainer = styled.div`
 
 const ReplysContainer = styled.div``;
 
-const CommentItem = ({ comment, index, removeComment, writeReply }) => {
+const CommentItem = ({
+  comment,
+  index,
+  removeComment,
+  writeReply,
+  removeReply,
+}) => {
   const [visibleReplyWrite, setVisibleReplyWrite] = useState(false);
-  const onClickRemove = (index) => {
+
+  const onClickRemoveComment = () => {
     const inputedPassword = prompt("비밀번호를 입력하세요.");
     if (inputedPassword === null) {
       return;
     } else if (inputedPassword?.toString() === comment.password?.toString()) {
       removeComment(index);
+    } else {
+      alert("비밀번호가 일치하지 않습니다.");
+    }
+  };
+
+  const onClickRemoveReply = (replyIndex) => {
+    const inputedPassword = prompt("비밀번호를 입력하세요.");
+    if (inputedPassword === null) {
+      return;
+    } else if (
+      inputedPassword?.toString() ===
+      comment.replys[replyIndex].password?.toString()
+    ) {
+      removeReply(index, replyIndex);
     } else {
       alert("비밀번호가 일치하지 않습니다.");
     }
@@ -134,7 +155,7 @@ const CommentItem = ({ comment, index, removeComment, writeReply }) => {
         <ContentContainer>
           <NameContainer>{comment.name}</NameContainer>
           <CommentContainer>{comment.comment}</CommentContainer>
-          <RemoveIconSpan onClick={() => onClickRemove(index)}>
+          <RemoveIconSpan onClick={() => onClickRemoveComment()}>
             <RemoveIcon src={RemoveIconPNG} alt={""} />
           </RemoveIconSpan>
         </ContentContainer>
@@ -150,12 +171,12 @@ const CommentItem = ({ comment, index, removeComment, writeReply }) => {
       </Container>
       {comment.replys.length > 0 && (
         <ReplysContainer>
-          {comment.replys.map((item, index) => (
-            <ReplyContainer key={index}>
+          {comment.replys.map((item, replyIndex) => (
+            <ReplyContainer key={replyIndex}>
               <ContentContainer>
                 <NameContainer>{item.name}</NameContainer>
                 <CommentContainer>{item.comment}</CommentContainer>
-                <RemoveIconSpan onClick={() => onClickRemove(index)}>
+                <RemoveIconSpan onClick={() => onClickRemoveReply(replyIndex)}>
                   <RemoveIcon src={RemoveIconPNG} alt={""} />
                 </RemoveIconSpan>
               </ContentContainer>
