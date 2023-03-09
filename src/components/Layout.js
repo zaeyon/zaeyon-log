@@ -73,8 +73,10 @@ const Layout = ({ children }) => {
           setHeaderEvent("shrink");
           localStorage.setItem("headerEvent", "shrink");
         } else {
-          setHeaderEvent("expand");
-          localStorage.setItem("headerEvent", "expand");
+          if (headerEvent === "shrink") {
+            setHeaderEvent("expand");
+            localStorage.setItem("headerEvent", "expand");
+          }
         }
         // 스크롤 계속 발생
         clearTimeout(handle);

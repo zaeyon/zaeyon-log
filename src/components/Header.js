@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Image from "next/image";
 import { animated, useSpring } from "@react-spring/web";
 import headerStyles from "../styles/header.module.css";
-
 import MenuIconPNG from "../../public/images/icons/hamburger.png";
 
 const MenuIconContainer = styled.div`
