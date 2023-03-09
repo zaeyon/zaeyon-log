@@ -1,3 +1,4 @@
+import Head from "next/head";
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
@@ -146,6 +147,9 @@ const GithubIcon = styled(Image)`
 const About = () => {
   return (
     <Layout>
+      <Head>
+        <title>About</title>
+      </Head>
       <FullContainer>
         <AboutContainer>
           <AboutText>
