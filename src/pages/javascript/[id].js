@@ -59,6 +59,7 @@ export async function getStaticProps({ params }) {
 
 const Post = ({ postData }) => {
   const [commentArray, setCommentArray] = useState([]);
+  const [commentCount, setCommentCount] = useState();
   const [visibleReplyWrite, setVisibleReplyWrite] = useState(false);
   const postRef = doc(db, "posts/", postData.title);
 
@@ -80,6 +81,15 @@ const Post = ({ postData }) => {
 
     getPostDoc();
   }, []);
+
+  useEffect(() => {
+    let replyCount = 0;
+    commentArray.forEach((item) => {
+      replyCount = replyCount + item.replys.length;
+    });
+
+    setCommentCount(commentArray.length + replyCount);
+  }, [commentArray]);
 
   const writeComment = (name, password, comment) => {
     const commentItem = {
@@ -168,6 +178,7 @@ const Post = ({ postData }) => {
         removeComment={removeComment}
         writeReply={writeReply}
         removeReply={removeReply}
+        commentCount={commentCount}
       />
     </Layout>
   );

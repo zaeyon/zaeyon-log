@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useRouter, useEffect } from "next/router";
 import styled from "styled-components";
 
 import { initializeApp } from "firebase/app";
@@ -79,6 +79,7 @@ const PostDetail = ({
   removeComment,
   writeReply,
   removeReply,
+  commentCount,
 }) => {
   return (
     <FullContainer>
@@ -87,9 +88,7 @@ const PostDetail = ({
       </Container>
       <FooterContainer>
         <CommentsContainer>
-          <CommentHeaderContainer>
-            댓글({commentArray?.length})
-          </CommentHeaderContainer>
+          <CommentHeaderContainer>댓글({commentCount})</CommentHeaderContainer>
           <CommentList
             commentArray={commentArray}
             removeComment={removeComment}
