@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Layout from "../../components/Layout";
 import { getCategoryPostsData } from "../../lib/posts";
 import styled from "styled-components";
@@ -54,6 +55,9 @@ export async function getStaticProps() {
 export default function Javascript({ category, categoryPostsData }) {
   return (
     <Layout>
+      <Head>
+        <title>Javascript</title>
+      </Head>
       <Container>
         <TitleContainer>
           <TitleText>

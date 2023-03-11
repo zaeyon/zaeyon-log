@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useState, useEffect } from "react";
 import { getPostData, getCategoryPostIds } from "../../lib/posts";
 
@@ -139,6 +140,9 @@ const Post = ({ postData }) => {
 
   return (
     <Layout>
+      <Head>
+        <title>{postData.title}</title>
+      </Head>
       <PostDetail
         postData={postData}
         writeComment={writeComment}

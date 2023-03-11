@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Layout from "../../components/Layout";
 import { getCategoryPostsData } from "../../lib/posts";
 import styled from "styled-components";
@@ -53,6 +54,9 @@ export async function getStaticProps() {
 export default function React({ category, categoryPostsData }) {
   return (
     <Layout>
+      <Head>
+        <title>React</title>
+      </Head>
       <Container>
         <TitleContainer>
           <TitleText>
