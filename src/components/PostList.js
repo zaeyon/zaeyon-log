@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import PostItem from "./PostItem";
 
+import { motion, useMotionValue, useTransform } from "framer-motion";
+
 const Container = styled.div`
   margin-top: 15px;
   display: flex;
@@ -18,11 +20,18 @@ const EmptyPostItemContainer = styled.div`
 `;
 
 const PostList = ({ postsData }) => {
+  const x = useMotionValue(1000);
   return (
     <Container>
       <>
         {postsData.map((post, index) => (
-          <PostItem post={post} key={index} />
+          <motion.div
+            whileHover={{ scale: 1.074 }}
+            transition={{ type: "linear", duration: 0.22 }}
+            key={index}
+          >
+            <PostItem post={post} key={index} />
+          </motion.div>
         ))}
         {postsData.length % 3 === 2 ? (
           <EmptyPostItemContainer />
