@@ -4,10 +4,17 @@ import PostItem from "./PostItem";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 
 const Container = styled.div`
-  margin-top: 15px;
+  margin-top: 13px;
+  display: flex;
+  justify-content: center;
+`;
+
+const PostListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  @media (max-width: 50rem) {
+    width: 31.3rem;
+  }
 `;
 
 const EmptyPostItemContainer = styled.div`
@@ -28,7 +35,7 @@ const MotionDiv = styled(motion.div)`
 const PostList = ({ postsData }) => {
   return (
     <Container>
-      <>
+      <PostListContainer>
         {postsData.map((post, index) => (
           <MotionDiv
             index={index}
@@ -50,7 +57,7 @@ const PostList = ({ postsData }) => {
         ) : (
           ""
         )}
-      </>
+      </PostListContainer>
     </Container>
   );
 };
