@@ -84,6 +84,7 @@ const Header = ({ onClickMenu, headerEvent, onClickHeaderLogo }) => {
     <animated.div
       className={headerStyles.container}
       style={{
+        zIndex: 10,
         opacity: "0.96",
         height: headerHeight,
         position: "fixed",
