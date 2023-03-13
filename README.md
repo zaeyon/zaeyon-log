@@ -1,1 +1,2 @@
-Next.js를 통해 만든 개인 블로그 
+# ZAEYON LOG
+React.js로 개발한 개인  블로그
