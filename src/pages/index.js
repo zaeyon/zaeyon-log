@@ -10,7 +10,6 @@ import { setPostsNumber } from "../features/postsNumberSlice";
 import PostList from "../components/PostList";
 
 const Container = styled.div`
-  width: 45rem;
   padding-top: 5px;
   @media (max-width: 50rem) {
     width: 90%;

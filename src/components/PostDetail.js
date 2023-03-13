@@ -88,7 +88,9 @@ const PostDetail = ({
       </Container>
       <FooterContainer>
         <CommentsContainer>
-          <CommentHeaderContainer>댓글({commentCount})</CommentHeaderContainer>
+          <CommentHeaderContainer>
+            댓글({commentCount ? commentCount : 0})
+          </CommentHeaderContainer>
           <CommentList
             commentArray={commentArray}
             removeComment={removeComment}

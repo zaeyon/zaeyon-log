@@ -8,30 +8,37 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-around;
 `;
 
 const EmptyPostItemContainer = styled.div`
-  width: 13rem;
-  height: 11rem;
+  width: 13.5rem;
+  height: 16rem;
   margin-bottom: 20px;
   border: 0.5px solid #f2f2f2;
   border-radius: 15px;
 `;
 
+const MotionDiv = styled(motion.div)`
+  margin-left: ${(props) => (props.index % 3 !== 0 ? "1rem" : "0")};
+  @media (max-width: 50rem) {
+    margin-left: ${(props) => (props.index % 2 !== 0 ? "1rem" : "0")};
+  }
+`;
+
 const PostList = ({ postsData }) => {
-  const x = useMotionValue(1000);
   return (
     <Container>
       <>
         {postsData.map((post, index) => (
-          <motion.div
+          <MotionDiv
+            index={index}
+            initial={false}
             whileHover={{ scale: 1.074 }}
             transition={{ type: "linear", duration: 0.22 }}
             key={index}
           >
             <PostItem post={post} key={index} />
-          </motion.div>
+          </MotionDiv>
         ))}
         {postsData.length % 3 === 2 ? (
           <EmptyPostItemContainer />
