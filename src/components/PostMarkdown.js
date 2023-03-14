@@ -180,6 +180,8 @@ const PostMarkdown = ({ postData }) => {
                 backgroundColor: "#f5f5f5",
                 padding: 20,
                 fontStyle: "italic",
+                lineHeight: 1.5,
+                fontSize: 16,
               }}
               {...props}
             />
