@@ -20,7 +20,7 @@ const AboutText = styled.div`
   font-family: "Jost-Medium";
 `;
 
-const CategoryList = ({ postsNumber }) => {
+const CategoryList = ({ postsNumber, onClickCategoryItem }) => {
   const Categories = [
     {
       key: "react",
@@ -43,6 +43,7 @@ const CategoryList = ({ postsNumber }) => {
       </Link>
       {Categories.map((category, index) => (
         <CategoryItem
+          onClickCategoryItem={onClickCategoryItem}
           key={index}
           category={category}
           onClickCategory={""}

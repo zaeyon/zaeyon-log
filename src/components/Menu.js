@@ -3,7 +3,13 @@ import { animated, useSpring } from "@react-spring/web";
 import styled from "styled-components";
 import CategoryList from "./CategoryList";
 
-const Menu = ({ headerEvent, visibleMenu, postsNumber }) => {
+const Menu = ({
+  onClickCategoryItem,
+  headerEvent,
+  visibleMenu,
+  postsNumber,
+  scrolling,
+}) => {
   const [topDistance, setTopDistance] = useState("7.5rem");
   const [menuSprings, menuApi] = useSpring(() => ({
     config: {
@@ -14,7 +20,7 @@ const Menu = ({ headerEvent, visibleMenu, postsNumber }) => {
   }));
 
   useEffect(() => {
-    if (headerEvent === "shrink") {
+    if (headerEvent === "shrink" && scrolling && topDistance === "7.5rem") {
       menuApi.start({
         from: {
           paddingTop: "7.5rem",
@@ -23,7 +29,11 @@ const Menu = ({ headerEvent, visibleMenu, postsNumber }) => {
           paddingTop: "4.8rem",
         },
       });
-    } else if (headerEvent === "expand") {
+    } else if (
+      headerEvent === "expand" &&
+      scrolling &&
+      topDistance === "4.8rem"
+    ) {
       menuApi.start({
         from: {
           paddingTop: "4.8rem",
@@ -33,7 +43,7 @@ const Menu = ({ headerEvent, visibleMenu, postsNumber }) => {
         },
       });
     }
-  }, [headerEvent]);
+  }, [headerEvent, scrolling]);
 
   useLayoutEffect(() => {
     if (localStorage.getItem("headerEvent") === "shrink") {
@@ -41,11 +51,14 @@ const Menu = ({ headerEvent, visibleMenu, postsNumber }) => {
     } else if (localStorage.getItem("headerEvent") === "expand") {
       setTopDistance("7.5rem");
     }
-  }, [topDistance]);
+  }, [topDistance, headerEvent]);
 
   return (
     <animated.div
       style={{
+        zIndex: visibleMenu ? 1 : -1,
+        height: visibleMenu ? "100vh" : 0,
+        width: visibleMenu ? "9rem" : 0,
         opacity: visibleMenu ? 1 : 0,
         background: "#ffffff",
         position: "fixed",
@@ -55,20 +68,14 @@ const Menu = ({ headerEvent, visibleMenu, postsNumber }) => {
         paddingRight: "30px",
         paddingBottom: "20px",
         paddingTop: topDistance,
-        height: "100vh",
-        width: "9rem",
         boxShadow: "3px 0px 25px -10px #27272750",
         ...menuSprings,
       }}
     >
-      {visibleMenu && (
-        <CategoryList
-          postsNumber={postsNumber}
-          onClickCategory={() => {
-            console.log("onClickCategory");
-          }}
-        />
-      )}
+      <CategoryList
+        postsNumber={postsNumber}
+        onClickCategoryItem={onClickCategoryItem}
+      />
     </animated.div>
   );
 };

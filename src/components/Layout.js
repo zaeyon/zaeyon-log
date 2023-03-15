@@ -27,9 +27,9 @@ const ContentContainer = styled.div`
 
 const Layout = ({ children }) => {
   //const [visibleMenu, setVisibleMenu] = useState(false);
-  const [headerEvent, setHeaderEvent] = useState("default");
+  const [headerEvent, setHeaderEvent] = useState("expand");
   const [preventAni, setPreventAni] = useState(false);
-
+  const [scrolling, setScrolling] = useState(true);
   const postsNumber = useSelector((state) => state.postsNumber?.value);
 
   const router = useRouter();
@@ -64,9 +64,18 @@ const Layout = ({ children }) => {
     }
   };
 
+  const onClickCategoryItem = (category) => {
+    router.push(`/${category.key}`);
+    if (headerEvent === "shrink") {
+      setHeaderEvent("expand");
+      localStorage.setItem("headerEvent", "expand");
+    }
+  };
+
   const createScrollStopListener = (element, callback, timeout) => {
     var handle = null;
     const onScrollEvent = () => {
+      setScrolling(true);
       console.log("visibleMenu", visibleMenu);
       if (handle) {
         if (window.scrollY > 0.12 * window.innerHeight) {
@@ -91,12 +100,17 @@ const Layout = ({ children }) => {
   };
 
   useEffect(() => {
-    createScrollStopListener(window, () => {});
+    createScrollStopListener(window, () => {
+      console.log("stop scroll");
+      setScrolling(false);
+    });
   });
 
   return (
     <Container>
       <Menu
+        onClickCategoryItem={onClickCategoryItem}
+        scrolling={scrolling}
         postsNumber={postsNumber}
         headerEvent={headerEvent}
         preventAni={preventAni}

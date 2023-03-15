@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -33,7 +34,7 @@ const ReferenceTitleText = styled.div`
 
 const ReferenceItemContainer = styled.div``;
 
-const ReferenceItem = styled.a`
+const ReferenceItem = styled(Link)`
   color: #25252580;
   font-weight: 500;
   font-style: italic;

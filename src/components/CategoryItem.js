@@ -7,6 +7,7 @@ const Container = styled.div`
   border-bottom: 2.5px solid #efefef;
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 const CategoryText = styled.div`
@@ -24,21 +25,14 @@ const PostsNumberText = styled.span`
   font-family: "Jost-Medium";
 `;
 
-const CategoryItem = ({ category, onClickCategory, postsNumber }) => {
+const CategoryItem = ({ category, onClickCategoryItem, postsNumber }) => {
   return (
-    <Link
-      style={{
-        textDecoration: "none",
-      }}
-      href={`/${category.key}`}
-    >
-      <Container>
-        <CategoryText>
-          {category.text}
-          <PostsNumberText> ({postsNumber})</PostsNumberText>
-        </CategoryText>
-      </Container>
-    </Link>
+    <Container onClick={() => onClickCategoryItem(category)}>
+      <CategoryText>
+        {category.text}
+        <PostsNumberText> ({postsNumber})</PostsNumberText>
+      </CategoryText>
+    </Container>
   );
 };
 

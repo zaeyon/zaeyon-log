@@ -51,7 +51,7 @@ const Header = ({ onClickMenu, headerEvent, onClickHeaderLogo }) => {
           height: "3.8rem",
         },
       });
-    } else if (headerEvent === "expand") {
+    } else if (headerEvent === "expand" && headerHeight === "3.8rem") {
       headerApi.start({
         from: {
           height: "3.8rem",
