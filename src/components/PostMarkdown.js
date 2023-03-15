@@ -141,9 +141,9 @@ const PostMarkdown = ({ postData }) => {
           h4: ({ node, ...props }) => (
             <i
               style={{
-                lineHeight: 1.5,
+                lineHeight: 2,
                 fontStyle: "normal",
-                fontSize: 17.3,
+                fontSize: 19,
                 fontWeight: 600,
                 color: "#000000",
               }}

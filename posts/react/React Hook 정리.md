@@ -41,7 +41,7 @@ Hook은 클래스형 컴포넌트에서는 동작하지 않고 함수형 컴포�
 </h3>
 <br/>
 <h4>
-• 생명주기 메서드의 사이드 이펙트
+생명주기 메서드의 사이드 이펙트
 </h4>
 <br/>
 <span>
@@ -53,7 +53,7 @@ Hook은 클래스형 컴포넌트에서는 동작하지 않고 함수형 컴포�
 <br/>
 <br/>
 <h4>
-• Class구조의 어려움
+Class구조의 어려움
 </h4>
 <br/>
 <span>
@@ -88,13 +88,81 @@ React의 공식 문서에서는 아래와 같은 설명을 통해 Hook을 통한
 <br/>
 <br/>
 <h4>
-• useState 사용법
+useState 사용법
 </h4>
 <br/>
 <span>
 useState를 사용하기 위해서는 파일의 상단에서 react로부터 useState를 import해야 됩니다.
 </span>
 
-```javascript
+```jsx
 import { useState } from "react";
 ```
+
+<br/>
+<span>
+그 다음 컴포넌트의 상단에서 아래와 같이 state 변수와 해당 state 변수를 갱신할 수 있는 함수와 useState를 호출합니다.
+</span>
+
+```jsx
+import { useState } from "react";
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  return ();
+};
+
+export default App;
+```
+
+<br/>
+<span>
+state 값을 사용하고 싶을땐 직접 호출하면 됩니다.
+</span>
+
+```jsx
+import { useState } from "react";
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  return <p>개수 : {count}</p>;
+};
+
+export default App;
+```
+
+<br/>
+<span>
+state값을 갱신하고 싶을땐 세터 함수인 setIndex()의 인자에 원하는 값을 넣어 호출하면 됩니다. 세터 함수가 호출되어 state값이 변경되면 컴포넌트는 변경된 state값을 보여주기 위해 리렌더링됩니다.
+</span>
+
+```jsx
+import { useState } from "react";
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <p>
+      <div>
+        <button onClick={() => setCount(count + 1)}>증가</button>
+      </div>
+      개수 : {count}
+    </p>
+  );
+};
+
+export default App;
+```
+
+<br/>
+<h4>
+useState 사용시 주의 사항
+</h4>
+<br/>
+<span>
+• state값은 변경될때마다 컴포넌트가 리렌더링되기 때문에 화면에 영향을 주지 않는 값에 useState를 남용한다면 앱의 성능과 사용자 경험에 부정적 영향을 끼칠 수 있습니다.<br/>
+• state값은 선언된 컴포넌트만의 고유의 값이므로 다른 컴포넌트에서 같은 이름의 state값을 선언하더라도 두개의 state값은 독립적으로 작동합니다.
+</span>
