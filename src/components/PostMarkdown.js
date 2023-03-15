@@ -22,20 +22,22 @@ const Footercontainer = styled.div`
   padding-bottom: 10px;
 `;
 
-const ReferenceContainer = styled.div`
+const ReferenceContainer = styled.div``;
+
+const ReferenceTitleText = styled.div`
   font-weight: 600;
-  font-size: 16px;
-  color: #25252595;
+  font-size: 16.5px;
+  color: gray;
+  margin-bottom: 5px;
 `;
 
-const ReferenceItemContainer = styled.div`
-  margin-top: 5px;
-`;
+const ReferenceItemContainer = styled.div``;
 
 const ReferenceItem = styled.a`
   color: #25252580;
   font-weight: 500;
   font-style: italic;
+  font-size: 16.5px;
 `;
 
 const HeaderContainer = styled.div`
@@ -145,7 +147,7 @@ const PostMarkdown = ({ postData }) => {
                 color: "#000000",
               }}
               {...props}
-            />
+            ></i>
           ),
           em: ({ node, ...props }) => (
             <em
@@ -247,14 +249,14 @@ const PostMarkdown = ({ postData }) => {
       <Footercontainer>
         {postData.reference ? (
           <ReferenceContainer>
-            참고자료
-            <ReferenceItemContainer>
-              {postData.reference.map((item, index) => (
+            <ReferenceTitleText>참고자료</ReferenceTitleText>
+            {postData.reference.map((item, index) => (
+              <ReferenceItemContainer key={index}>
                 <ReferenceItem key={index} href={item.url} target="_blank">
                   {item.title}
                 </ReferenceItem>
-              ))}
-            </ReferenceItemContainer>
+              </ReferenceItemContainer>
+            ))}
           </ReferenceContainer>
         ) : (
           ""

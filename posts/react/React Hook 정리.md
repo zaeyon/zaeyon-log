@@ -4,6 +4,17 @@ title: "React Hook 정리"
 date: "2023.03.11"
 preview: "무심코 사용했던 리액트의 훅(Hook)의 종류와 올바른 사용법에 대해 알아보겠습니다."
 thumbnail: "/images/posts/3/thumbnail.png"
+reference:
+  [
+    {
+      title: React 공식 문서 - Hook 소개,
+      url: https://ko.reactjs.org/docs/hooks-intro.html,
+    },
+    {
+      title: React Docs - State A Component's Memoray,
+      url: https://beta.reactjs.org/learn/state-a-components-memory,
+    },
+  ]
 ---
 
 <img src="/images/posts/3/thumbnail.png" width="100%"/>
@@ -61,5 +72,29 @@ React의 공식 문서에서는 아래와 같은 설명을 통해 Hook을 통한
 <br/>
 <blockquote>
 개념적으로 React 컴포넌트는 항상 함수에 가깝습니다.<br/> Hook을 사용한 함수형 컴포넌트는 이러한 React의 개념에 적합합니다.<br/> Hook의 사용은 복잡한 문제에 직면했을때 명령형 코드로 보다 쉽게 해결책을 찾을 수 있게 해주며 복잡한 함수형 또는 반응형 프로그래밍 기술을 배우도록 요구하지 않습니다.
-</blockqoute>
+</blockquote>
 </span>
+<br/>
+<br/>
+<br/>
+<h3>
+3. useState - 상태(state) 관리 Hook
+</h3>
+<br/>
+<span>
+컴포넌트는 상호작용의 결과에 의해 화면에 보이는 상태를 변경해야 됩니다. <br/>
+예를 들면 사용자가 input field에 문자를 입력하거나 image carousel의 순서를 조작하여 화면에 표시되는 이미지가 변경되는 경우가 있습니다. 이러한 상황에 컴포넌트는 변경된 값(이미지)을 기억해야 됩니다. React에서는 이러한 경우와 같이 컴포넌트만의 상태를 state라고 일컫고 useState는 컴포넌트에 state를 추가하고 관리하는 역할의 Hook입니다.
+</span>
+<br/>
+<br/>
+<h4>
+• useState 사용법
+</h4>
+<br/>
+<span>
+useState를 사용하기 위해서는 파일의 상단에서 react로부터 useState를 import해야 됩니다.
+</span>
+
+```javascript
+import { useState } from "react";
+```
