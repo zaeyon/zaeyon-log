@@ -17,7 +17,7 @@ reference:
   ]
 ---
 
-<img src="/images/posts/3/thumbnail.png" width="100%"/>
+<img src="/images/posts/3/thumbnail.png" width="100%">
 <br/>
 <br/>
 <span>
@@ -41,7 +41,7 @@ Hook은 클래스형 컴포넌트에서는 동작하지 않고 함수형 컴포�
 </h3>
 <br/>
 <h4>
-생명주기 메서드의 사이드 이펙트
+생명주기 메서드에서의 관련 없는 로직
 </h4>
 <br/>
 <span>
@@ -62,7 +62,8 @@ React에서 클래스형 컴포넌트의 올바른 사용을 위해서는 JavaSc
 또한 클래스형 컴포넌트는 최근 사용되는 도구에서도 많은 문제를 일으킵니다.
 <br/>예를 들어 Class는 코드를 최소화하기 힘들고 핫 리로딩을 깨지기 쉽고 신뢰할 수 없게 만듭니다.
 <br/>
-<span style="font-weight: 600">이러한 문제를 해결하기 위해 React의 개발진들은 Class없이 React의 기능들을 사용할수 있는 Hook을 도입하였습니다. </span>
+<span style="font-weight: 600">
+이러한 문제를 해결하기 위해 React의 개발진들은 Class없이 React의 기능들을 사용할수 있는 Hook을 도입하였습니다. </span>
 <br/>
 <br/>
 <span>
@@ -92,7 +93,7 @@ useState 사용법
 </h4>
 <br/>
 <span>
-useState를 사용하기 위해서는 파일의 상단에서 react로부터 useState를 import해야 됩니다.
+먼저 파일의 상단에서 react로부터 useState를 import 합니다.
 </span>
 
 ```jsx
@@ -166,3 +167,134 @@ useState 사용시 주의 사항
 • state값은 변경될때마다 컴포넌트가 리렌더링되기 때문에 화면에 영향을 주지 않는 값에 useState를 남용한다면 앱의 성능과 사용자 경험에 부정적 영향을 끼칠 수 있습니다.<br/>
 • state값은 선언된 컴포넌트만의 고유의 값이므로 다른 컴포넌트에서 같은 이름의 state값을 선언하더라도 두개의 state값은 독립적으로 작동합니다.
 </span>
+<br/>
+<br/>
+<br/>
+<h3>
+4. useEffect - 렌더링이후 부수 효과(side effect) 관리 Hook
+</h3>
+<br/>
+<span>
+어떤 컴포넌트는 외부의 데이터와 동기화되어야 합니다. 예를 들어 React state와 관련있는 외부 컴포넌트를 조작하기를 원하거나 서버와 연결을 위해 API 호출하기와 같은 경우가 있습니다. useEffect는 작성된 코드들을 렌더링 이후 수행하여 컴포넌트를 외부 시스템과 동기화 시키거나 렌더링 이후의 원하는 작업을 수행할 수 있습니다.
+</span>
+<br/>
+<br/>
+<h4>
+useEffect 사용법
+</h4>
+<br/>
+<span>
+먼저 파일의 상단에서 react로부터 useEffect를 import 합니다.
+</span>
+
+```jsx
+import { useEffect } from "react";
+```
+
+<br/>
+<span>
+그리고 원하는 컴포넌트의 상단에서 useEffect를 호출한다음 렌더링 이후 수행되어야할 작업들을 작성합니다.
+</span>
+
+```jsx
+import { useEffect } from "react";
+
+const App = () => {
+  useEffect(() => {
+    // 렌더링 이후 수행되어야할 코드를 작성합니다.
+  });
+
+  return <div />;
+};
+
+export default App;
+```
+
+<br/>
+<span>
+useEffect에서 렌더링 이후 수행되는 작업중 하나가 외부 서버와 API 통신을 통해 컴포넌트를 업데이트 하는 것입니다. <br/>이번 예제에서는 Youtube Data API를 통해 현재 한국에서 인기있는 유튜브 동영상 목록을 불러와 보겠습니다.
+</span>
+
+```jsx
+import { useEffect } from "react";
+import axios from "axios";
+import "./App.css";
+
+function App() {
+  useEffect(() => {
+    // 렌더링 이후 수행되어야할 코드를 작성합니다.
+    axios
+      .get(
+        `https://www.googleapis.com/youtube/v3/videos
+        ?chart=mostPopular&key=YOUR_API_KEY
+        &part=snippet,contentDetails,statistics,status
+        &regionCode=KR`
+      )
+      .then((response) => {
+        console.log("한국에서 인기있는 유튜브 영상 목록", response.data.items);
+      });
+  });
+  return <div />;
+}
+
+export default App;
+```
+
+<br/>
+<span>
+개발자 도구에서 콘솔을 확인해보면 아래와 같이 JSON형태의 인기 동영상 목록을 확인할 수 있습니다.
+</span>
+<img src="/images/posts/3/youtube_list.png" width="100%">
+<br/>
+<br/>
+<span>
+영상 목록 state를 선언해주고 간단히 영상 썸네일과 제목 목록을 보여주기 위한 코드를 작성합니다.
+</span>
+
+```jsx
+import { useEffect, useState } from "react";
+import axios from "axios";
+import "./App.css";
+
+function App() {
+  const [videoList, setVideoList] = useState([]);
+
+  useEffect(() => {
+    // 렌더링 이후 수행되어야할 코드를 작성합니다.
+    axios
+      .get(
+        `https://www.googleapis.com/youtube/v3/videos
+        ?chart=mostPopular&key=YOUR_API_KEY
+        &part=snippet,contentDetails,statistics,status
+        &regionCode=KR`
+      )
+      .then((response) => {
+        console.log(response.data.items);
+        setVideoList(response.data.items);
+      });
+  });
+
+  return (
+    <div className="container">
+      {videoList.map((item, index) => (
+        <div className="videoItem" key={index}>
+          <img
+            className="thumbnail"
+            src={item.snippet.thumbnails.maxres.url}
+            alt=""
+          />
+          {item.snippet.title}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default App;
+```
+
+<br/>
+<span>
+이렇게 인기 동영상 목록이 화면에 표시됩니다!
+</span>
+<img src="/images/posts/3/3.png" width="100%">

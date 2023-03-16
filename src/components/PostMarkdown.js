@@ -86,6 +86,7 @@ const PostMarkdown = ({ postData }) => {
   const customStyle = {
     marginTop: "15px",
     fontSize: "13.7px",
+    wrapLines: true,
   };
 
   const getFormattedDate = (date) => {
@@ -230,6 +231,10 @@ const PostMarkdown = ({ postData }) => {
             const match = /language-(\w+)/.exec(className || "");
             return !inline && match ? (
               <SyntaxHighlighter
+                lineProps={{
+                  style: { wordBreak: "break-all", whiteSpace: "pre-wrap" },
+                }}
+                wrapLines={true}
                 style={codeBlock}
                 language={match[1]}
                 PreTag="div"
