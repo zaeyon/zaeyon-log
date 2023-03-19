@@ -7,6 +7,7 @@ import { create } from "domain";
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import visibleMenuReducer from "../features/visibleMenuSlice";
 import postsNumberReducer from "../features/postsNumberSlice";
+import headerTitleReducer from "../features/headerTitleSlice";
 
 const reducer = (state, action) => {
   if (action.type === HYDRATE) {
@@ -19,6 +20,7 @@ const reducer = (state, action) => {
   return combineReducers({
     visibleMenu: visibleMenuReducer,
     postsNumber: postsNumberReducer,
+    headerTitle: headerTitleReducer,
   })(state, action);
 };
 

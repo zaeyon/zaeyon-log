@@ -139,7 +139,7 @@ const Post = ({ postData }) => {
   };
 
   return (
-    <Layout>
+    <Layout postTitle={postData.title}>
       <Head>
         <title>{postData.title}</title>
       </Head>

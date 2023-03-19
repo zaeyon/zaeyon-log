@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Header from "./Header";
 import Menu from "./Menu";
 import { setVisibleMenu } from "../features/visibleMenuSlice";
+import { setHeaderTitle } from "../features/headerTitleSlice";
 
 const Container = styled.div`
   display: flex;
@@ -25,12 +26,13 @@ const ContentContainer = styled.div`
   padding-bottom: 4rem;
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children, postPage, postTitle }) => {
   //const [visibleMenu, setVisibleMenu] = useState(false);
   const [headerEvent, setHeaderEvent] = useState("expand");
   const [preventAni, setPreventAni] = useState(false);
   const [scrolling, setScrolling] = useState(true);
   const postsNumber = useSelector((state) => state.postsNumber?.value);
+  const [headerTitle, setHeaderTitle] = useState("ZAEYON LOG");
 
   const router = useRouter();
 
@@ -87,6 +89,12 @@ const Layout = ({ children }) => {
             localStorage.setItem("headerEvent", "expand");
           }
         }
+
+        if (window.scrollY > 0.21 * window.innerHeight && postTitle) {
+          setHeaderTitle(postTitle);
+        } else if (postTitle) {
+          setHeaderTitle("ZAEYON LOG");
+        }
         // 스크롤 계속 발생
         clearTimeout(handle);
       }
@@ -121,6 +129,7 @@ const Layout = ({ children }) => {
           onClickHeaderLogo={onClickHeaderLogo}
           headerEvent={headerEvent}
           onClickMenu={onClickMenu}
+          headerTitle={headerTitle}
         />
         <ContentContainer>{children}</ContentContainer>
       </ExceptMenuContainer>

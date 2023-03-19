@@ -22,15 +22,22 @@ const EmptyContainer = styled.div`
   padding: 10px;
 `;
 
-const LogoContainer = styled.div`
+const TitleContainer = styled.div`
   padding: 0px 5px;
   cursor: pointer;
   color: white;
-  font-size: 42px;
+  font-size: ${(props) =>
+    props.headerTitle === "ZAEYON LOG" ? "42px" : "37px"};
   font-family: "Jost-Medium";
+  font-weight: 500;
 `;
 
-const Header = ({ onClickMenu, headerEvent, onClickHeaderLogo }) => {
+const Header = ({
+  onClickMenu,
+  headerEvent,
+  onClickHeaderLogo,
+  headerTitle,
+}) => {
   const [headerHeight, setHeaderHeight] = useState("6.5rem");
 
   const [springs, headerApi] = useSpring(() => ({
@@ -107,7 +114,9 @@ const Header = ({ onClickMenu, headerEvent, onClickHeaderLogo }) => {
       <MenuIconContainer onClick={onClickMenu}>
         <MenuIconImg priority={true} alt={"menuicon"} src={MenuIconPNG} />
       </MenuIconContainer>
-      <LogoContainer onClick={onClickHeaderLogo}>ZAEYON LOG</LogoContainer>
+      <TitleContainer headerTitle={headerTitle} onClick={onClickHeaderLogo}>
+        {headerTitle}
+      </TitleContainer>
       <EmptyContainer />
     </animated.div>
   );
