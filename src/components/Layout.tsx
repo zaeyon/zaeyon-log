@@ -26,18 +26,27 @@ const ContentContainer = styled.div`
   padding-bottom: 4rem;
 `;
 
-const Layout = ({ children, postPage, postTitle }) => {
+interface props {
+  children: any,
+  postTitle?: string,
+}
+
+interface categoryObj {
+  key: string,
+}
+
+const Layout: React.FC<props> = ({ children, postTitle }) => {
   //const [visibleMenu, setVisibleMenu] = useState(false);
   const [headerEvent, setHeaderEvent] = useState("expand");
   const [preventAni, setPreventAni] = useState(false);
   const [scrolling, setScrolling] = useState(true);
-  const postsNumber = useSelector((state) => state.postsNumber?.value);
+  const postsNumber = useSelector((state: any) => state.postsNumber?.value);
   const [headerTitle, setHeaderTitle] = useState("ZAEYON LOG");
 
   const router = useRouter();
 
   const dispatch = useDispatch();
-  const visibleMenu = useSelector((state) => state.visibleMenu.value);
+  const visibleMenu = useSelector((state: any) => state.visibleMenu.value);
 
   const onClickMenu = () => {
     if (visibleMenu) {
@@ -66,7 +75,7 @@ const Layout = ({ children, postPage, postTitle }) => {
     }
   };
 
-  const onClickCategoryItem = (category) => {
+  const onClickCategoryItem = (category: categoryObj) => {
     router.push(`/${category.key}`);
     if (headerEvent === "shrink") {
       setHeaderEvent("expand");
@@ -74,8 +83,8 @@ const Layout = ({ children, postPage, postTitle }) => {
     }
   };
 
-  const createScrollStopListener = (element, callback, timeout) => {
-    var handle = null;
+  const createScrollStopListener = (element: any, callback: any) => {
+    var handle: any = null;
     const onScrollEvent = () => {
       setScrolling(true);
       console.log("visibleMenu", visibleMenu);
@@ -98,7 +107,7 @@ const Layout = ({ children, postPage, postTitle }) => {
         // 스크롤 계속 발생
         clearTimeout(handle);
       }
-      handle = setTimeout(callback, timeout || 200);
+      handle = setTimeout(callback, 200);
     };
     element.addEventListener("scroll", onScrollEvent);
 
@@ -109,7 +118,6 @@ const Layout = ({ children, postPage, postTitle }) => {
 
   useEffect(() => {
     createScrollStopListener(window, () => {
-      console.log("stop scroll");
       setScrolling(false);
     });
   });
@@ -121,7 +129,6 @@ const Layout = ({ children, postPage, postTitle }) => {
         scrolling={scrolling}
         postsNumber={postsNumber}
         headerEvent={headerEvent}
-        preventAni={preventAni}
         visibleMenu={visibleMenu}
       />
       <ExceptMenuContainer onClick={onClickExceptMenu}>

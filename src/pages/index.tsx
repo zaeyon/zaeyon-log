@@ -49,7 +49,11 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({ allPostsData }) {
+interface props {
+  allPostsData: Array<any>
+}
+
+const Home:React.FC<props> = ({ allPostsData }) => {
   return (
     <Layout>
       <Head>
@@ -69,3 +73,5 @@ export default function Home({ allPostsData }) {
     </Layout>
   );
 }
+
+export default Home;

@@ -25,7 +25,7 @@ const CategoryList = ({ postsNumber, onClickCategoryItem }) => {
     {
       key: "react",
       text: "React",
-      number: 1,
+      number: 2,
     },
     {
       key: "javascript",

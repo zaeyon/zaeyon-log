@@ -144,7 +144,11 @@ const GithubIcon = styled(Image)`
   height: 1.7rem;
 `;
 
-const About = () => {
+interface props {
+  
+}
+
+const About: React.FC<props> = ({}) => {
   return (
     <Layout>
       <Head>

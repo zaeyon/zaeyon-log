@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/pages/index.js",
+    "src/pages/index.tsx",
     "src/app/store.js",
     "src/components/CommentInput.js"
   ],
