@@ -144,8 +144,8 @@ const PostMarkdown = ({ postData }) => {
               style={{
                 lineHeight: 2,
                 fontStyle: "normal",
-                fontSize: 19,
-                fontWeight: 600,
+                fontSize: 18,
+                fontWeight: 700,
                 color: "#000000",
               }}
               {...props}
