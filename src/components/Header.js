@@ -73,9 +73,15 @@ const Header = ({ onClickMenu, headerEvent, onClickHeaderLogo }) => {
   }, [headerEvent, headerHeight, headerApi]);
 
   useLayoutEffect(() => {
-    if (localStorage.getItem("headerEvent") === "expand") {
+    if (
+      localStorage.getItem("headerEvent") === "expand" &&
+      window.scrollY < 0.12 * window.innerHeight
+    ) {
       setHeaderHeight("6.5rem");
-    } else if (localStorage.getItem("headerEvent") === "shrink") {
+    } else if (
+      localStorage.getItem("headerEvent") === "shrink" &&
+      window.scrollY > 0.12 * window.innerHeight
+    ) {
       setHeaderHeight("3.8rem");
     }
   }, [headerHeight, headerEvent]);
