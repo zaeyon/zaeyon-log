@@ -39,6 +39,8 @@ export async function getStaticProps() {
 
   wrapper.getServerSideProps((store) => async () => {
     store.dispatch(setPostsNumber(postsNumber));
+
+    return {props: {}}
   });
 
   console.log("getStaticProps postsNumber", postsNumber);
