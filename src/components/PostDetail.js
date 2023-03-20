@@ -33,9 +33,9 @@ const db = getFirestore(app);
 const FullContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 51rem;
+  width: 53rem;
   justify-content: center;
-  @media (max-width: 53rem) {
+  @media (max-width: 55rem) {
     width: 95%;
     margin-left: 2.5%;
     margin-right: 2.5%;
