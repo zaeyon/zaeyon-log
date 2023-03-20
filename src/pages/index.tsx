@@ -11,10 +11,10 @@ import PostList from "../components/PostList";
 
 const Container = styled.div`
   padding-top: 5px;
-  @media (max-width: 50rem) {
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
+  @media (max-width: 53rem) {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
   }
 `;
 
@@ -64,6 +64,7 @@ const Home:React.FC<props> = ({ allPostsData }) => {
           name="google-site-verification"
           content="b_KRmmtmVWZrBzyGVuuTudU1A7831kRb8c26TbIJnTw"
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
       </Head>
       <Container>
         <TitleText>

@@ -100,6 +100,7 @@ const Header = ({
         zIndex: 10,
         opacity: "0.96",
         height: headerHeight,
+        width: "100vw",
         position: "fixed",
         background: "black",
         display: "flex",

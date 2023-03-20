@@ -10,6 +10,10 @@ const Container = styled.div`
   border-radius: 5px;
   background: #ffffff;
   box-shadow: 0px 0px 30px 5px #27272710;
+  @media (max-width: 500px) {
+    width: 90vw;
+    height: 100vw;
+  }
 `;
 
 const ThumbnailImg = styled.img`
