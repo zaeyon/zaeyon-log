@@ -163,14 +163,14 @@ const About: React.FC<props> = ({}) => {
         </AboutContainer>
         <Container>
           <ProfileContainer>
-            <ProfileImg src={ProfileImagePNG} />
+            <ProfileImg src={ProfileImagePNG} alt={""} />
             <ProfileContentContainer>
               <NameText>이재연</NameText>
               <SpecialtyText>Front-end Developer</SpecialtyText>
             </ProfileContentContainer>
             <SocialContainer>
               <a href={"https://github.com/zaeyon"} target="_blank">
-                <GithubIcon src={GithubIconPNG} />
+                <GithubIcon src={GithubIconPNG} alt={""} />
               </a>
             </SocialContainer>
           </ProfileContainer>
