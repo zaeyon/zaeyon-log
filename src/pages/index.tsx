@@ -11,11 +11,6 @@ import PostList from "../components/PostList";
 
 const Container = styled.div`
   padding-top: 5px;
-  @media (max-width: 53rem) {
-    width: 95%;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-  }
 `;
 
 const Emoji = styled.span`

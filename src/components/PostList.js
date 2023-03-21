@@ -1,3 +1,4 @@
+import { useLayoutEffect, useState } from "react";
 import styled from "styled-components";
 import PostItem from "./PostItem";
 
@@ -17,31 +18,26 @@ const PostListInner = styled.div`
   display: flex;
   flex-wrap: wrap;
 
-  @media (max-width: 500px) {
-    background-color: gray;
+  @media (max-width: 470px) {
     width: 90vw;
   }
 
-  @media (min-width: 500px) and (max-width: 767px) {
+  @media (min-width: 470px) and (max-width: 767px) {
     //모바일
     width: 28rem;
-    background-color: red;
   }
 
   @media (min-width: 768px) and (max-width: 900px) {
     // 테블릿 세로
     width: 28rem;
-    background-color: green;
   }
 
   @media (min-width: 900px) and (max-width: 1199px) {
     // 테블릿 가로
-    background-color: blue;
   }
 
   @media (min-width: 1200px) {
     // 데스크탑 일반
-    background-color: black;
   }
 `;
 
@@ -54,16 +50,24 @@ const EmptyPostItemContainer = styled.div`
 `;
 
 const MotionDiv = styled(motion.div)`
-  @media (min-width: 500px) {
+  @media (min-width: 470px) {
     margin-left: ${(props) => (props.index % 3 !== 0 ? "1rem" : "0")};
   }
 
-  @media (min-width: 500px) and (max-width: 900px) {
+  @media (min-width: 470px) and (max-width: 900px) {
     margin-left: ${(props) => (props.index % 2 !== 0 ? "1rem" : "0")};
   }
 `;
 
 const PostList = ({ postsData }) => {
+  const [isMobileDevice, setIsMobileDevice] = useState(false);
+
+  useLayoutEffect(() => {
+    if (window.innerWidth < 470) {
+      setIsMobileDevice(true);
+    }
+  }, []);
+
   return (
     <Container>
       <PostListContainer>
@@ -72,8 +76,10 @@ const PostList = ({ postsData }) => {
             <MotionDiv
               index={index}
               initial={false}
-              whileHover={{ scale: 1.074 }}
-              transition={{ type: "linear", duration: 0.22 }}
+              whileHover={isMobileDevice ? "" : { scale: 1.074 }}
+              transition={
+                isMobileDevice ? "" : { type: "linear", duration: 0.22 }
+              }
               key={index}
             >
               <PostItem post={post} key={index} />

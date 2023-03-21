@@ -11,11 +11,6 @@ const FullContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 45rem;
-  @media (max-width: 45rem) {
-    width: 95%;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-  }
 `;
 
 const Container = styled.div`

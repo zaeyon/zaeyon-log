@@ -11,11 +11,6 @@ import javascriptLogo from "../../../public/images/javascript_logo.png";
 const Container = styled.div`
   width: 45rem;
   padding-top: 5px;
-  @media (max-width: 50rem) {
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-  }
 `;
 
 const TitleContainer = styled.div`
