@@ -24,6 +24,10 @@ const ExceptMenuContainer = styled.div`
 const ContentContainer = styled.div`
   padding-top: 9rem;
   padding-bottom: 4rem;
+
+  @media (max-width: 470px) {
+    padding-top: 6rem;
+  }
 `;
 
 interface props {

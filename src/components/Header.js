@@ -6,6 +6,44 @@ import { animated, useSpring } from "@react-spring/web";
 import headerStyles from "../styles/header.module.css";
 import MenuIconPNG from "../../public/images/icons/hamburger.png";
 
+const MobileHeader = styled.div`
+  z-index: 10;
+  opacity: 0.96;
+  height: 4.5rem;
+  width: 100vw;
+  position: fixed;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-image: url(/images/header_background.png);
+  background-size: cover;
+  box-shadow: "0px 1px 25px 5px #27272760";
+`;
+
+const MobileTitleContainer = styled.div`
+  padding: 0px 5px;
+  cursor: pointer;
+  color: white;
+  font-size: ${(props) =>
+    props.headerTitle === "ZAEYON LOG" ? "35px" : "30px"};
+  font-family: "Jost-Medium";
+  font-weight: 500;
+  white-space: nowrap;
+`;
+
+const MobileMenuIconImg = styled(Image)`
+  margin-top: 5px;
+  width: 1.3rem;
+  height: 1.1rem;
+`;
+
+const MobileEmptyContainer = styled.div`
+  width: 1.3rem;
+  height: 1.1rem;
+  padding: 10px;
+`;
+
 const MenuIconContainer = styled.div`
   padding: 10px;
   cursor: pointer;
@@ -39,6 +77,7 @@ const Header = ({
   headerTitle,
 }) => {
   const [headerHeight, setHeaderHeight] = useState("6.5rem");
+  const [isMobileDevice, setIsMobileDevice] = useState(false);
 
   const [springs, headerApi] = useSpring(() => ({
     config: {
@@ -93,34 +132,61 @@ const Header = ({
     }
   }, [headerHeight, headerEvent]);
 
-  return (
-    <animated.div
-      className={headerStyles.container}
-      style={{
-        zIndex: 10,
-        opacity: "0.96",
-        height: headerHeight,
-        width: "100vw",
-        position: "fixed",
-        background: "black",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        backgroundImage: "url(/images/header_background.png)",
-        backgroundSize: "cover",
-        boxShadow: "0px 1px 25px 5px #27272760",
-        ...springs,
-      }}
-    >
-      <MenuIconContainer onClick={onClickMenu}>
-        <MenuIconImg priority={true} alt={"menuicon"} src={MenuIconPNG} />
-      </MenuIconContainer>
-      <TitleContainer headerTitle={headerTitle} onClick={onClickHeaderLogo}>
-        {headerTitle}
-      </TitleContainer>
-      <EmptyContainer />
-    </animated.div>
-  );
+  useLayoutEffect(() => {
+    if (window.innerWidth < 470) {
+      setIsMobileDevice(true);
+    }
+  }, []);
+
+  if (isMobileDevice) {
+    return (
+      <MobileHeader>
+        <MenuIconContainer onClick={onClickMenu}>
+          <MobileMenuIconImg
+            priority={true}
+            alt={"menuicon"}
+            src={MenuIconPNG}
+          />
+        </MenuIconContainer>
+        <MobileTitleContainer
+          headerTitle={headerTitle}
+          onClick={onClickHeaderLogo}
+        >
+          {headerTitle}
+        </MobileTitleContainer>
+        <MobileEmptyContainer />
+      </MobileHeader>
+    );
+  } else {
+    return (
+      <animated.div
+        className={headerStyles.container}
+        style={{
+          zIndex: 10,
+          opacity: "0.96",
+          height: headerHeight,
+          width: "100vw",
+          position: "fixed",
+          background: "black",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          backgroundImage: "url(/images/header_background.png)",
+          backgroundSize: "cover",
+          boxShadow: "0px 1px 25px 5px #27272760",
+          ...springs,
+        }}
+      >
+        <MenuIconContainer onClick={onClickMenu}>
+          <MenuIconImg priority={true} alt={"menuicon"} src={MenuIconPNG} />
+        </MenuIconContainer>
+        <TitleContainer headerTitle={headerTitle} onClick={onClickHeaderLogo}>
+          {headerTitle}
+        </TitleContainer>
+        <EmptyContainer />
+      </animated.div>
+    );
+  }
 };
 
 export default Header;

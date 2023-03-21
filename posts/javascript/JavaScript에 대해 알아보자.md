@@ -53,7 +53,7 @@ style="color: #000000; font-size: 16.5px">
 </span>
 <br/>
 <center>
-<img src="/images/posts/web_cake.png">
+<img src="/images/posts/web_cake.png" width="100%">
 </center>
 <br/>
 <span>

@@ -9,7 +9,6 @@ import PostList from "../../components/PostList";
 import javascriptLogo from "../../../public/images/javascript_logo.png";
 
 const Container = styled.div`
-  width: 45rem;
   padding-top: 5px;
 `;
 

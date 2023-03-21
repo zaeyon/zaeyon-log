@@ -11,6 +11,7 @@ import rehypeRaw from "rehype-raw";
 
 import Layout from "./Layout";
 import ProfileImagePNG from "../../public/images/profile.png";
+import BlankProfileImagePNG from "../../public/images/blank_profile.png";
 
 const Container = styled.div`
   font-size: 20px;
@@ -103,7 +104,7 @@ const PostMarkdown = ({ postData }) => {
       <HeaderContainer>
         <TitleText>{postData.title}</TitleText>
         <MetaDataContainer>
-          <WriterProfileImage src={ProfileImagePNG} alt={""} />
+          <WriterProfileImage src={BlankProfileImagePNG} alt={""} />
           <WriterNameText>ZAEYON</WriterNameText>
           <DateContainer>
             • {getFormattedDate(postData?.date)} 작성

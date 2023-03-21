@@ -5,12 +5,18 @@ import Link from "next/link";
 import Layout from "../components/Layout";
 import GithubIconPNG from "../../public/images/icons/github.png";
 import ProfileImagePNG from "../../public/images/profile.png";
+import BlankProfileImagePNG from '../../public/images/blank_profile.png';
 
 const FullContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 45rem;
+  width: 53rem;
+  @media (max-width: 55rem) {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+  }
 `;
 
 const Container = styled.div`
@@ -158,7 +164,7 @@ const About: React.FC<props> = ({}) => {
         </AboutContainer>
         <Container>
           <ProfileContainer>
-            <ProfileImg src={ProfileImagePNG} alt={""} />
+            <ProfileImg src={BlankProfileImagePNG} alt={""} />
             <ProfileContentContainer>
               <NameText>이재연</NameText>
               <SpecialtyText>Front-end Developer</SpecialtyText>
