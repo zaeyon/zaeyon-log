@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import Header from "./Header";
 import Menu from "./Menu";
 import { setVisibleMenu } from "../features/visibleMenuSlice";
-import {setIsMobile} from '../features/isMobileSlice';
 
 const Container = styled.div`
   display: flex;
