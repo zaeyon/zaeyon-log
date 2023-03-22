@@ -3,6 +3,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
 import { animated, useSpring } from "@react-spring/web";
+import { useSelector } from "react-redux";
 import headerStyles from "../styles/header.module.css";
 import MenuIconPNG from "../../public/images/icons/hamburger.png";
 
@@ -75,9 +76,9 @@ const Header = ({
   headerEvent,
   onClickHeaderLogo,
   headerTitle,
+  isMobile,
 }) => {
   const [headerHeight, setHeaderHeight] = useState("6.5rem");
-  const [isMobileDevice, setIsMobileDevice] = useState(false);
 
   const [springs, headerApi] = useSpring(() => ({
     config: {
@@ -132,13 +133,7 @@ const Header = ({
     }
   }, [headerHeight, headerEvent]);
 
-  useLayoutEffect(() => {
-    if (window.innerWidth < 470) {
-      setIsMobileDevice(true);
-    }
-  }, []);
-
-  if (isMobileDevice) {
+  if (isMobile) {
     return (
       <MobileHeader>
         <MenuIconContainer onClick={onClickMenu}>

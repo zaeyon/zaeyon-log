@@ -1,3 +1,4 @@
+import { useState, useLayoutEffect } from "react";
 import Head from "next/head";
 import Layout from "../../components/Layout";
 import { getCategoryPostsData } from "../../lib/posts";
@@ -47,8 +48,16 @@ export async function getStaticProps() {
 }
 
 export default function Javascript({ category, categoryPostsData }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useLayoutEffect(() => {
+    if (window.innerWidth < 470) {
+      setIsMobile(true);
+    }
+  }, []);
+
   return (
-    <Layout>
+    <Layout isMobile={isMobile}>
       <Head>
         <title>Javascript</title>
       </Head>
@@ -59,7 +68,7 @@ export default function Javascript({ category, categoryPostsData }) {
             {"Javascript"}
           </TitleText>
         </TitleContainer>
-        <PostList postsData={categoryPostsData} />
+        <PostList isMobile={isMobile} postsData={categoryPostsData} />
       </Container>
     </Layout>
   );

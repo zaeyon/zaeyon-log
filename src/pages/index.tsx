@@ -1,3 +1,4 @@
+import {useState, useLayoutEffect} from 'react'; 
 import Head from "next/head";
 
 import Layout from "../components/Layout";
@@ -50,9 +51,16 @@ interface props {
   allPostsData: Array<any>
 }
 
-const Home:React.FC<props> = ({ allPostsData }) => {
+const Home:React.FC<props> = ({ allPostsData }) => {const [isMobile, setIsMobile] = useState(false);
+
+  useLayoutEffect(() => {
+    if (window.innerWidth < 470) {
+      setIsMobile(true);
+    }
+  }, []);
   return (
-    <Layout>
+    <Layout
+    isMobile={isMobile}>
       <Head>
         <title>ZAEYON LOG</title>
         <meta
@@ -66,7 +74,9 @@ const Home:React.FC<props> = ({ allPostsData }) => {
           <Emoji>🏠</Emoji>
           Home
         </TitleText>
-        <PostList postsData={allPostsData} />
+        <PostList 
+        isMobile={isMobile}
+        postsData={allPostsData} />
       </Container>
     </Layout>
   );

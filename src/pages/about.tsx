@@ -1,3 +1,4 @@
+import {useState, useLayoutEffect} from 'react';
 import Head from "next/head";
 import styled from "styled-components";
 import Image from "next/image";
@@ -150,8 +151,16 @@ interface props {
 }
 
 const About: React.FC<props> = ({}) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useLayoutEffect(() => {
+    if (window.innerWidth < 470) {
+      setIsMobile(true);
+    }
+  }, []);
   return (
-    <Layout>
+    <Layout
+    isMobile={isMobile}>
       <Head>
         <title>About</title>
       </Head>

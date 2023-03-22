@@ -59,15 +59,7 @@ const MotionDiv = styled(motion.div)`
   }
 `;
 
-const PostList = ({ postsData }) => {
-  const [isMobileDevice, setIsMobileDevice] = useState(false);
-
-  useLayoutEffect(() => {
-    if (window.innerWidth < 470) {
-      setIsMobileDevice(true);
-    }
-  }, []);
-
+const PostList = ({ postsData, isMobile }) => {
   return (
     <Container>
       <PostListContainer>
@@ -76,10 +68,8 @@ const PostList = ({ postsData }) => {
             <MotionDiv
               index={index}
               initial={false}
-              whileHover={isMobileDevice ? "" : { scale: 1.074 }}
-              transition={
-                isMobileDevice ? "" : { type: "linear", duration: 0.22 }
-              }
+              whileHover={isMobile ? "" : { scale: 1.074 }}
+              transition={isMobile ? "" : { type: "linear", duration: 0.22 }}
               key={index}
             >
               <PostItem post={post} key={index} />

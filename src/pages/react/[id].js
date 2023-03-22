@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { getPostData, getCategoryPostIds } from "../../lib/posts";
 
 import { initializeApp } from "firebase/app";
@@ -61,6 +61,13 @@ const Post = ({ postData }) => {
   const [commentArray, setCommentArray] = useState([]);
   const [visibleReplyWrite, setVisibleReplyWrite] = useState(false);
   const postRef = doc(db, "posts/", postData.title);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useLayoutEffect(() => {
+    if (window.innerWidth < 470) {
+      setIsMobile(true);
+    }
+  }, []);
 
   useEffect(() => {
     let postDocSnap;
@@ -139,7 +146,7 @@ const Post = ({ postData }) => {
   };
 
   return (
-    <Layout postTitle={postData.title}>
+    <Layout isMobile={isMobile} postTitle={postData.title}>
       <Head>
         <title>{postData.title}</title>
       </Head>

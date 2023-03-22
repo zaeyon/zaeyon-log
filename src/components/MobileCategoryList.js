@@ -22,7 +22,11 @@ const AboutText = styled.div`
   font-family: "Jost-Medium";
 `;
 
-const CategoryList = ({ postsNumber, onClickCategoryItem }) => {
+const MobileCategoryList = ({
+  postsNumber,
+  onClickCategoryItem,
+  onClickAboutCategoryItem,
+}) => {
   const Categories = [
     {
       key: "react",
@@ -38,11 +42,9 @@ const CategoryList = ({ postsNumber, onClickCategoryItem }) => {
 
   return (
     <Container>
-      <Link style={{ textDecoration: "none" }} href={"/about"}>
-        <AboutContainer>
-          <AboutText>About</AboutText>
-        </AboutContainer>
-      </Link>
+      <AboutContainer onClick={onClickAboutCategoryItem}>
+        <AboutText>About</AboutText>
+      </AboutContainer>
       {Categories.map((category, index) => (
         <CategoryItem
           onClickCategoryItem={onClickCategoryItem}
@@ -56,4 +58,4 @@ const CategoryList = ({ postsNumber, onClickCategoryItem }) => {
   );
 };
 
-export default CategoryList;
+export default MobileCategoryList;
