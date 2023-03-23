@@ -25,7 +25,7 @@
     "**/*.tsx",
     "src/pages/index.tsx",
     "src/app/store.js",
-    "src/components/CommentInput.js"
+    "src/components/CommentInput.tsx"
   ],
   "exclude": ["node_modules"]
 }

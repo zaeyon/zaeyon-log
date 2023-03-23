@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState, useEffect, useLayoutEffect } from "react";
 import { getPostData, getCategoryPostIds } from "../../lib/posts";
+import {comment} from '../../lib/type';
 
 import { initializeApp } from "firebase/app";
 import {
@@ -35,7 +36,7 @@ const today = new Date();
 let year = today.getFullYear(); // 년도
 let month =
   today.getMonth() + 1 < 10
-    ? "0" + parseInt(today.getMonth() + 1)
+    ? "0" + parseInt(`${today.getMonth() + 1}`)
     : today.getMonth() + 1;
 let day = today.getDate() < 10 ? "0" + today.getDate() : today.getDate();
 const date = year + "/" + month + "/" + day;
@@ -48,7 +49,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: any) {
   const postData = getPostData(params.id, "react");
   return {
     props: {
@@ -57,9 +58,13 @@ export async function getStaticProps({ params }) {
   };
 }
 
-const Post = ({ postData }) => {
-  const [commentArray, setCommentArray] = useState([]);
-  const [visibleReplyWrite, setVisibleReplyWrite] = useState(false);
+interface props {
+  postData: any
+}
+
+const Post: React.FC<props> = ({ postData }: any) => {
+  const [commentArray, setCommentArray] = useState<comment[]>([]);
+  const [commentCount, setCommentCount] = useState<number>(0);
   const postRef = doc(db, "posts/", postData.title);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -88,7 +93,16 @@ const Post = ({ postData }) => {
     getPostDoc();
   }, []);
 
-  const writeComment = (name, password, comment) => {
+  useEffect(() => {
+    let replyCount = 0;
+    commentArray.forEach((item) => {
+      replyCount = replyCount + item.replys.length;
+    });
+
+    setCommentCount(commentArray.length + replyCount);
+  }, [commentArray]);
+
+  const writeComment = (name: string, password: string, comment: string) => {
     const commentItem = {
       id: name + today.getMilliseconds(),
       name,
@@ -111,7 +125,7 @@ const Post = ({ postData }) => {
     }
   };
 
-  const writeReply = (name, password, comment, commentId, selectedIndex) => {
+  const writeReply = (name: string, password: string, comment: string, commentId: number, selectedIndex: number) => {
     const replyItem = {
       id: name + today.getMilliseconds(),
       name,
@@ -131,8 +145,7 @@ const Post = ({ postData }) => {
     });
   };
 
-  const removeComment = (selectedIndex) => {
-    console.log("removeComment selectedIndex", selectedIndex);
+  const removeComment = (selectedIndex: number) => {
     const selectedComment = commentArray[selectedIndex];
     const removedCommentArray = commentArray.filter((item, index) => {
       return selectedIndex !== index;
@@ -142,6 +155,25 @@ const Post = ({ postData }) => {
 
     updateDoc(postRef, {
       comments: arrayRemove(selectedComment),
+    });
+  };
+
+
+  const removeReply = (commentIndex: number, replyIndex: number) => {
+    const removedReplyArray = commentArray[commentIndex].replys.filter(
+      (item, index) => {
+        return index !== replyIndex;
+      }
+    );
+
+    console.log("removeReply removedReplyArray", removedReplyArray);
+
+    const tmpCommentArray = [...commentArray];
+    tmpCommentArray[commentIndex].replys = removedReplyArray;
+
+    setCommentArray(tmpCommentArray);
+    updateDoc(postRef, {
+      comments: tmpCommentArray,
     });
   };
 
@@ -156,6 +188,8 @@ const Post = ({ postData }) => {
         commentArray={commentArray}
         removeComment={removeComment}
         writeReply={writeReply}
+        removeReply={removeReply}
+        commentCount={commentCount}
       />
     </Layout>
   );

@@ -146,6 +146,11 @@ const GithubIcon = styled(Image)`
   height: 1.7rem;
 `;
 
+const MobileSocialContainer = styled.div`
+  padding-top: 15px;
+
+`
+
 interface props {
   
 }
@@ -177,12 +182,22 @@ const About: React.FC<props> = ({}) => {
             <ProfileContentContainer>
               <NameText>이재연</NameText>
               <SpecialtyText>Front-end Developer</SpecialtyText>
+              {isMobile && (
+              <MobileSocialContainer>
+            <a href={"https://github.com/zaeyon"} target="_blank">
+              <GithubIcon src={GithubIconPNG} alt={""} />
+            </a>
+            </MobileSocialContainer>
+              )
+              }
             </ProfileContentContainer>
+            {!isMobile && (
             <SocialContainer>
               <a href={"https://github.com/zaeyon"} target="_blank">
                 <GithubIcon src={GithubIconPNG} alt={""} />
               </a>
             </SocialContainer>
+            )}
           </ProfileContainer>
           <DividerLine />
           <IntroduceContainer>

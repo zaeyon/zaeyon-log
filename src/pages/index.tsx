@@ -51,7 +51,8 @@ interface props {
   allPostsData: Array<any>
 }
 
-const Home:React.FC<props> = ({ allPostsData }) => {const [isMobile, setIsMobile] = useState(false);
+const Home:React.FC<props> = ({ allPostsData }) => {
+  const [isMobile, setIsMobile] = useState(false);
 
   useLayoutEffect(() => {
     if (window.innerWidth < 470) {

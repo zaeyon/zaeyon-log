@@ -61,7 +61,7 @@ export function getCategoryPostsData(category) {
   });
 
   return categoryPostsData.sort((a, b) => {
-    if (a.data < b.date) {
+    if (a.date < b.date) {
       return 1;
     } else {
       return -1;

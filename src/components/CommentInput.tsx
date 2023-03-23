@@ -75,7 +75,16 @@ const PostButton = styled.div`
   }
 `;
 
-const CommentInput = ({
+interface props {
+  type: string,  
+  writeComment: (name: string, password: string, comment: string) => void,
+  writeReply: (name: string, password: string, comment: string, commentId: number, selectedIndex: number) => void,
+  commentId: number,
+  selectedIndex: number,
+  hideReplyWrite: () => void,
+}
+
+const CommentInput:React.FC<props> = ({
   writeComment,
   type,
   writeReply,
@@ -91,10 +100,10 @@ const CommentInput = ({
   const [requestPassword, setRequestPassword] = useState(false);
   const [requestComment, setRequestComment] = useState(false);
 
-  const nameInputRef = useRef();
+  const nameInputRef = useRef<any>();
 
   const onChangeNameInput = useCallback(
-    (e) => {
+    (e: any) => {
       setName(e.target.value);
 
       if (name.length > 0) {
@@ -105,7 +114,7 @@ const CommentInput = ({
   );
 
   const onChangePasswordInput = useCallback(
-    (e) => {
+    (e: any) => {
       setPassword(e.target.value);
 
       if (password.length > 0) {
@@ -116,7 +125,7 @@ const CommentInput = ({
   );
 
   const onChangeContentInput = useCallback(
-    (e) => {
+    (e: any) => {
       setComment(e.target.value);
 
       if (comment.length > 0) {

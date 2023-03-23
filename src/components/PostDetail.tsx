@@ -1,5 +1,5 @@
-import { useRouter, useEffect } from "next/router";
 import styled from "styled-components";
+import {comment} from '../lib/type';
 
 import { initializeApp } from "firebase/app";
 import {
@@ -14,7 +14,7 @@ import {
 import Layout from "./Layout";
 import PostMarkdown from "./PostMarkdown";
 import CommentList from "./CommentList";
-import CommentInput from "./CommentInput.js";
+import CommentInput from "./CommentInput";
 
 const firebaseConfig = {
   apiKey: "AIzaSyApcPm79FZTru071CEdbNs4vJwR6uFHTyw",
@@ -72,7 +72,17 @@ const CommentInputContainer = styled.div`
   margin-top: 20px;
 `;
 
-const PostDetail = ({
+interface props {
+  postData: any[],
+  commentArray: comment[],
+  writeComment: (name: string, password: string, comment: string) => void,
+  removeComment: (selectedIndex: number) => void,
+  writeReply: (name: string, password: string, comment: string, commentId: number, selectedIndex: number) => void,
+  removeReply: (commentIndex: number, replyIndex: number) => void,
+  commentCount: number,
+}
+
+const PostDetail: React.FC<props> = ({
   postData,
   writeComment,
   commentArray,

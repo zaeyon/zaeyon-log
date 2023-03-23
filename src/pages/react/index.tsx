@@ -4,6 +4,7 @@ import Layout from "../../components/Layout";
 import { getCategoryPostsData } from "../../lib/posts";
 import styled from "styled-components";
 import Image from "next/image";
+import {postList} from '../../lib/type';
 
 import PostList from "../../components/PostList";
 
@@ -46,7 +47,11 @@ export async function getStaticProps() {
   };
 }
 
-export default function React({ category, categoryPostsData }) {
+interface props {
+  categoryPostsData: postList[]
+}
+
+const React: React.FC<props> = ({ categoryPostsData }) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useLayoutEffect(() => {
@@ -62,8 +67,8 @@ export default function React({ category, categoryPostsData }) {
       <Container>
         <TitleContainer>
           <TitleText>
-            <ReactLogo src={reactLogo} />
-            {"React"}
+            <ReactLogo src={reactLogo} alt=""/>
+            React
           </TitleText>
         </TitleContainer>
         <PostList isMobile={isMobile} postsData={categoryPostsData} />
@@ -71,3 +76,5 @@ export default function React({ category, categoryPostsData }) {
     </Layout>
   );
 }
+
+export default React;
