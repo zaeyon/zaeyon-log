@@ -64,11 +64,14 @@ const Home:React.FC<props> = ({ allPostsData }) => {
     isMobile={isMobile}>
       <Head>
         <title>ZAEYON LOG</title>
+        <meta charSet="utf-8"></meta>
+	      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+        <meta name="description" content="프론트엔드 개발자의 개인 기술 블로그입니다."/>
         <meta
           name="google-site-verification"
           content="b_KRmmtmVWZrBzyGVuuTudU1A7831kRb8c26TbIJnTw"
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
       </Head>
       <Container>
         <TitleText>

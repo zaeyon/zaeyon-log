@@ -167,7 +167,7 @@ const About: React.FC<props> = ({}) => {
     <Layout
     isMobile={isMobile}>
       <Head>
-        <title>About</title>
+        <title>{"About"}</title>
       </Head>
       <FullContainer>
         <AboutContainer>

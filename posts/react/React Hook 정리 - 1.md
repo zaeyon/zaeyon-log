@@ -2,6 +2,7 @@
 id: 3
 title: "React Hook 정리 - 1"
 date: "2023.03.11"
+description: "React Hook의 정의와 도입동기, 클래스형 컴포넌트의 문제점에 대해 알아보고 가장 중요한 useState, useEffect의 사용법을 알아보겠습니다."
 preview: "무심코 사용했던 리액트의 훅(Hook)의 종류와 올바른 사용법에 대해 알아보겠습니다."
 thumbnail: "/images/posts/3/thumbnail.png"
 reference:
