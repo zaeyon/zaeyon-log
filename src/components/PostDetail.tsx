@@ -111,7 +111,11 @@ const PostDetail: React.FC<props> = ({
           />
         </CommentsContainer>
         <CommentInputContainer>
-          <CommentInput writeComment={writeComment} type={"comment"} />
+          <CommentInput writeComment={writeComment} type={"comment"} writeReply={function (name: string, password: string, comment: string, commentId: string, selectedIndex: number): void {
+            throw new Error("Function not implemented.");
+          } } commentId={""} selectedIndex={0} hideReplyWrite={function (): void {
+            throw new Error("Function not implemented.");
+          } } />
         </CommentInputContainer>
       </FooterContainer>
     </FullContainer>

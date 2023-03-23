@@ -77,11 +77,11 @@ const PostButton = styled.div`
 
 interface props {
   type?: string,  
-  writeComment?: (name: string, password: string, comment: string) => void,
-  writeReply?: (name: string, password: string, comment: string, commentId: string, selectedIndex: number) => void,
-  commentId?: number,
-  selectedIndex?: number,
-  hideReplyWrite?: () => void,
+  writeComment: (name: string, password: string, comment: string) => void,
+  writeReply: (name: string, password: string, comment: string, commentId: string, selectedIndex: number) => void,
+  commentId: string,
+  selectedIndex: number,
+  hideReplyWrite: () => void,
 }
 
 const CommentInput:React.FC<props> = ({
