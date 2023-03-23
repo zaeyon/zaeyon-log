@@ -11,6 +11,7 @@ export interface postList {
     date: string, 
     preview: string, 
     thumbnail: string,
+    description: string,
 }
 
 export interface post {
@@ -20,7 +21,8 @@ export interface post {
     preview: string,
     thumbnail: string,
     reference: reference[],
-    content: string
+    content: string,
+    description: string,
 }
 
 export interface reply {
@@ -30,7 +32,7 @@ export interface reply {
     comment: string,
     postId: number,
     date: string,
-    commentId: number,
+    commentId: string,
   }
   
 export interface comment {

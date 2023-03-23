@@ -125,7 +125,7 @@ const Post: React.FC<props> = ({ postData }: any) => {
     }
   };
 
-  const writeReply = (name: string, password: string, comment: string, commentId: number, selectedIndex: number) => {
+  const writeReply = (name: string, password: string, comment: string, commentId: string, selectedIndex: number) => {
     const replyItem = {
       id: name + today.getMilliseconds(),
       name,

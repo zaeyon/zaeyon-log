@@ -16,6 +16,7 @@ import {
 
 import Layout from "../../components/Layout";
 import PostDetail from "../../components/PostDetail";
+import {comment, post} from '../../lib/type';
 
 const firebaseConfig = {
   apiKey: "AIzaSyApcPm79FZTru071CEdbNs4vJwR6uFHTyw",
@@ -35,7 +36,7 @@ const today = new Date();
 let year = today.getFullYear(); // 년도
 let month =
   today.getMonth() + 1 < 10
-    ? "0" + parseInt(today.getMonth() + 1)
+    ? "0" + parseInt(`${today.getMonth() + 1}`)
     : today.getMonth() + 1;
 let day = today.getDate() < 10 ? "0" + today.getDate() : today.getDate();
 const date = year + "/" + month + "/" + day;
@@ -48,7 +49,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: any) {
   const postData = getPostData(params.id, "javascript");
   return {
     props: {
@@ -57,10 +58,9 @@ export async function getStaticProps({ params }) {
   };
 }
 
-const Post = ({ postData }) => {
-  const [commentArray, setCommentArray] = useState([]);
-  const [commentCount, setCommentCount] = useState();
-  const [visibleReplyWrite, setVisibleReplyWrite] = useState(false);
+const Post = (postData: post) => {
+  const [commentArray, setCommentArray] = useState<comment[]>([]);
+  const [commentCount, setCommentCount] = useState<number>(0);
   const [isMobile, setIsMobile] = useState(false);
   const postRef = doc(db, "posts/", postData.title);
 
@@ -91,14 +91,14 @@ const Post = ({ postData }) => {
 
   useEffect(() => {
     let replyCount = 0;
-    commentArray.forEach((item) => {
+    commentArray.forEach((item: comment) => {
       replyCount = replyCount + item.replys.length;
     });
 
     setCommentCount(commentArray.length + replyCount);
   }, [commentArray]);
 
-  const writeComment = (name, password, comment) => {
+  const writeComment = (name: string, password: string, comment: string) => {
     const commentItem = {
       id: name + today.getMilliseconds(),
       name,
@@ -121,7 +121,7 @@ const Post = ({ postData }) => {
     }
   };
 
-  const writeReply = (name, password, comment, commentId, selectedIndex) => {
+  const writeReply = (name: string, password: string, comment: string, commentId: string, selectedIndex: number) => {
     const replyItem = {
       id: name + today.getMilliseconds(),
       name,
@@ -141,7 +141,7 @@ const Post = ({ postData }) => {
     });
   };
 
-  const removeComment = (selectedIndex) => {
+  const removeComment = (selectedIndex: number) => {
     console.log("removeComment selectedIndex", selectedIndex);
     const selectedComment = commentArray[selectedIndex];
     const removedCommentArray = commentArray.filter((item, index) => {
@@ -155,7 +155,7 @@ const Post = ({ postData }) => {
     });
   };
 
-  const removeReply = (commentIndex, replyIndex) => {
+  const removeReply = (commentIndex: number, replyIndex: number) => {
     const removedReplyArray = commentArray[commentIndex].replys.filter(
       (item, index) => {
         return index !== replyIndex;

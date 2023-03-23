@@ -16,6 +16,8 @@ import PostMarkdown from "./PostMarkdown";
 import CommentList from "./CommentList";
 import CommentInput from "./CommentInput";
 
+import {post} from '../lib/type';
+
 const firebaseConfig = {
   apiKey: "AIzaSyApcPm79FZTru071CEdbNs4vJwR6uFHTyw",
   authDomain: "zaeyon-log.firebaseapp.com",
@@ -73,11 +75,11 @@ const CommentInputContainer = styled.div`
 `;
 
 interface props {
-  postData: any[],
+  postData: post,
   commentArray: comment[],
   writeComment: (name: string, password: string, comment: string) => void,
   removeComment: (selectedIndex: number) => void,
-  writeReply: (name: string, password: string, comment: string, commentId: number, selectedIndex: number) => void,
+  writeReply: (name: string, password: string, comment: string, commentId: string, selectedIndex: number) => void,
   removeReply: (commentIndex: number, replyIndex: number) => void,
   commentCount: number,
 }
