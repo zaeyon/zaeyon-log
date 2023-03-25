@@ -82,7 +82,7 @@ const Menu = ({
       visibleMenu && (
         <div
           className={style.mobileContainer}
-          style={{ height: "100vh", height: "100vw", paddingTop: "3rem" }}
+          style={{ width: "100vw", height: "100vh", paddingTop: "3rem" }}
         >
           <CategoryList
             postsNumber={postsNumber}
