@@ -7,15 +7,14 @@ interface props {
     
 }
 
-const Nostyled:React.FC<props> = ({}) => {
+const Styled:React.FC<props> = ({}) => {
 
     return (
         <div>
-            <Navbar/>
-            
-
+            <Header
+            headerTitle="ZAEYON LOG"/>
         </div>
     )
 }
 
-export default Nostyled
+export default Styled
