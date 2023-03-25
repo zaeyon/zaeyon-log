@@ -13,7 +13,7 @@ const PostItem = ({ post }) => {
       }}
     >
       <div className={style.container}>
-        <div className={style.titleContainer}>{post.title}</div>
+        <div className={style.titleWrapper}>{post.title}</div>
         <div className={style.contentWrapper}>
           <div className={style.previewWrapper}>{post.preview}</div>
           <div className={style.thumbnailImageWrapper}>
