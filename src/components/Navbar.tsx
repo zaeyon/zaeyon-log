@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useLayoutEffect} from 'react'; 
 import Image from 'next/image'
-import styles from './navbar.module.css';
+import styles from './moduleStyles/navbar.module.css';
 import {animated, useSpring} from '@react-spring/web'; 
 import MenuIconPNG from "../../public/images/icons/hamburger.png";
 
