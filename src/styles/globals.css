@@ -11,7 +11,9 @@
 
 @font-face {
   font-family: "Jost-Medium";
-  src: url("../fonts/Jost-Medium.woff") format('woff')
+  src: url("../fonts/Jost-Medium.woff") format('woff');
+  font-weight: 700;
+  font-style: normal;
 }
 
 @font-face {

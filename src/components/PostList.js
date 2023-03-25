@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react";
+import { useCallback } from "react";
 import styled from "styled-components";
 import PostItem from "./PostItem";
 

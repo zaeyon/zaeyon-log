@@ -1,0 +1,38 @@
+.container {
+    width: 100vw;
+    height: 6.5rem;
+    z-index: 10;
+    opacity: 0.96;
+    position: fixed;
+    background: #000e51;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: url(/images/header_background.png);
+    background-size: cover;
+    box-shadow: 0px 1px 25px 5px #27272760;
+}
+
+.menuIconDiv {
+    padding: 0px 5px;
+}
+
+.menuIconImg {
+    width: 1.7rem;
+    height: 1.5rem;
+}
+
+.emptyDiv {
+    width: 1.7rem;
+    height: 1.5rem;
+    padding: 10px;
+}
+
+.titleDiv {
+    padding: 0px 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 42px;
+    font-family: "Jost-Medium";
+    font-weight: 500;
+}
