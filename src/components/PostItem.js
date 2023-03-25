@@ -1,3 +1,4 @@
+import style from "./styles/post-item.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
