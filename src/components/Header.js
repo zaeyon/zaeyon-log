@@ -13,7 +13,7 @@ const MobileHeader = styled.div`
   height: 4.5rem;
   width: 100vw;
   position: fixed;
-  background: black;
+  background: #000e51;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -162,7 +162,7 @@ const Header = ({
           height: headerHeight,
           width: "100vw",
           position: "fixed",
-          background: "black",
+          background: "#000e51",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",

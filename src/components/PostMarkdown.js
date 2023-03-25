@@ -9,8 +9,6 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 
-import Layout from "./Layout";
-import ProfileImagePNG from "../../public/images/profile.png";
 import BlankProfileImagePNG from "../../public/images/blank_profile.png";
 
 const Container = styled.div`

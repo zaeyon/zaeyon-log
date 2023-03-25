@@ -1,5 +1,8 @@
 import styled from "styled-components";
+import Image from "next/image";
 import Link from "next/link";
+
+import MenuIconPNG from "../../public/images/icons/hamburger.png";
 
 const Container = styled.div`
   display: flex;
@@ -16,7 +19,7 @@ const Container = styled.div`
   }
 `;
 
-const ThumbnailImg = styled.img`
+const ThumbnailImg = styled(Image)`
   border-radius: 5px;
   width: 5rem;
   height: 5rem;
@@ -76,7 +79,13 @@ const PostItem = ({ post }) => {
         <ContentContainer>
           <PreviewContainer>{post.preview}</PreviewContainer>
           <ThumbnailImgContainer>
-            <ThumbnailImg src={post?.thumbnail} />
+            <ThumbnailImg
+              width={150}
+              height={150}
+              priority={true}
+              src={post.thumbnail}
+              alt={"thumbnail image"}
+            />
             <DateContainer>{post.date}</DateContainer>
           </ThumbnailImgContainer>
         </ContentContainer>
