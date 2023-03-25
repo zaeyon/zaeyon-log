@@ -52,7 +52,7 @@
 }
 
 .dateWrapper {
-    display: dlex;
+    display: flex;
     align-items: flex-end;
     color: #bbbbbb;
     font-size: 14px;

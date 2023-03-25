@@ -8,20 +8,10 @@
     display: flex;
     flex-wrap: wrap;
     
-    @media (max-width: 470px) {
-        width: 90vw;
-    }
+}
 
-    @media (min-width: 470px) and (max-width: 900px) {
-        width: 28rem;
-    }
-
-
-    @media (min-width: 900px) and (max-width: 1199px) {
-    }
-
-    @media (min-width: 1200px) {
-    }
+.postItemWrapper {
+    padding: 0px 7px;
 }
 
 .emptyPostItemWrapper {
@@ -31,4 +21,18 @@
     border: 0.5px solid #f2f2f2;
     border-radius: 15px;
 }
+
+
+@media (min-width: 470px) and (max-width: 900px) {
+    .postListWrapper {
+        width: 30rem;
+    }
+}
+
+@media (max-width: 470px) {
+    .postListWrapper {
+        width: 90vw;
+    }
+}
+
 
