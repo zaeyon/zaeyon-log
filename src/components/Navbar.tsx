@@ -112,7 +112,7 @@ const Navbar: React.FC<props> = ({onClickMenu, headerEvent, onClickHeaderLogo, h
                 />
             </div>
             <div 
-            style={headerTitle === "ZAEYON LOG" ? {fontSize: "42px"} : {fontSize: "37px"}}
+            style={headerTitle === "ZAEYON LOG" ? {fontSize: "37px"} : {fontSize: "32px"}}
             className={style.titleWrapper} 
             onClick={() => onClickHeaderLogo()}>
                 {headerTitle}

@@ -82,9 +82,9 @@ const Menu = ({
       visibleMenu && (
         <div
           className={style.mobileContainer}
-          style={{ width: "100vw", height: "100vh", paddingTop: "3rem" }}
+          style={{ width: "100vw", height: "100vh", paddingTop: "5rem" }}
         >
-          <CategoryList
+          <MobileCategoryList
             postsNumber={postsNumber}
             onClickCategoryItem={onClickMobileCategoryItem}
             onClickAboutCategoryItem={onClickAboutCategoryItem}

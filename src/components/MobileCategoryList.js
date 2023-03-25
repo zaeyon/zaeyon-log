@@ -1,26 +1,5 @@
-import Link from "next/link";
-import styled from "styled-components";
 import CategoryItem from "./CategoryItem";
-
-const Container = styled.div`
-  flex: 1;
-  padding-left: 15px;
-  padding-right: 15px;
-`;
-
-const AboutContainer = styled.div`
-  padding: 18px 10px 18px 10px;
-
-  border-bottom: 2.5px solid #efefef;
-  display: flex;
-  align-items: center;
-`;
-
-const AboutText = styled.div`
-  font-size: 19px;
-  color: #595959;
-  font-family: "Jost-Medium";
-`;
+import style from "./styles/category-list.module.css";
 
 const MobileCategoryList = ({
   postsNumber,
@@ -41,10 +20,13 @@ const MobileCategoryList = ({
   ];
 
   return (
-    <Container>
-      <AboutContainer onClick={onClickAboutCategoryItem}>
-        <AboutText>About</AboutText>
-      </AboutContainer>
+    <div className={style.container}>
+      <div
+        className={style.aboutWrapper}
+        onClick={() => onClickAboutCategoryItem()}
+      >
+        About
+      </div>
       {Categories.map((category, index) => (
         <CategoryItem
           onClickCategoryItem={onClickCategoryItem}
@@ -54,7 +36,7 @@ const MobileCategoryList = ({
           postsNumber={category.number}
         />
       ))}
-    </Container>
+    </div>
   );
 };
 

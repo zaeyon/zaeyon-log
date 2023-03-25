@@ -2,33 +2,12 @@ import {useState, useLayoutEffect} from 'react';
 import Head from "next/head";
 import style from '../styles/posts-page.module.css';
 import Layout from "../components/Layout";
-import styled from "styled-components";
 import { getSortedPostsData, getPostsNumber } from "../lib/posts";
-import { useDispatch, useSelector } from "react-redux";
 import { wrapper } from "../app/store";
 import { setPostsNumber } from "../features/postsNumberSlice";
 
 import PostList from "../components/PostList";
 
-
-const Container = styled.div`
-  padding-top: 5px;
-`;
-
-const Emoji = styled.span`
-  font-size: 40px;
-  margin-right: 15px;
-`;
-
-const TitleText = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 35px;
-  font-weight: 600;
-  padding-left: 20px;
-  font-family: "Jost-Medium";
-  color: #000748;
-`;
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -74,15 +53,18 @@ const Home:React.FC<props> = ({ allPostsData }) => {
           content="b_KRmmtmVWZrBzyGVuuTudU1A7831kRb8c26TbIJnTw"
         />
       </Head>
-      <Container>
-        <TitleText>
-          <Emoji>🏠</Emoji>
+      <div
+      className={style.container}>
+        <div
+        className={style.titleWrapper}>
+          <span
+          className={style.emoji}>🏠</span>
           Home
-        </TitleText>
+        </div>
         <PostList 
         isMobile={isMobile}
         postsData={allPostsData} />
-      </Container>
+      </div>
     </Layout>
   );
 }
