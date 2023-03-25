@@ -79,7 +79,6 @@ const Post: React.FC<props> = ({ postData }: any) => {
     const getPostDoc = async () => {
       postDocSnap = await getDoc(postRef);
       if (postDocSnap.exists()) {
-        console.log("postDocSnap.data().comments", postDocSnap.data().comments);
         if (postDocSnap.data().comments) {
           setCommentArray(postDocSnap.data().comments);
         } else {

@@ -16,7 +16,7 @@ import {
 
 import Layout from "../../components/Layout";
 import PostDetail from "../../components/PostDetail";
-import {comment, post} from '../../lib/type';
+import {comment} from '../../lib/type';
 
 const firebaseConfig = {
   apiKey: "AIzaSyApcPm79FZTru071CEdbNs4vJwR6uFHTyw",
@@ -58,7 +58,11 @@ export async function getStaticProps({ params }: any) {
   };
 }
 
-const Post = (postData: post) => {
+interface props {
+  postData: any
+}
+
+const Post: React.FC<props> = ({postData}: any) => {
   const [commentArray, setCommentArray] = useState<comment[]>([]);
   const [commentCount, setCommentCount] = useState<number>(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -75,7 +79,6 @@ const Post = (postData: post) => {
     const getPostDoc = async () => {
       postDocSnap = await getDoc(postRef);
       if (postDocSnap.exists()) {
-        console.log("postDocSnap.data().comments", postDocSnap.data().comments);
         if (postDocSnap.data().comments) {
           setCommentArray(postDocSnap.data().comments);
         } else {
