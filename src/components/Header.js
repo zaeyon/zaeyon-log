@@ -3,7 +3,6 @@ import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
 import { animated, useSpring } from "@react-spring/web";
-import { useSelector } from "react-redux";
 import headerStyles from "../styles/header.module.css";
 import MenuIconPNG from "../../public/images/icons/hamburger.png";
 

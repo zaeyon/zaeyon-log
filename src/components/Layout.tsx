@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import Header from "./Header";
+import Navbar from './Navbar';
 import Menu from "./Menu";
 import { setVisibleMenu } from "../features/visibleMenuSlice";
 
@@ -149,7 +150,7 @@ const Layout: React.FC<props> = ({ children, postTitle, isMobile }) => {
         visibleMenu={visibleMenu}
       />
       <ExceptMenuContainer onClick={onClickExceptMenu}>
-        <Header
+        <Navbar
           isMobile={isMobile}
           onClickHeaderLogo={onClickHeaderLogo}
           headerEvent={headerEvent}
