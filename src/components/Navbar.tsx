@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useLayoutEffect} from 'react'; 
 import Image from 'next/image'
-import styles from './moduleStyles/navbar.module.css';
+import style from './styles/navbar.module.css';
 import {animated, useSpring} from '@react-spring/web'; 
 import MenuIconPNG from "../../public/images/icons/hamburger.png";
 
@@ -73,23 +73,23 @@ const Navbar: React.FC<props> = ({onClickMenu, headerEvent, onClickHeaderLogo, h
 
     return (
         <animated.div
-        className={styles.container}
+        className={style.container}
         style={{
             height: headerHeight,
             ...springs,
         }}
         >
-            <div className={styles.menuIconDiv}
+            <div className={style.menuIconWrapper}
             onClick={() => onClickMenu()}>
-                <Image className={styles.menuIconImg}
+                <Image className={style.menuIconImg}
                 src={MenuIconPNG}
                 alt={"menu icon"}
                 />
             </div>
-            <div className={styles.titleDiv} onClick={() => onClickHeaderLogo()}>
+            <div className={style.titleWrapper} onClick={() => onClickHeaderLogo()}>
                 {headerTitle}
             </div>
-            <div className={styles.emptyDiv}>
+            <div className={style.emptyWrapper}>
             </div>
         </animated.div>
     )

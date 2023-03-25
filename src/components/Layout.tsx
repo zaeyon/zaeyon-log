@@ -1,8 +1,8 @@
 import { useState, useEffect, useLayoutEffect, useCallback } from "react";
+import style from './styles/layout.module.css';
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import Header from "./Header";
 import Navbar from './Navbar';
 import Menu from "./Menu";
 import { setVisibleMenu } from "../features/visibleMenuSlice";
@@ -138,7 +138,8 @@ const Layout: React.FC<props> = ({ children, postTitle, isMobile }) => {
   });
 
   return (
-    <Container>
+    <div
+    className={style.container}>
       <Menu
       isMobile={isMobile}
         onClickCategoryItem={onClickCategoryItem}
@@ -159,7 +160,7 @@ const Layout: React.FC<props> = ({ children, postTitle, isMobile }) => {
         />
         <ContentContainer>{children}</ContentContainer>
       </ExceptMenuContainer>
-    </Container>
+    </div>
   );
 };
 

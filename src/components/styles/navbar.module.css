@@ -12,7 +12,7 @@
     box-shadow: 0px 1px 25px 5px #27272760;
 }
 
-.menuIconDiv {
+.menuIconWrapper {
     padding: 0px 5px;
 }
 
@@ -21,13 +21,13 @@
     height: 1.5rem;
 }
 
-.emptyDiv {
+.emptyWrapper {
     width: 1.7rem;
     height: 1.5rem;
     padding: 10px;
 }
 
-.titleDiv {
+.titleWrapper {
     padding: 0px 5px;
     cursor: pointer;
     color: white;

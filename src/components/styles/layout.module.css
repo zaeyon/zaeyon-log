@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.otherThanMenuContainer {
+  flex: 1;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 22vh;
+}
+
+.contentWrapper {
+    padding-top: 9rem;
+    padding-bottom: 4rem;
+
+    @media (max-width: 470px) {
+        padding-top: 6rem;
+    }
+}
