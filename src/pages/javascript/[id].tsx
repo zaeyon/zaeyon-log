@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState, useEffect, useLayoutEffect } from "react";
 import { getPostData, getCategoryPostIds } from "../../lib/posts";
+import {comment, post} from '../../lib/type';
 
 import { initializeApp } from "firebase/app";
 import {
@@ -16,7 +17,6 @@ import {
 
 import Layout from "../../components/Layout";
 import PostDetail from "../../components/PostDetail";
-import {comment} from '../../lib/type';
 
 const firebaseConfig = {
   apiKey: "AIzaSyApcPm79FZTru071CEdbNs4vJwR6uFHTyw",
@@ -59,10 +59,10 @@ export async function getStaticProps({ params }: any) {
 }
 
 interface props {
-  postData: any
+  postData: post
 }
 
-const Post: React.FC<props> = ({postData}: any) => {
+const Post: React.FC<props> = ({postData}) => {
   const [commentArray, setCommentArray] = useState<comment[]>([]);
   const [commentCount, setCommentCount] = useState<number>(0);
   const [isMobile, setIsMobile] = useState(false);
