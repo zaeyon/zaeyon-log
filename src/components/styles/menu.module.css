@@ -1,0 +1,21 @@
+.container {
+    background: #ffffff;
+    position: fixed;
+    display: flex;
+    left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    box-shadow: 3px 0px 25px -10px #27272750;
+}
+
+.mobileContainer {
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background: #ffffff;
+    position: fixed;
+    padding-bottom: 20px;
+    padding-top: 5rem;
+    box-shadow: 3px 0px 25px -10px #27272750;
+}

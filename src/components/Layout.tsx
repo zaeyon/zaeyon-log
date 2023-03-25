@@ -150,16 +150,20 @@ const Layout: React.FC<props> = ({ children, postTitle, isMobile }) => {
         headerEvent={headerEvent}
         visibleMenu={visibleMenu}
       />
-      <ExceptMenuContainer onClick={onClickExceptMenu}>
-        <Navbar
+      <div
+      className={style.otherThanMenuContainer}
+      onClick={() => onClickExceptMenu()}>
+      <Navbar
           isMobile={isMobile}
           onClickHeaderLogo={onClickHeaderLogo}
           headerEvent={headerEvent}
           onClickMenu={onClickMenu}
           headerTitle={headerTitle}
-        />
-        <ContentContainer>{children}</ContentContainer>
-      </ExceptMenuContainer>
+      />
+      <div
+        className={style.contentWrapper}
+        >{children}</div>
+      </div>
     </div>
   );
 };

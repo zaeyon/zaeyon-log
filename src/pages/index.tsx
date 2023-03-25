@@ -1,6 +1,6 @@
 import {useState, useLayoutEffect} from 'react'; 
 import Head from "next/head";
-
+import style from '../styles/posts-page.module.css';
 import Layout from "../components/Layout";
 import styled from "styled-components";
 import { getSortedPostsData, getPostsNumber } from "../lib/posts";
@@ -9,6 +9,7 @@ import { wrapper } from "../app/store";
 import { setPostsNumber } from "../features/postsNumberSlice";
 
 import PostList from "../components/PostList";
+
 
 const Container = styled.div`
   padding-top: 5px;

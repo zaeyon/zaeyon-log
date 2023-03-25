@@ -71,6 +71,7 @@ const Navbar: React.FC<props> = ({onClickMenu, headerEvent, onClickHeaderLogo, h
     }
   }, [headerHeight, headerEvent]);
 
+  if(!isMobile) {
     return (
         <animated.div
         className={style.container}
@@ -86,13 +87,42 @@ const Navbar: React.FC<props> = ({onClickMenu, headerEvent, onClickHeaderLogo, h
                 alt={"menu icon"}
                 />
             </div>
-            <div className={style.titleWrapper} onClick={() => onClickHeaderLogo()}>
+            <div 
+            style={headerTitle === "ZAEYON LOG" ? {fontSize: "42px"} : {fontSize: "37px"}}
+            className={style.titleWrapper} 
+            onClick={() => onClickHeaderLogo()}>
                 {headerTitle}
             </div>
             <div className={style.emptyWrapper}>
             </div>
         </animated.div>
     )
+  } else {
+    return (
+        <div
+        className={style.container}
+        style={{
+            height: "4.5rem"
+        }}>
+<div className={style.menuIconWrapper}
+            onClick={() => onClickMenu()}>
+                <Image className={style.mobileMenuIconImg}
+                src={MenuIconPNG}
+                alt={"menu icon"}
+                />
+            </div>
+            <div 
+            style={headerTitle === "ZAEYON LOG" ? {fontSize: "42px"} : {fontSize: "37px"}}
+            className={style.titleWrapper} 
+            onClick={() => onClickHeaderLogo()}>
+                {headerTitle}
+            </div>
+            <div className={style.mobileEmptyWrapper}>
+            </div>
+        </div>
+    )
+  }
+
 }
 
 export default React.memo(Navbar);
