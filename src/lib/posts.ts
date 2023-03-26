@@ -3,18 +3,12 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import {postList} from './type'
 
 const categoryArray = ["javascript", "react"];
 
-const reactPostsDirectory = path.join(process.cwd(), "posts/react");
-const reactNativePostsDirectory = path.join(
-  process.cwd(),
-  "posts/react-native"
-);
-const javascriptPostsDirectory = path.join(process.cwd(), "posts/javascript");
-
 export function getSortedPostsData() {
-  let allPostsData = [];
+  let allPostsData: any[] = [];
   let postsDirectory = "";
   for (let i = 0; i < categoryArray.length; i++) {
     postsDirectory = path.join(process.cwd(), `posts/${categoryArray[i]}`);
@@ -43,7 +37,7 @@ export function getSortedPostsData() {
   });
 }
 
-export function getCategoryPostsData(category) {
+export function getCategoryPostsData(category: string) {
   console.log("getCategoryPostsData, category", category);
   const postsDirectory = path.join(process.cwd(), "posts/" + category);
   const fileNames = fs.readdirSync(postsDirectory);
@@ -60,7 +54,7 @@ export function getCategoryPostsData(category) {
     };
   });
 
-  return categoryPostsData.sort((a, b) => {
+  return categoryPostsData.sort((a: any, b: any) => {
     if (a.date < b.date) {
       return 1;
     } else {
@@ -70,7 +64,7 @@ export function getCategoryPostsData(category) {
 }
 
 export function getAllPostIds() {
-  let allFileNames = [];
+  let allFileNames: any[] = [];
   let postsDirectory = "";
 
   for (let i = 0; i < categoryArray.length; i++) {
@@ -89,7 +83,7 @@ export function getAllPostIds() {
   });
 }
 
-export function getCategoryPostIds(category) {
+export function getCategoryPostIds(category: string) {
   const postsDirectory = path.join(process.cwd(), `posts/${category}`);
   const fileNames = fs.readdirSync(postsDirectory);
 
@@ -102,7 +96,7 @@ export function getCategoryPostIds(category) {
   });
 }
 
-export function getPostData(id, category) {
+export function getPostData(id: any, category: string) {
   const postsDirectory = path.join(process.cwd(), `posts/${category}`);
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -118,7 +112,7 @@ export function getPostData(id, category) {
 
 export function getPostsNumber() {
   let postsDirectory = "";
-  let postsNumber = {};
+  let postsNumber: any = {};
 
   for (let i = 0; i < categoryArray.length; i++) {
     postsDirectory = path.join(process.cwd(), `posts/${categoryArray[i]}`);

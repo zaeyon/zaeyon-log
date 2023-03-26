@@ -4,6 +4,7 @@ import Layout from "../../components/Layout";
 import { getCategoryPostsData } from "../../lib/posts";
 import Image from "next/image";
 import style from "../../styles/posts-page.module.css";
+import {postList} from '../../lib/type';
 
 import PostList from "../../components/PostList";
 
@@ -20,7 +21,11 @@ export async function getStaticProps() {
   };
 }
 
-export default function Javascript({ category, categoryPostsData }) {
+interface props {
+  categoryPostsData: postList[]
+}
+
+const Javascript:React.FC<props> = ({ categoryPostsData }) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useLayoutEffect(() => {
@@ -48,3 +53,5 @@ export default function Javascript({ category, categoryPostsData }) {
     </Layout>
   );
 }
+
+export default Javascript
