@@ -4,7 +4,6 @@ import style from '../styles/posts-page.module.css';
 import Layout from "../components/Layout";
 import { getSortedPostsData, getPostsNumber } from "../lib/posts";
 import { wrapper } from "../app/store";
-import { setPostsNumber } from "../features/postsNumberSlice";
 
 import PostList from "../components/PostList";
 

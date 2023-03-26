@@ -1,13 +1,22 @@
 import { useState } from "react";
 import Image from "next/image";
 import style from "./styles/comment-item.module.css";
+import {comment} from '../lib/type';
+
 
 import RemoveIconPNG from "../../public/images/icons/remove.png";
 import ReplyIconPNG from "../../public/images/icons/reply.png";
+import CommentInput from "./CommentInput";
 
-import CommentInput from "../components/CommentInput";
+interface props {
+  comment: comment,
+  index: number,
+  removeComment: (selectedIndex: number) => void,
+  writeReply: (name: string, password: string, comment: string, commentId: string, selectedIndex: number) => void,
+  removeReply: (commentIndex: number, replyIndex: number) => void,
+}
 
-const CommentItem = ({
+const CommentItem:React.FC<props> = ({
   comment,
   index,
   removeComment,
@@ -27,7 +36,7 @@ const CommentItem = ({
     }
   };
 
-  const onClickRemoveReply = (replyIndex) => {
+  const onClickRemoveReply = (replyIndex: number) => {
     const inputedPassword = prompt("비밀번호를 입력하세요.");
     if (inputedPassword === null) {
       return;

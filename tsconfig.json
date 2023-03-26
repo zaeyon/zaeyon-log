@@ -26,6 +26,6 @@
     "src/pages/index.tsx",
     "src/app/store.js",
     "src/components/CommentInput.tsx"
-  ],
+, "src/components/PostMarkdown.js", "src/components/PostMarkdown.js"  ],
   "exclude": ["node_modules"]
 }

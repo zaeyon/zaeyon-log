@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import codeBlock from "../styles/codeBlock";
 import style from "./styles/post-markdown.module.css";
-import {post} from '../lib/type';
+import { post } from "../lib/type";
 
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -12,11 +12,7 @@ import rehypeRaw from "rehype-raw";
 
 import BlankProfileImagePNG from "../../public/images/blank_profile.png";
 
-interface props {
-  postData: post
-}
-
-const PostMarkdown: React.FC<props> = ({ postData }) => {
+const PostMarkdown = ({ postData }) => {
   console.log("PostDetail postData", postData);
 
   const customStyle = {
@@ -25,7 +21,7 @@ const PostMarkdown: React.FC<props> = ({ postData }) => {
     wrapLines: true,
   };
 
-  const getFormattedDate = (date: any) => {
+  const getFormattedDate = (date) => {
     const dateArray = date.split(".");
     const year = dateArray[0];
     const month = dateArray[1] < 10 ? parseInt(dateArray[1]) : dateArray[1];

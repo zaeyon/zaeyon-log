@@ -1,11 +1,21 @@
+import Link from "next/link";
 import CategoryItem from "./CategoryItem";
 import style from "./styles/category-list.module.css";
 
-const MobileCategoryList = ({
-  postsNumber,
-  onClickCategoryItem,
-  onClickAboutCategoryItem,
-}) => {
+
+interface categoryObj {
+  key: string,
+  text: string
+  number: number,
+}
+
+interface props {
+  postsNumber: number,
+  onClickCategoryItem: (category: categoryObj) => void,
+}
+
+
+const CategoryList:React.FC<props> = ({ postsNumber, onClickCategoryItem }) => {
   const Categories = [
     {
       key: "react",
@@ -21,18 +31,14 @@ const MobileCategoryList = ({
 
   return (
     <div className={style.container}>
-      <div
-        className={style.aboutWrapper}
-        onClick={() => onClickAboutCategoryItem()}
-      >
-        About
-      </div>
+      <Link style={{ textDecoration: "none" }} href={"/about"}>
+        <div className={style.aboutWrapper}>About</div>
+      </Link>
       {Categories.map((category, index) => (
         <CategoryItem
           onClickCategoryItem={onClickCategoryItem}
           key={index}
           category={category}
-          onClickCategory={""}
           postsNumber={category.number}
         />
       ))}
@@ -40,4 +46,4 @@ const MobileCategoryList = ({
   );
 };
 
-export default MobileCategoryList;
+export default CategoryList;

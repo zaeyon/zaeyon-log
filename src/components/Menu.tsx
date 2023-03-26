@@ -5,7 +5,22 @@ import style from "./styles/menu.module.css";
 import CategoryList from "./CategoryList";
 import MobileCategoryList from "./MobileCategoryList";
 
-const Menu = ({
+interface categoryObj {
+  key: string,
+}
+
+interface props {
+  onClickCategoryItem: (category: categoryObj) => void,
+  onClickMobileCategoryItem: (category: categoryObj) => void,
+  onClickAboutCategoryItem: () => void,
+  headerEvent: string,
+  visibleMenu: boolean,
+  postsNumber: number,
+  scrolling: boolean,
+  isMobile: boolean,
+}
+
+const Menu: React.FC<props> = ({
   onClickCategoryItem,
   onClickMobileCategoryItem,
   onClickAboutCategoryItem,
@@ -58,8 +73,8 @@ const Menu = ({
     }
   }, [topDistance, headerEvent]);
 
-  if (!isMobile) {
-    return (
+  return (
+    !isMobile ? (
       <animated.div
         className={style.container}
         style={{
@@ -76,23 +91,22 @@ const Menu = ({
           onClickCategoryItem={onClickCategoryItem}
         />
       </animated.div>
-    );
-  } else {
-    return (
-      visibleMenu && (
-        <div
-          className={style.mobileContainer}
-          style={{ width: "100vw", height: "100vh", paddingTop: "5rem" }}
-        >
-          <MobileCategoryList
-            postsNumber={postsNumber}
-            onClickCategoryItem={onClickMobileCategoryItem}
-            onClickAboutCategoryItem={onClickAboutCategoryItem}
-          />
-        </div>
-      )
-    );
-  }
+    )
+   : (
+    visibleMenu ? (
+      <div
+        className={style.mobileContainer}
+        style={{ width: "100vw", height: "100vh", paddingTop: "5rem" }}
+      >
+        <MobileCategoryList
+          postsNumber={postsNumber}
+          onClickCategoryItem={onClickMobileCategoryItem}
+          onClickAboutCategoryItem={onClickAboutCategoryItem}
+        />
+      </div>
+    ) : <div/>
+  )
+  )
 };
 
 export default Menu;

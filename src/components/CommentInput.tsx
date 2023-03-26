@@ -5,7 +5,7 @@ import style from './styles/comment-input.module.css';
 
 interface props {
   type?: string,  
-  writeComment: (name: string, password: string, comment: string) => void,
+  writeComment?: (name: string, password: string, comment: string) => void,
   writeReply: (name: string, password: string, comment: string, commentId: string, selectedIndex: number) => void,
   commentId: string,
   selectedIndex: number,

@@ -1,8 +1,13 @@
 import style from "./styles/post-item.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import {postList} from '../lib/type';
 
-const PostItem = ({ post }) => {
+interface props {
+  post: postList;
+}
+
+const PostItem: React.FC<props> = ({ post }) => {
   console.log("PostListItem post", post);
   return (
     <Link

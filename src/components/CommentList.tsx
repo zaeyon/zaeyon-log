@@ -1,8 +1,16 @@
 import style from "./styles/comment-list.module.css";
+import {comment} from '../lib/type';
 
 import CommentItem from "./CommentItem";
 
-const CommentList = ({
+interface props {
+  commentArray: comment[],
+  removeComment: (selectedIndex: number) => void
+  writeReply: (name: string, password: string, comment: string, commentId: string, selectedIndex: number) => void,
+  removeReply: (commentIndex: number, replyIndex: number) => void,
+}
+
+const CommentList:React.FC<props> = ({
   commentArray,
   removeComment,
   writeReply,
