@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import {comment} from '../lib/type';
+import style from './styles/post-detail.module.css';
 
 import { initializeApp } from "firebase/app";
 import {
@@ -32,48 +32,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const FullContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 53rem;
-  justify-content: center;
-  @media (max-width: 55rem) {
-    width: 95%;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-  }
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: white;
-  border-radius: 7px;
-  box-shadow: 0px 0px 30px 15px #25252508;
-`;
-
-const CommentsContainer = styled.div``;
-
-const CommentHeaderContainer = styled.div`
-  font-size: 19px;
-  font-weight: 600;
-  padding-bottom: 10px;
-  color: #000748;
-`;
-
-const FooterContainer = styled.div`
-  margin-top: 15px;
-  padding: 20px 20px 30px 20px;
-  background-color: white;
-  border-radius: 7px;
-  box-shadow: 0px 0px 30px 15px #25252508;
-`;
-
-const CommentInputContainer = styled.div`
-  margin-top: 20px;
-`;
-
 interface props {
   postData: post,
   commentArray: comment[],
@@ -94,31 +52,36 @@ const PostDetail: React.FC<props> = ({
   commentCount,
 }) => {
   return (
-    <FullContainer>
-      <Container>
+    <div
+    className={style.container}>
+      <div className={style.contentContainer}>
         <PostMarkdown postData={postData} />
-      </Container>
-      <FooterContainer>
-        <CommentsContainer>
-          <CommentHeaderContainer>
+      </div>
+      <div
+      className={style.footerContainer}>
+        <div
+        className={style.commentListContainer}>
+          <div
+          className={style.commentHeaderContainer}>
             댓글({commentCount ? commentCount : 0})
-          </CommentHeaderContainer>
+          </div>
           <CommentList
             commentArray={commentArray}
             removeComment={removeComment}
             writeReply={writeReply}
             removeReply={removeReply}
           />
-        </CommentsContainer>
-        <CommentInputContainer>
+        </div>
+        <div
+        className={style.commentInputWrapper}>
           <CommentInput writeComment={writeComment} type={"comment"} writeReply={function (name: string, password: string, comment: string, commentId: string, selectedIndex: number): void {
             throw new Error("Function not implemented.");
           } } commentId={""} selectedIndex={0} hideReplyWrite={function (): void {
             throw new Error("Function not implemented.");
           } } />
-        </CommentInputContainer>
-      </FooterContainer>
-    </FullContainer>
+        </div>
+      </div>
+    </div>
   );
 };
 

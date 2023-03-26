@@ -1,34 +1,10 @@
 import { useState, useEffect, useLayoutEffect, useCallback } from "react";
 import style from './styles/layout.module.css';
-import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import Navbar from './Navbar';
 import Menu from "./Menu";
 import { setVisibleMenu } from "../features/visibleMenuSlice";
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const ExceptMenuContainer = styled.div`
-  flex: 1;
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  padding-bottom: 22vh;
-`;
-
-const ContentContainer = styled.div`
-  padding-top: 9rem;
-  padding-bottom: 4rem;
-
-  @media (max-width: 470px) {
-    padding-top: 6rem;
-  }
-`;
 
 interface props {
   children: any,

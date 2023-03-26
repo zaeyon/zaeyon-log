@@ -1,6 +1,6 @@
 import {useState, useLayoutEffect} from 'react';
+import style from '../styles/about-page.module.css';
 import Head from "next/head";
-import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 import Layout from "../components/Layout";
@@ -8,148 +8,6 @@ import GithubIconPNG from "../../public/images/icons/github.png";
 import ProfileImagePNG from "../../public/images/profile.png";
 import BlankProfileImagePNG from '../../public/images/blank_profile.png';
 
-const FullContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 53rem;
-  @media (max-width: 55rem) {
-    width: 95%;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-  }
-`;
-
-const Container = styled.div`
-  margin-top: 10px;
-  padding: 12px;
-  height: 1000px;
-  background: #ffffff;
-  border-radius: 7px;
-  box-shadow: 0px 0px 20px 8px #27272710;
-`;
-
-const AboutContainer = styled.div`
-  display: flex;
-  align-items: center;
-  padding-top: 5px;
-  padding-left: 5px;
-  padding-bottom: 5px;
-`;
-
-const AboutEmoji = styled.div`
-  margin-right: 13px;
-  font-size: 40px;
-`;
-
-const AboutText = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 35px;
-  font-weight: 500;
-  font-family: "Jost-Medium";
-  padding-left: 20px;
-  color: #000748;
-`;
-
-const ProfileContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding: 30px 20px 30px 20px;
-  background: white;
-`;
-
-const ProfileContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 35px;
-`;
-
-const NameText = styled.div`
-  font-size: 35px;
-  font-weight: 600;
-`;
-
-const SpecialtyText = styled.div`
-  margin-top: 5px;
-  font-size: 18px;
-  font-family: "Menlo-Regular";
-`;
-
-const ProfileImg = styled(Image)`
-  width: 8rem;
-  height: 8rem;
-  border-radius: 100px;
-  object-fit: cover;
-`;
-
-const DividerLine = styled.div`
-  height: 10px;
-  background: #f2f2f2;
-`;
-
-const IntroduceContainer = styled.div`
-  padding: 15px;
-`;
-
-const CareerItemContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const TitleText = styled.div`
-  font-size: 25px;
-  font-weight: 400;
-  margin-bottom: 10px;
-`;
-
-const PeriodText = styled.span`
-  width: 12rem;
-  font-size: 19px;
-  font-weight: 500;
-  color: #00000097;
-`;
-
-const CareerTextContainer = styled.span`
-  padding: 0px 0px 0px 13px;
-`;
-
-const CareerText = styled.div`
-  font-size: 19px;
-  font-weight: 500;
-  padding-bottom: 4px;
-`;
-
-const TechStackText = styled.span`
-  font-size: 17px;
-  color: #25252570;
-`;
-
-const DescriptionText = styled.div`
-  margin-top: 6px;
-  font-size: 16px;
-  font-weight: 300;
-  color: #000000;
-`;
-
-const SocialContainer = styled.div`
-  flex: 1;
-  padding: 10px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-`;
-
-const GithubIcon = styled(Image)`
-  width: 1.7rem;
-  height: 1.7rem;
-`;
-
-const MobileSocialContainer = styled.div`
-  padding-top: 15px;
-
-`
 
 interface props {
   
@@ -163,64 +21,90 @@ const About: React.FC<props> = ({}) => {
       setIsMobile(true);
     }
   }, []);
+  
   return (
     <Layout
     isMobile={isMobile}>
       <Head>
         <title>{"About"}</title>
       </Head>
-      <FullContainer>
-        <AboutContainer>
-          <AboutText>
-            <AboutEmoji>👨🏻‍💻</AboutEmoji>
+      <div
+      className={style.fullContainer}>
+        <div
+        className={style.aboutWrapper}>
+          <div
+          className={style.aboutText}>
+            <span
+            className={style.emoji}>👨🏻‍💻</span>
             About
-          </AboutText>
-        </AboutContainer>
-        <Container>
-          <ProfileContainer>
-            <ProfileImg src={BlankProfileImagePNG} alt={""} />
-            <ProfileContentContainer>
-              <NameText>이재연</NameText>
-              <SpecialtyText>Front-end Developer</SpecialtyText>
+          </div>
+        </div>
+        <div
+        className={style.container}>
+          <div
+          className={style.profileContainer}>
+            <Image
+            className={style.profileImage}
+            src={BlankProfileImagePNG} 
+            alt={""} />
+            <div
+            className={style.profileContentContainer}>
+              <div
+              className={style.nameText}>이재연</div>
+              <div
+              className={style.specialtyText}>Front-end Developer</div>
               {isMobile && (
-              <MobileSocialContainer>
-            <a href={"https://github.com/zaeyon"} target="_blank">
-              <GithubIcon src={GithubIconPNG} alt={""} />
-            </a>
-            </MobileSocialContainer>
-              )
-              }
-            </ProfileContentContainer>
+              <div
+              className={style.mobileSocialWrapper}>
+                <a href={"https://github.com/zaeyon"} target="_blank">
+                 <Image
+                 className={style.githubIconImage}
+                 src={GithubIconPNG} alt={""} />
+                </a>
+              </div>
+              )}
+            </div>
             {!isMobile && (
-            <SocialContainer>
-              <a href={"https://github.com/zaeyon"} target="_blank">
-                <GithubIcon src={GithubIconPNG} alt={""} />
-              </a>
-            </SocialContainer>
-            )}
-          </ProfileContainer>
-          <DividerLine />
-          <IntroduceContainer>
-            <TitleText>career</TitleText>
-            <CareerItemContainer>
-              <PeriodText>20.03 - 21.04</PeriodText>
-              <CareerTextContainer>
-                <CareerText>
+              <div
+              className={style.socialWrapper}>
+                <a href={"https://github.com/zaeyon"} target="_blank">
+                <Image
+                className={style.githubIconImage}
+                src={GithubIconPNG} alt={""} />
+                </a>
+              </div>
+              )}
+          </div>
+          <div
+          className={style.dividerLine} />
+          <div
+          className={style.introduceContainer}>
+            <div
+            className={style.titleText}>career</div>
+            <div
+            className={style.careerItemWrapper}>
+              <span className={style.periodText}>20.03 - 21.04</span>
+              <span
+              className={style.careerContainer}>
+                <div
+                className={style.careerText}>
                   소비 항목 리뷰 및 데이터 분석 모바일 어플 프론트엔드 개발
-                </CareerText>
-                <CareerText>
+                </div>
+                <div
+                className={style.careerText}>
                   사용자 맞춤 치아 관리 및 치과 리뷰 모바일 어플 프론트엔드 개발
-                </CareerText>
-                <DescriptionText>
+                </div>
+                <div
+                className={style.descriptionText}>
                   초기 스타트업에 프론트엔드 개발자로 합류하여 React Native를
                   사용하여 두 개의 모바일 하이브리드(Ios&Android) 어플을
                   개발하였습니다.
-                </DescriptionText>
-              </CareerTextContainer>
-            </CareerItemContainer>
-          </IntroduceContainer>
-        </Container>
-      </FullContainer>
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
     </Layout>
   );
 };

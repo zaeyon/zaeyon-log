@@ -1,8 +1,7 @@
-import { useCallback } from "react";
 import style from "./styles/post-list.module.css";
 import PostItem from "./PostItem";
 
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 
 const PostList = ({ postsData, isMobile }) => {
   return (

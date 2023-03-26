@@ -1,79 +1,7 @@
 import { useState, useRef, useCallback } from "react";
 
-import styled from "styled-components";
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+import style from './styles/comment-input.module.css';
 
-const NameInput = styled.input`
-  width: 5rem;
-  padding: 7px;
-  font-size: 14.5px;
-  border: 0.5px solid #25252530;
-  background: #f2f2f250;
-  border-radius: 5px;
-  :focus {
-    outline: 2px solid navy;
-  }
-`;
-
-const PasswordInput = styled.input`
-  width: 5rem;
-  margin-left: 10px;
-  padding: 7px;
-  font-size: 14.5px;
-  border: 0.5px solid #25252530;
-  background: #f2f2f250;
-  border-radius: 5px;
-  :focus {
-    outline: 2px solid navy;
-  }
-`;
-
-const WriterInfoContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-const ContentInput = styled.textarea`
-  margin-top: 10px;
-  padding: 7px;
-  height: 4rem;
-  font-size: 14.5px;
-  resize: none;
-  border: 0.5px solid #25252530;
-  background: #f2f2f250;
-  border-radius: 5px;
-  :focus {
-    outline: 2px solid navy;
-  }
-`;
-
-const RequestSpan = styled.span`
-  margin-left: 12px;
-  font-size: 14.5px;
-  color: #e30000;
-  font-weight: 600;
-`;
-
-const PostButton = styled.div`
-  display: flex;
-  align-items: center;
-  opacity: 0.9;
-  padding: 5px 12px 5px 12px;
-  border-radius: 5px;
-  background-color: #282d61;
-  color: white;
-  border: none;
-  font-size: 14.5px;
-  user-select: none;
-
-  :hover {
-    opacity: 0.6;
-  }
-`;
 
 interface props {
   type?: string,  
@@ -169,40 +97,47 @@ const CommentInput:React.FC<props> = ({
   };
 
   return (
-    <Container>
-      <WriterInfoContainer>
+    <div
+    className={style.container}>
+      <div
+      className={style.writerInfoContainer}>
         <span>
-          <NameInput
+          <input
+          className={style.nameInput}
             ref={nameInputRef}
             placeholder="닉네임"
             onChange={onChangeNameInput}
             value={name}
           />
-          <PasswordInput
+          <input
+          className={style.passwordInput}
             placeholder="비밀번호"
             type="password"
             onChange={onChangePasswordInput}
             value={password}
           />
-          {requestName && <RequestSpan>닉네임을 입력하세요!</RequestSpan>}
-          {requestPassword && <RequestSpan>비밀번호를 입력하세요!</RequestSpan>}
-          {requestComment && <RequestSpan>내용을 입력하세요!</RequestSpan>}
+          {requestName && <span className={style.requestWrapper}>닉네임을 입력하세요!</span>}
+          {requestPassword && <span className={style.requestWrapper}>비밀번호를 입력하세요!</span>}
+          {requestComment && <span className={style.requestWrapper}>내용을 입력하세요!</span>}
         </span>
-        <PostButton onClick={() => onClickPostButton()}>
+        <div
+        className={style.postButton}
+        onClick={() => onClickPostButton()}>
           {type === "comment"
             ? "댓글 작성"
             : type === "reply"
             ? "답글 작성"
             : "댓글 작성"}
-        </PostButton>
-      </WriterInfoContainer>{" "}
-      <ContentInput
+        </div>
+      </div>{" "}
+      <textarea
+      className={style.contentInput}
         placeholder="내용"
         rows={5}
         onChange={onChangeContentInput}
         value={comment}
       />
-    </Container>
+    </div>
   );
 };
 

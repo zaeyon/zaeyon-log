@@ -1,15 +1,6 @@
-import styled from "styled-components";
+import style from "./styles/comment-list.module.css";
 
 import CommentItem from "./CommentItem";
-
-const Container = styled.div`
-  border-top: 4px solid #000748;
-`;
-
-const DividerContainer = styled.div`
-  height: 2px;
-  background-color: #00000010;
-`;
 
 const CommentList = ({
   commentArray,
@@ -18,7 +9,7 @@ const CommentList = ({
   removeReply,
 }) => {
   return (
-    <Container>
+    <div className={style.container}>
       {commentArray.map((comment, index) => (
         <CommentItem
           key={comment.id}
@@ -29,7 +20,7 @@ const CommentList = ({
           removeReply={removeReply}
         />
       ))}
-    </Container>
+    </div>
   );
 };
 

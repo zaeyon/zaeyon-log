@@ -1,0 +1,65 @@
+.container {
+    font-size: 20px;
+    color: black;
+    padding: 30px 20px 20px 20px;
+}
+
+.footerContainer {
+    margin-top: 110px;
+    padding-bottom: 10px;
+}
+
+
+.referenceTitleText {
+    font-weight: 600;
+    font-size: 16.5px;
+    color: gray;
+    margin-bottom: 5px;
+}
+
+
+.referenceItemLink {
+  color: #25252580;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 16.5px;
+}
+
+.headerContainer {
+    padding: 0px 17px 30px 17px;
+}
+
+.titleText {
+    font-style: "normal";
+    font-size: 43px;
+    font-weight: 700;
+    color: #000748;
+    font-family: "Jost-Medium";
+}
+
+.metaDataContainer {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.writerProfileImage {
+    border-radius: 100px;
+    width: 1.7rem;
+    height: 1.7rem;
+}
+
+.writerNameText {
+    margin-left: 9px;
+    font-size: 15px;
+    color: #464646;
+    font-weight: 500;
+}
+
+.dateText {
+    margin-left: 5px;
+    font-size: 15px;
+    color: #464646;
+    font-weight: 500;
+}
+

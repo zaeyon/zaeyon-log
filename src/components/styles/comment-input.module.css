@@ -1,0 +1,77 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.nameInput {
+    width: 5rem;
+    padding: 7px;
+    font-size: 14.5px;
+    border: 0.5px solid #25252530;
+    background: #f2f2f250;
+    border-radius: 5px;
+
+}
+
+.nameInput:focus {
+    outline: 2px solid navy;
+}
+
+.passwordInput {
+    width: 5rem;
+    margin-left: 10px;
+    padding: 7px;
+    font-size: 14.5px;
+    border: 0.5px solid #25252530;
+    background: #f2f2f250;
+    border-radius: 5px;
+}
+
+.passwordInput:focus {
+    outline: 2px solid navy;
+}
+
+.writerInfoContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.contentInput {
+    margin-top: 10px;
+    padding: 7px;
+    height: 4rem;
+    font-size: 14.5px;
+    resize: none;
+    border: 0.5px solid #25252530;
+    background: #f2f2f250;
+    border-radius: 5px;
+}
+
+.contentInput:focus {
+    outline: 2px solid navy;
+}
+
+.requestWrapper {
+    margin-left: 12px;
+    font-size: 14.5px;
+    color: #e30000;
+    font-weight: 600;
+}
+
+.postButton {
+    display: flex;
+    align-items: center;
+    opacity: 0.9;
+    padding: 5px 12px;
+    border-radius: 5px;
+    background-color: #282d61;
+    color: white;
+    border: none;
+    font-size: 14.5px;
+    user-select: none;
+}
+
+.postButton:hover {
+    opacity: 0.6;
+}

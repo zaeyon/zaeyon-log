@@ -1,83 +1,15 @@
 import React from "react";
 import Link from "next/link";
-import styled from "styled-components";
 import Image from "next/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import codeBlock from "../styles/codeBlock";
+import style from "./styles/post-markdown.module.css";
 
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 
 import BlankProfileImagePNG from "../../public/images/blank_profile.png";
-
-const Container = styled.div`
-  font-size: 20px;
-  color: black;
-  padding: 33px 20px 20px 20px;
-`;
-
-const Footercontainer = styled.div`
-  margin-top: 110px;
-  padding-bottom: 10px;
-`;
-
-const ReferenceContainer = styled.div``;
-
-const ReferenceTitleText = styled.div`
-  font-weight: 600;
-  font-size: 16.5px;
-  color: gray;
-  margin-bottom: 5px;
-`;
-
-const ReferenceItemContainer = styled.div``;
-
-const ReferenceItem = styled(Link)`
-  color: #25252580;
-  font-weight: 500;
-  font-style: italic;
-  font-size: 16.5px;
-`;
-
-const HeaderContainer = styled.div`
-  padding: 0px 17px 30px 17px;
-`;
-
-const TitleText = styled.div`
-  font-style: "normal";
-  font-size: 43px;
-  font-weight: 700;
-  color: #000748;
-  font-family: "Jost-Medium";
-`;
-
-const MetaDataContainer = styled.div`
-  margin-top: 10px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-const WriterProfileImage = styled(Image)`
-  border-radius: 100px;
-  width: 1.7rem;
-  height: 1.7rem;
-`;
-
-const WriterNameText = styled.span`
-  margin-left: 9px;
-  font-size: 15px;
-  color: #464646;
-  font-weight: 500;
-`;
-
-const DateContainer = styled.span`
-  margin-left: 5px;
-  font-size: 15px;
-  color: #464646;
-  font-weight: 500;
-`;
 
 const PostMarkdown = ({ postData }) => {
   console.log("PostDetail postData", postData);
@@ -98,17 +30,21 @@ const PostMarkdown = ({ postData }) => {
   };
 
   return (
-    <Container>
-      <HeaderContainer>
-        <TitleText>{postData.title}</TitleText>
-        <MetaDataContainer>
-          <WriterProfileImage src={BlankProfileImagePNG} alt={""} />
-          <WriterNameText>ZAEYON</WriterNameText>
-          <DateContainer>
+    <div className={style.container}>
+      <div className={style.headerContainer}>
+        <div className={style.titleText}>{postData.title}</div>
+        <div className={style.metaDataContainer}>
+          <Image
+            className={style.writerProfileImage}
+            src={BlankProfileImagePNG}
+            alt={""}
+          />
+          <span className={style.writerNameText}>ZAEYON</span>
+          <span className={style.dateText}>
             • {getFormattedDate(postData?.date)} 작성
-          </DateContainer>
-        </MetaDataContainer>
-      </HeaderContainer>
+          </span>
+        </div>
+      </div>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
@@ -251,23 +187,28 @@ const PostMarkdown = ({ postData }) => {
       >
         {postData.content}
       </ReactMarkdown>
-      <Footercontainer>
+      <div className={style.footerContainer}>
         {postData.reference ? (
-          <ReferenceContainer>
-            <ReferenceTitleText>참고자료</ReferenceTitleText>
+          <div>
+            <div className={style.referenceTitleText}>참고자료</div>
             {postData.reference.map((item, index) => (
-              <ReferenceItemContainer key={index}>
-                <ReferenceItem key={index} href={item.url} target="_blank">
+              <div key={index}>
+                <Link
+                  className={style.referenceItemLink}
+                  key={index}
+                  href={item.url}
+                  target="_blank"
+                >
                   {item.title}
-                </ReferenceItem>
-              </ReferenceItemContainer>
+                </Link>
+              </div>
             ))}
-          </ReferenceContainer>
+          </div>
         ) : (
           ""
         )}
-      </Footercontainer>
-    </Container>
+      </div>
+    </div>
   );
 };
 

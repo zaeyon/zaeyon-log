@@ -1,0 +1,143 @@
+.fullContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 53rem;
+}
+
+.container {
+    margin-top: 10px;
+  padding: 12px;
+  height: 1000px;
+  background: #ffffff;
+  border-radius: 7px;
+  box-shadow: 0px 0px 20px 8px #27272710;
+}
+
+.aboutWrapper {
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+
+.emoji {
+    margin-right: 13px;
+    font-size: 40px;
+}
+
+.aboutText {
+    display: flex;
+    align-items: center;
+    font-size: 35px;
+    font-weight: 500;
+    font-family: "Jost-Medium";
+    padding-left: 20px;
+    color: #000748;
+}
+
+.profileContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 30px 20px;
+    background-color: white;
+}
+
+.profileContentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 35px;
+}
+
+.nameText {
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.specialtyText {
+  margin-top: 5px;
+  font-size: 18px;
+  font-family: "Menlo-Regular";
+}
+
+.profileImage {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 100px;
+  object-fit: cover;
+}
+
+.dividerLine {
+  height: 10px;
+  background: #f2f2f2;
+}
+
+.introduceContainer {
+    padding: 15px;
+}
+
+.careerItemWrapper {
+    display: flex;
+  flex-direction: row;  
+}
+
+.titleText {
+
+  font-size: 25px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.periodText {
+    width: 12rem;
+  font-size: 19px;
+  font-weight: 500;
+  color: #00000097;
+}
+
+.careerContainer {
+    padding-left: 13px;
+}
+
+.careerText {
+  font-size: 19px;
+  font-weight: 500;
+  padding-bottom: 4px;
+}
+
+.descriptionText {
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 300;
+  color: #000000;
+}
+
+.socialWrapper {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.githubIconImage {
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.mobileSocialWrapper {
+    padding-top: 15px;
+}
+
+@media (max-width: 55rem) {
+    .fullContainer {
+        width: 95%;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+    }
+}
+
+
+
