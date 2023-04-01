@@ -84,7 +84,7 @@ const CommentInput:React.FC<props> = ({
       setRequestPassword(false);
       setRequestComment(false);
       if (type === "comment") {
-        writeComment(name, password, comment);
+        if(writeComment) writeComment(name, password, comment);
       } else if (type === "reply") {
         writeReply(name, password, comment, commentId, selectedIndex);
         hideReplyWrite();
