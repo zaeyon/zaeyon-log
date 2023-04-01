@@ -2,7 +2,7 @@ import {useState, useLayoutEffect} from 'react';
 import Head from "next/head";
 import style from '../styles/posts-page.module.css';
 import Layout from "../components/Layout";
-import { getSortedPostsData, getPostsNumber } from "../lib/posts";
+import { getSortedPostsData } from "../lib/posts";
 import { wrapper } from "../app/store";
 
 import PostList from "../components/PostList";
@@ -10,15 +10,13 @@ import PostList from "../components/PostList";
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
-  const postsNumber = getPostsNumber();
 
   wrapper.getServerSideProps((store) => async () => {
-    store.dispatch(setPostsNumber(postsNumber));
+
 
     return {props: {}}
   });
 
-  console.log("getStaticProps postsNumber", postsNumber);
   return {
     props: {
       allPostsData,
