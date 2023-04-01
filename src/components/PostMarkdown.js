@@ -64,28 +64,38 @@ const PostMarkdown = ({ postData }) => {
             />
           ),
           h3: ({ node, ...props }) => (
-            <i
-              style={{
-                lineHeight: 2.7,
-                fontStyle: "normal",
-                fontSize: 22,
-                fontWeight: 700,
-                color: "#000748",
-              }}
-              {...props}
-            />
+            <>
+              <br />
+              <br />
+              <br />
+              <i
+                style={{
+                  lineHeight: 2.7,
+                  fontStyle: "normal",
+                  fontSize: 22,
+                  fontWeight: 700,
+                  color: "#000748",
+                }}
+                {...props}
+              />
+              <br />
+            </>
           ),
           h4: ({ node, ...props }) => (
-            <i
-              style={{
-                lineHeight: 2,
-                fontStyle: "normal",
-                fontSize: 18,
-                fontWeight: 700,
-                color: "#000000",
-              }}
-              {...props}
-            ></i>
+            <>
+              <br />
+              <i
+                style={{
+                  lineHeight: 2,
+                  fontStyle: "normal",
+                  fontSize: 18,
+                  fontWeight: 700,
+                  color: "#000000",
+                }}
+                {...props}
+              ></i>
+              <br />
+            </>
           ),
           em: ({ node, ...props }) => (
             <em
@@ -139,12 +149,15 @@ const PostMarkdown = ({ postData }) => {
             />
           ),
           span: ({ node, ...props }) => (
-            <span
-              style={{
-                fontSize: 16.5,
-              }}
-              {...props}
-            />
+            <>
+              <span
+                style={{
+                  fontSize: 16.5,
+                }}
+                {...props}
+              />
+              <br />
+            </>
           ),
           img: ({ node, ...props }) => (
             <img

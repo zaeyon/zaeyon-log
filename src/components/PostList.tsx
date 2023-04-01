@@ -23,19 +23,31 @@ const PostList: React.FC<props> = ({ postsData, isMobile }) => {
             </motion.div>
           </div>
         ))}
-        {postsData.length % 3 === 2 ? (
-          <div className={style.emptyPostItemWrapper} />
-        ) : postsData.length % 3 === 1 ? (
-          <>
-            <div className={style.emptyPostItemWrapper} />
-            <div className={style.emptyPostItemWrapper} />
-          </>
-        ) : (
-          ""
-        )}
+        
       </div>
     </div>
   );
 };
 
 export default PostList;
+
+
+/*
+
+        {postsData.length % 3 === 2 ? (
+          <div className={style.emptyPostItemWrapper}>
+          <div className={style.emptyPostItem} />
+          </div>
+        ) : postsData.length % 3 === 1 ? (
+          <>
+          <div className={style.emptyPostItemWrapper}>
+            <div className={style.emptyPostItem} />
+          </div>
+          <div className={style.emptyPostItemWrapper}>
+            <div className={style.emptyPostItem} />
+          </div>
+          </>
+        ) : (
+          ""
+        )}
+*/

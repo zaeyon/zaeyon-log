@@ -16,12 +16,8 @@ reference:
 
 <img src="/images/posts/javascript_logo.png" width="100%">
 <br/>
-<br/>
-<br/>
-<br/>
 <h3>
 1. JavaScript가 무엇인가요?</h3>
-<br/>
 <span>
 자바스크립트(JavaScript)는 웹사이트에서 사용자와의 상호작용성(버튼 클릭, 자료 입력)과 동적인 스타일링, 애니메이션과 같은 복잡한 기능을 구현할 수 있도록 하는 <em>동적 클라이언트 사이드 스크립트 언어(Dynamic Client-Side Script Language)</em>입니다.
 즉 자바스크립트는 살아있는 페이지를 만들기 위해 개발되었습니다.<br/>
@@ -34,7 +30,6 @@ reference:
 </span>
 <br/>
 <br/>
-<br/>
 <h4>• 자바와 자바스크립트</h4>
 <br/>
 <span
@@ -42,9 +37,6 @@ style="color: #000000; font-size: 16.5px">
 자바(Java)와 자바스크립트(Javascript)는 비슷한 이름때문에 서로 관련이 있다고 생각할 수 있습니다. 자바스크립트가 만들어질 때 초기 이름은 "LiveScript"였습니다. 그 당시에 자바는 인기 있는 언어였는데 자바 인기의 도움을 얻고자 자바스크립트로 이름을 변경 하였다고 합니다.
 자바스크립트가 발전하면서 <em>ECMAScript</em>라는 표준화된 명칭도 얻게되어 현재 자바와 전혀 관련이 없습니다. 
 </span>
-<br/>
-<br/>
-<br/>
 <h3>
 2. HTML과 CSS와의 관계
 </h3>
@@ -137,13 +129,9 @@ p {
 para 변수를 선언한 후 p태그를 할당시켜주었고 click 이벤트 발생시 updateName함수가 실행되도록 하였습니다.<br/>
 updateName함수에는 새로운 창에서 이름을 입력받고 기존 이름을 입력받은 이름으로 변경하도록 코드를 작성하였습니다.
 </span>
-<br/>
-<br/>
-<br/>
 <h3>
 3. JavaScript가 하는일
 </h3>
-<br/>
 <span>
 클라이언트 사이드 자바스크립트 언어는 다른 프로그래밍언어와 같이 기본적으로 변수에 값을 할당하고 문자열(string)을 조작하고 발생한 이벤트에 대해 응답하는 기능들을 수행합니다.<br/><br/>
 브라우저가 웹 페이지를 불러오면 어떤 일이 발생하는지 간단하게 알아보겠습니다.<br/>
@@ -154,13 +142,9 @@ updateName함수에는 새로운 창에서 이름을 입력받고 기존 이름�
 자바스크립트는 <em>DOM (Document Object Model) API</em>를 통해 HTML과 CSS를 동적으로 수정하고 사용자 인터페이스를 업데이트 하는 기능을 주로 수행합니다.
 </span>
 
-<br/>
-<br/>
-<br/>
 <h3>
 4. JavaScript 생태계
 </h3>
-<br/>
 <img src="/images/posts/javascript_ecosystem.png" width="100%" height="1%" object-fit="contain"/>
 <br/>
 <span>

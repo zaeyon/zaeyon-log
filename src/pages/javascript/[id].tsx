@@ -179,14 +179,14 @@ const Post: React.FC<props> = ({postData}) => {
   return (
     <Layout isMobile={isMobile} postTitle={postData.title}>
       <Head>
-        <title>{postData.title}</title>
+        <title>{`${postData.title}`}</title>
         <meta charSet="utf-8"/>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1"
         />
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-        <meta name="description" content={postData.description}/>
+        <meta name="description" content={`${postData.preview}`}/>
       </Head>
       <PostDetail
         postData={postData}
