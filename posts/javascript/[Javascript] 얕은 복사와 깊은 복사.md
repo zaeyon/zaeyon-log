@@ -2,7 +2,7 @@
 id: "4"
 title: "[Javascript] 얕은 복사와 깊은 복사"
 date: "2023.04.01"
-preview: "javascript에서의 객체 복사 방법인 얕은 복사와 깊은 복사를 비교해보고 올바른 사용법을 알아봅시다."
+preview: "javascript에서의 객체 복사 방법인 얕은 복사와 깊은 복사를 비교해 봅시다."
 thumbnail: "/images/javascript_logo.png"
 reference:
   [
