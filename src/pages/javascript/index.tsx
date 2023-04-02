@@ -8,7 +8,7 @@ import {postList} from '../../lib/type';
 
 import PostList from "../../components/PostList";
 
-import javascriptLogo from "../../../public/images/javascript_logo.png";
+import javascriptLogo from "../../../public/images/posts/logo/javascript.png";
 
 export async function getStaticProps() {
   const categoryPostsData = getCategoryPostsData("javascript");

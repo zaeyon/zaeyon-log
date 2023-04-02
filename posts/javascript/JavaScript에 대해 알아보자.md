@@ -4,7 +4,7 @@ title: "JavaScript에 대해 알아보자"
 date: "2023.03.01"
 description: "Javascript의 정의, java와 javascript의 관계, javascript와 HTML,CSS의 관계와 사용법,웹 브라우저에서 javascript의 역할, javascript 생태계에 대해서 알아보겠습니다."
 preview: "자바스크립트가 무엇인지, 어떤 역할을 하는지 알아보겠습니다."
-thumbnail: "/images/javascript_logo.png"
+thumbnail: "/images/posts/logo/javascript.png"
 reference:
   [
     {
@@ -14,7 +14,7 @@ reference:
   ]
 ---
 
-<img src="/images/posts/javascript_logo.png" width="100%">
+<img src="/images/thumbnail/javascript.png" width="100%">
 <br/>
 <h3>
 1. JavaScript가 무엇인가요?</h3>
