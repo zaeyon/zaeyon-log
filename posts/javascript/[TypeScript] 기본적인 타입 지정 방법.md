@@ -2,7 +2,7 @@
 id: "5"
 title: "[TypeScript] 기본적인 타입 지정 방법"
 date: "2023.04.02"
-preview: "typescript의 사용 목적과 기본적인 타입 지정 방법에 대해 알아봅시다."
+preview: "TypeScript의 역할과 기본적인 타입 지정 방법에 대해 알아봅시다."
 thumbnail: "/images/posts/logo/typescript.png"
 reference:
   [
@@ -14,3 +14,69 @@ reference:
 ---
 
 <img src="/images/posts/5/thumbnail.png" width="100%"/>
+<br/>
+<h3>
+1. TypeScript 역할
+</h3>
+<span>
+타입스크립트는 자바스크립트의 <b>상위집합(superset) 언어</b>입니다. <br/>
+즉, 타입스크립트는 자바스크립트의 기능들을 모두 포함하면서 자체 타입 시스텝 기능을 제공합니다. 
+<br/>
+<br/>
+순수 자바스크립트는 코드를 실행하기 전까진 특정 객체가 어떤 값을 가지고 어떤 동작을 수행하는지 알 수 없습니다. 따라서 코드를 작성하는 동안 코드가 어떤 동작 결과를 보일지 예측하기 어렵습니다.
+<br/>
+<br/>
+이러한 문제에 대해 타입스크립트의 정적 타입 시스템은 <b>작성된 코드에서 사용된 값들의 형태와 동작에 대해 설명해주고 프로그램이 제대로 작동하지 않을때 우리에게 알려주는 역할</b>을 합니다.
+</span>
+<h3>
+2. 기본적인 타입 지정 방법
+</h3>
+<h4>
+• 변수 타입 지정
+</h4>
+<span>
+변수를 선언할때 변수의 타입을 지정하기 위해 타입 표기를 추가할 수 있습니다. <br/>
+이는 선택사항이며 타입 표기가 추가되어 있지 않을땐 타입스크립트는 자동으로 변수의 타입을 추론합니다.
+</span
+
+```typescript
+// string 변수 타입 표기
+const name: string = "이재연";
+
+// number 변수 타입 표기
+const age: number = 26;
+
+// string 원소 배열 타입 표기
+const strArray1: string[] = ["a", "b", "c", "d", "e"];
+const strArray2: Array<string> = ["a", "b", "c", "d", "e"];
+
+// number 원소 배열 타입 표기
+const numArray1: number[] = [1, 2, 3, 4, 5];
+const numArray2: Array<number> = [1, 2, 3, 4, 5];
+
+// 모든 임의 값에 할당가능한 any 타입 표기
+let obj: any = { x: 0 };
+```
+
+<span>
+위와 같이 타입 표기는 항상 변수의 뒤쪽에 작성합니다.
+</span>
+
+<h4>
+• 함수 타입 지정
+</h4>
+<span>
+함수의 매개변수와 반환값에 대해 타입 표기를 추가할수 있습니다.
+</span>
+
+```typescript
+// 함수의 매개변수 타입 표기
+const introduce = (name: string) => {
+  console.log("안녕, 내 이름은 " + name + "이야.");
+};
+
+// 함수의 반환값 타입 표기
+const getAge = (): number => {
+  return 26;
+};
+```

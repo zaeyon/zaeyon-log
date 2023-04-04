@@ -83,7 +83,6 @@ const PostMarkdown = ({ postData }) => {
           ),
           h4: ({ node, ...props }) => (
             <>
-              <br />
               <i
                 style={{
                   lineHeight: 2,
