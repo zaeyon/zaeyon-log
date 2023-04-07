@@ -1,5 +1,6 @@
 ---
 id: "2"
+keyword: "JavaScript"
 title: "JavaScript에 대해 알아보자"
 date: "2023.03.01"
 description: "Javascript의 정의, java와 javascript의 관계, javascript와 HTML,CSS의 관계와 사용법,웹 브라우저에서 javascript의 역할, javascript 생태계에 대해서 알아보겠습니다."

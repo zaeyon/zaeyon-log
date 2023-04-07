@@ -33,7 +33,9 @@ const PostMarkdown = ({ postData }) => {
   return (
     <div className={style.container}>
       <div className={style.headerContainer}>
-        <div className={style.titleText}>{postData.title}</div>
+        <div
+          className={style.titleText}
+        >{`[${postData.keyword}] ${postData.title}`}</div>
         <div className={style.metaDataContainer}>
           <Image
             className={style.writerProfileImage}

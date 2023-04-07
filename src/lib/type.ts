@@ -12,6 +12,7 @@ export interface postList {
     preview: string, 
     thumbnail: string,
     description: string,
+    keyword: string,
 }
 
 export interface post {
@@ -23,6 +24,8 @@ export interface post {
     reference: reference[],
     content: string,
     description: string,
+    category: string,
+    keyword: string,
 }
 
 export interface reply {

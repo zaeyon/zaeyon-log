@@ -1,5 +1,6 @@
 ---
 id: "1"
+keyword: "React"
 title: "React 시작하기"
 date: "2023.02.28"
 description: "React의 정의와 특징에 대해 알아보고 React 앱을 만들기 위한 환경설정후 React앱을 만들어보겠습니다."

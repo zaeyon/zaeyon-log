@@ -18,7 +18,7 @@ const PostItem: React.FC<props> = ({ post }) => {
       }}
     >
       <div className={style.container}>
-        <div className={style.titleWrapper}>{post.title}</div>
+        <div className={style.titleWrapper}>{`[${post.keyword}] ${post.title}`}</div>
         <div className={style.contentWrapper}>
           <div className={style.previewWrapper}>{post.preview}</div>
           <div className={style.thumbnailImageWrapper}>

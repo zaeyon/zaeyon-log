@@ -1,5 +1,6 @@
 ---
 id: 3
+keyword: "React"
 title: "React Hook 정리 - 1"
 date: "2023.03.11"
 description: "React Hook의 정의와 도입동기, 클래스형 컴포넌트의 문제점에 대해 알아보고 가장 중요한 useState, useEffect의 사용법을 알아보겠습니다."
