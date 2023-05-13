@@ -10,7 +10,7 @@ interface props {
   children: any,
   postTitle?: string,
   isMobile: boolean,
-  keyword: string,
+  keyword?: string,
 }
 
 
