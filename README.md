@@ -31,6 +31,15 @@
 <br/>
 ![Post_comment](./public/images/pages/post_comment.png)
 
+<br/>
+
+## 3. 검색 엔진 최적화
+Next.js를 통해 서버사이드 렌더링을 적용하고 <br/> 
+사이트맵과 메타태그를 통해 검색 엔진 최적화 작업을 하였습니다.
+<br/>
+![SEO](./public/images/pages/seo.png)
+
+
 
 
 
