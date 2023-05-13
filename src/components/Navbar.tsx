@@ -11,7 +11,7 @@ interface props {
  onClickHeaderLogo: () => void,
  headerTitle: string,
  isMobile: boolean,
- keyword: string,
+ keyword?: string,
 }
 
 const Navbar: React.FC<props> = ({onClickMenu, headerEvent, onClickHeaderLogo, headerTitle, isMobile, keyword}) => {
