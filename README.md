@@ -2,11 +2,16 @@
 ![Home](./public/images/pages/home.png)
 
 ## 소개
+사이트 : [zaeyon.com](zaeyon.com) <br/>
 개발 관련 글을 작성할 목적으로 만든 개인 블로그입니다.
 
 ## 기술 스택
 ### 프로그래밍 언어 - JavaScript, TypeScript
 ### UI 라이브러리 - React.js
 ### SSR 프레임워크 - Next.js
+### CSS-in-JS 라이브러리 - styled-components
+### 전역상태 관리 라이브러리 - Redux
+### 클라우드 데이터베이스 - Firebase firestore
+
 
 
