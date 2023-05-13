@@ -25,7 +25,7 @@ const CategoryList:React.FC<props> = ({ postsNumber, onClickCategoryItem }) => {
     {
       key: "javascript",
       text: "Jacscript",
-      number: 2,
+      number: 3,
     },
   ];
 
