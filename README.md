@@ -1,5 +1,5 @@
 # ZAEYON LOG - 개인 블로그
-![Home](./public/images/home.png)
+![Home](./public/images/pages/home.png)
 
 ## 소개
 개발 관련 글을 작성할 목적으로 만든 개인 블로그입니다.
