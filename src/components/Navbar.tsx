@@ -11,9 +11,10 @@ interface props {
  onClickHeaderLogo: () => void,
  headerTitle: string,
  isMobile: boolean,
+ keyword: string,
 }
 
-const Navbar: React.FC<props> = ({onClickMenu, headerEvent, onClickHeaderLogo, headerTitle, isMobile}) => {
+const Navbar: React.FC<props> = ({onClickMenu, headerEvent, onClickHeaderLogo, headerTitle, isMobile, keyword}) => {
     const [headerHeight, setHeaderHeight] = useState("6.5rem");
 
     const [springs, headerApi] = useSpring(() => ({
@@ -91,7 +92,7 @@ const Navbar: React.FC<props> = ({onClickMenu, headerEvent, onClickHeaderLogo, h
             style={headerTitle === "ZAEYON LOG" ? {fontSize: "42px"} : {fontSize: "37px"}}
             className={style.titleWrapper} 
             onClick={() => onClickHeaderLogo()}>
-                {headerTitle}
+                {headerTitle === "ZAEYON LOG" ? "ZAEYON LOG" : `[${keyword}] ${headerTitle}`}
             </div>
             <div className={style.emptyWrapper}>
             </div>

@@ -178,7 +178,10 @@ const Post: React.FC<props> = ({ postData }) => {
   };
 
   return (
-    <Layout isMobile={isMobile} postTitle={postData.title}>
+    <Layout
+    keyword={postData.keyword}
+     isMobile={isMobile} 
+     postTitle={postData.title}>
       <Head>
         <title>{`[${postData.keyword}] ${postData.title}`}</title>
         <meta charSet="utf-8"/>

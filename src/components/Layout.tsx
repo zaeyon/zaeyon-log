@@ -10,13 +10,15 @@ interface props {
   children: any,
   postTitle?: string,
   isMobile: boolean,
+  keyword: string,
 }
+
 
 interface categoryObj {
   key: string,
 }
 
-const Layout: React.FC<props> = ({ children, postTitle, isMobile }) => {
+const Layout: React.FC<props> = ({ children, postTitle, isMobile, keyword }) => {
   const [headerEvent, setHeaderEvent] = useState("expand");
   const [preventAni, setPreventAni] = useState(false);
   const [scrolling, setScrolling] = useState(true);
@@ -135,6 +137,7 @@ const Layout: React.FC<props> = ({ children, postTitle, isMobile }) => {
           headerEvent={headerEvent}
           onClickMenu={onClickMenu}
           headerTitle={headerTitle}
+          keyword={keyword}
       />
       <div
         className={style.contentWrapper}

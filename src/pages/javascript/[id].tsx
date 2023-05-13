@@ -63,6 +63,7 @@ interface props {
 }
 
 const Post: React.FC<props> = ({postData}) => {
+  console.log("Post postData", postData);
   const [commentArray, setCommentArray] = useState<comment[]>([]);
   const [commentCount, setCommentCount] = useState<number>(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -177,7 +178,10 @@ const Post: React.FC<props> = ({postData}) => {
   };
 
   return (
-    <Layout isMobile={isMobile} postTitle={postData.title}>
+    <Layout 
+    keyword={postData.keyword}
+    isMobile={isMobile} 
+    postTitle={postData.title}>
       <Head>
         <title>{`[${postData.keyword}] ${postData.title}`}</title>
         <meta charSet="utf-8"/>
