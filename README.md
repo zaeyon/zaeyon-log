@@ -7,13 +7,17 @@
 
 ## 기술 스택
 ### •  플랫폼 - Web Application
-React 
+React 기반의 웹서비스로 데스크탑/모바일 반응형 디자인을 적용하였습니다.
 ### •  프로그래밍 언어 - JavaScript, TypeScript
+JavaScript를 사용해 사용자와의 상호작용을 구현하고 이후 정적 타입지정을 위해 TypeScript로 리팩토링하였습니다.
 ### •  UI 라이브러리 - React.js
+사용자 경험을 높이기 위해 React를 사용하여 SPA으로 개발하였습니다.
 ### •  SSR 프레임워크 - Next.js
-### •  CSS-in-JS 라이브러리 - styled-components
+기존의 React기반의 CSR 방식을 SSR 방식으로 변경하기 위해 Next.js로 리팩토링하여 SEO를 진행하였고 검색 엔진 상단에 노출되게 하였습니다.
 ### •  전역상태 관리 라이브러리 - Redux
+전역 상태 관리를 위해 Redux를 사용하였습니다.
 ### •  클라우드 데이터베이스 - Firebase firestore
+댓글 기능을 위해 Firestore를 사용하여 서버 구축없이 댓글 DB를 구현하였습니다.
 
 ## 기능 소개
 ### 1. 홈 화면
@@ -35,12 +39,18 @@ React
 
 <br/>
 
-## 3. 검색 엔진 최적화
+### 3. 검색 엔진 최적화
 Next.js를 통해 서버사이드 렌더링을 적용하고 <br/> 
 사이트맵과 메타태그를 통해 검색 엔진 최적화 작업을 하였습니다.
 <br/>
 ![SEO](./public/images/pages/seo.png)
 
+### 4. 모바일 반응형 디자인
+CSS에 미디어 쿼리를 통해 모바일 반응형 디자인을 적용해 모바일 디바이스에 지원되게 하였습니다. <br/>
+
+
+## 느낀점
+### •  CSS-in-JS 라이브러리 - styled-components와 Next.js의 호환성 문제
 
 
 
