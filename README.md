@@ -2,10 +2,12 @@
 ![Home](./public/images/pages/home.png)
 
 ## 소개
-사이트 : [zaeyon.com](zaeyon.com) <br/>
-개발 관련 글을 작성할 목적으로 만든 개인 블로그입니다.
+사이트 링크: [zaeyon.com](zaeyon.com) <br/>
+마크다운 문법으로 작성된 게시글을 볼수 있는 개인 블로그 웹 서비스입니다.
 
 ## 기술 스택
+### •  플랫폼 - Web Application
+React 
 ### •  프로그래밍 언어 - JavaScript, TypeScript
 ### •  UI 라이브러리 - React.js
 ### •  SSR 프레임워크 - Next.js
@@ -30,6 +32,15 @@
 ![Post](./public/images/pages/post.png)
 <br/>
 ![Post_comment](./public/images/pages/post_comment.png)
+
+<br/>
+
+## 3. 검색 엔진 최적화
+Next.js를 통해 서버사이드 렌더링을 적용하고 <br/> 
+사이트맵과 메타태그를 통해 검색 엔진 최적화 작업을 하였습니다.
+<br/>
+![SEO](./public/images/pages/seo.png)
+
 
 
 
